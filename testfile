@@ -1,0 +1,3100 @@
+  		[----Stay anonymous on the web------]
+
+..By MAx member of :MPD:		(c) 1998 MAx [4d5044]
+
+Note..This tutorial will teach a average day user how to keep all his
+Esentual info limited so attacks from Hackers cant be made
+
+SHouth outs: Myth leader of MPD u rule dude,All members of MPD, and
+everyone else who i should shout out too u know who u are.
+
+The topics..
+1.What are packets.
+2.Getting a http proxy.
+3.How http proxy work.
+4.How to secrure http packets.
+5.How to edit what o's and mozilla info send.
+6.Getting a socket proxy.
+7.How socket proxy work.
+8.Cookies.
+9.Final note.
+-----------------------------------------------------------------------
+
+1.What are packets.
+
+Packets are very simple on the net There are millions of user's now for
+secrurity and other reasons there must be ways of establishing difference
+between user's Thus is done by packets, Packets are used when ever u connect
+to a remote server/system Its identify's who is connecting.
+An example of a http packet.( [Connect from MAx.mpd.com]
+[206.14.13.32] (Mozilla/4.05 [en] (X11;I;Linux 2.0.34 i586) on December
+2, 1998 at 14:34:45 )
+Now ill tell u what it is saying if u dont know.
+*Note*(Http packets is the way u are sending info through the web
+browser whenever u connect to a server/mechine/site )
+[connected from MAx.mpd.com]-This is my host
+[206.14.13.32]- is my ip
+(Mozilla/4.05)- is the version of mozilla im using
+(X11;I;Linux 2.0.32 i586)- Is The O's(operating system) And version of
+the o's im running
+[On december 2, 1998 at 14:34:45] - is day/year/time
+Now u know how it works this is one way Hackers get all the info they
+need on your computer to hack it.
+Now we dont want this anymore THus anonymous proxies where invented to
+give keep user's on the net secrure.Using anonymous proxies isnt
+100% secrure as the hacker can still do means on getting your real
+ip/host/os ill talk about that later but it makes it very hard for a hacker
+to get your ip/host once behind a proxy.
+Now http isnt the only means of packets there are also socket packets which
+ill talk about later.
+
+2.How http proxy work.
+A http proxy works like server it is actuelly and what it does is when
+setup in your browser when ever u want to go to sites.It will connect
+to there proxy server first then the proxy server conncts to the site
+u want to go to THus leaving no evendence of u on the site just the
+proxy server.(Dont worry once u setup a proxy dont think u always have
+to type in the proxy in first then go to there and type the site u want
+too go to. :)It dont work like that once u have entered the proxy settings
+in ya browser it will auto do the proxy for u all u have to do is surf the
+net.(Setting up a http proxy descussed later)
+
+3. Getting a http proxy
+Http proxies are very easyly found on the net as there are many
+commited Http proxy server's around that are free.
+Ill give a list of some http proxies for your all sorry if your
+country proxy isn't here just search on the net for (Http proxy)
+and ull find one.
+***Austria***		 Port
+
+cache02.netway.at        :80
+mail.ppl.co.at		 :8080
+speth08.wu-wien.ac.at	 :8080
+pong.ping.at		 :8080
+
+***Australia***
+proxy.gwbbs.net.au	 :80
+chrome.one.net.au	 :8080
+proxy.newave.net.au	 :8080
+ws.edi.com.au		 :80
+mimas.scu.edu.au	 :80
+proxy.omcs.com.au	 :8080
+jethro.meriden.pas.com.au:8080
+albany.jrc.net.au	 :80
+basil.acr.net.au         :8080
+
+***Belgium***
+
+cache-mar.belbone.be     :80
+
+***Bulgaria***
+
+conan.gocis.bg		 :8080
+
+***Brazil***
+
+200.250.14.5)ct-nt-02.cybertelecom.com.br :8080
+sanan.com.br		 :8080
+
+***Canada***
+proxy.collegemv.qc.ca  	 :8080
+srvprx.cspaysbleuets.qc.ca :80
+valliere.csvalliere.qc.ca :80
+keeper.albertc.on.ca	 :8080
+cproxy1.justice.gc.ca	 :80
+proxy.cslouis-hemon.qc.ca :8080
+gateway.kwantlen.bc.ca   :80
+
+***Switzerland***
+
+cache1.worldcom.ch   	 :8080
+cache2.worldcom.ch	 :8080
+cache3.worldcom.ch	 :8080
+web-cache-2.cern.ch	 :80
+proxy.span.ch		 :8080
+gip-lausanne-nc.globalip.ch :80
+gip-lausanne-cf2.globalip.ch :8080
+gip-lausanne-cf1.globalip.ch :8080
+proxy2.iso.ch		 :8080
+proxy.iprolink.ch        :80
+
+***China***
+
+proxy.szptt.net.cn	 :8080
+
+***United States***
+
+hpux.mesd.k12.or.us	 :8080
+gatekeeper.ci.slc.ut.us  :8080
+episd.elpaso.k12.tx.us 	 :8080
+svc.logan.k12.ut.us 	 :8001
+proxy.eup.k12.mi.us 	 :8080
+svc.nues.k12.ut.us	 :8001
+proxy.eup.k12.mi.us	 :8080
+(207.78.252.100)oakweb.oak-web.washington-ch.oh.us :80
+homnibus.nvc.cc.ca.us	 :80
+et.mohave.cc.az.us	 :80
+
+(ok id say i gave out enough if ya local country not there go search
+the net and if cant find use another country one that is close to u)
+
+4.How to secrure Http packets
+Like i said before this is a normal http packet
+( [Connect from MAx.mpd.com]
+[206.14.13.32] (Mozilla/4.05 [en] (X11;I;Linux 2.0.34 i586) on December
+2, 1998 at 14:34:45 )
+Now to Make your ip and host anonymous to web browsing we are going to
+use http proxy with ya browser.THis is done by going to ya options
+and finding the info on proxy settings in thus put in all
+avalable places in proxy setting etc.ftp,http,secruity,
+Except leave sockets part blank THis isnt a socket proxy its a http
+Now after setting up a proxy in the proxy settings and putting in the
+port too.Our new packets will look like this.
+( [Connect from The_proxies_host]
+[The_proxies_ip] (Mozilla/4.05 [en] (X11;I;Linux 2.0.34 i586) on December
+2, 1998 at 14:34:45 )
+Now u might be thinking cool :) No longer have everdence of me on there
+server but dam they know my o's and version of mozilla later on ill
+descuse how to change that.U might also be thinking WOW now i can surf
+100% secure on the net.U are not totally right.IF a hacker had a real
+grunge on u.He has now the proxy u are using there ip/host
+now if he wants to get your info that badly he would have to hack
+the proxy server comapare the log time of the time u loged to the hacker's
+site too the logs of your connection to the proxy server.THus is a real
+big job and if pick a good proxy server they will be very secure from
+attack's So your pritty much safe.
+
+5.How to edit the o's and mozilla info send.
+
+Ok if your using Ie this is how u would do it.
+To see Original Settings
+GOTO HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings
+User Agent = Mozilla/4.0 (compatible; MSIE 4.01; Windows 95; (Your Orginial Settings))
+
+(Skip this Part here)
+GOTO HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion
+ProductName = Microsoft Windows 95
+Version = Windows 95
+
+
+GOTO HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\User Agent\Post Platform
+(Your Orignial Settings Here) = IEAK(Your Orignial Settings Here)
+
+Example
+
+GOTO HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\User Agent\Post Platform
+Myth [Unix-Base] = IEAKMyth [Unix-Base]
+
+
+*Note (this info on how to change the mozilla and version shown was
+given to me from Myth i didn't make it.)
+
+6.Getting a socket proxy.
+
+Ok now socket proxies work like Http proxies the only diff is
+socket proxies are used with programs like (icq,mirc) And the packets
+are send through sockets not http.Getting a socket proxy is alot harder
+because Socket proxy server's have to be dedicated to a sertain program
+so its very limiting to the amount of user's he will get.
+Http is always used its using the web everyone uses it so http proxies
+are always going to be in need.
+TO find a socket proxy u can search the net typing in (Socket proxy)
+or try for sertain program's names like (Icq proxy).
+Hopefully u will get one
+socket proxies are useful as alot of attacks on user's are done
+by kids with nukes,spring,ping,smurf,etc etc And thus will anoy a user
+in mirc or from icq both these programs give any user possability to
+get a user's ip/host.
+thats why if u use these u will want a socket proxy.
+Alot of people go why dont u just use ident or jizz or something
+for mirc and icq.Well the reason u don't as there are expolits out
+there to crash spoofed hosts/ip for programs like jizz and ident
+a proxy is more stable way and more prevention then a spoofer program.
+With these programs its explains once u get a socket proxy how to set
+them up in them so i dont have to go and explain for u.Because its
+different for all programs Socket is also used in web downloading/surfing
+but not to worry u can find alot of socket proxies for web downloading/surfing
+around.
+
+7.How a socket proxy works.
+
+I just explained it breifly in last topic.
+Ill go into a bit more detail
+see when ever u send or recive a file for a server/user
+it has to send through a socket.Now when they do this it has to establish
+a connection to your computer.Example if a connection
+( established a connection on MAx.mpd.com port 1030 )
+And thats not all it will log on the computer what day/year/time
+u established a connection.This is another way hackers get info on u
+Thats why u need a socket proxy.
+
+8.Cookies.
+Ok cookies are also apart of way info is send from your server/isp
+to your computer cokies transmits info on webpages visited by u
+info on what u have downloaded and so forth with  a ip/host and day/
+year/time .Now hackers can use this hack for 2 reasons
+1.Get info they need to attack u
+2.Be able to see all places u have been/done on web/send files through
+to your computer without u even knowing it.
+Now With all browsers now u can stop even limit cookies from the oriene
+of your server.Go to your options u will find something on cookies
+there in ya browser.
+Now this is very limiting so if ya a linux/unix user there is a nice
+little program i know that will go that few steps furture.
+Visit. (http://www.lne.com/ericm/cookie_jar/)
+THis program called "Cookie jar" alows u to limit sites from your computer
+limit if u get cookies from that site/server its goes the extra steps
+u need.
+
+9.Final note.
+
+Rember dont use this secruity for hacking almost all proxy server's
+will give the cops/server's your info if they find u tryed to hack with
+there anonymous proxy settings.Only use this to stops attacks against u
+and your server.
+
+Rember.Have fun
+(c) 1998 MAx [4d5044]
+
+217.65.117.237:3128	transparent proxy	Apr-21, 21:35	Hungary
+193.6.20.5:3128	Planetlab/CoDeeN proxy server	Apr-17, 22:43	Hungary
+193.6.20.5:3124	Planetlab/CoDeeN proxy	Apr-20, 21:54	Hungary
+193.6.20.5:3127	Planetlab/CoDeeN 	Apr-21, 13:00	Hungary
+63.149.98.18	80	high anonymity	United States	2008-04-21	Whois
+89.179.49.2	3128	transparent	Russian Federation	2008-04-21	Whois
+189.8.37.26	3128	transparent	Brazil	2008-04-21	Whois
+63.149.98.64	80	high anonymity	United States	2008-04-21	Whois
+202.115.130.23	8080	anonymous	China	2008-04-21	Whois
+125.244.169.66	8080	transparent	South Korea	2008-04-21	Whois
+62.93.164.28	8080	transparent	Spain	2008-04-21	Whois
+217.65.117.237	3128	transparent	Hungary	2008-04-21	Whois
+195.229.236.106	80	transparent	United Arab Emirates	2008-04-21	Whois
+63.149.98.27	80	high anonymity	United States	2008-04-21	Whois
+203.144.160.251	8080	transparent	Thailand	2008-04-21	Whois
+203.162.2.141	80	high anonymity	Vietnam	2008-04-21	Whois
+118.98.216.86	8080	transparent		2008-04-21	Whois
+200.158.136.204	8000	anonymous	Brazil	2008-04-21	Whois
+63.149.98.20	80	high anonymity	United States	2008-04-21	Whois
+63.149.98.52	80	high anonymity	United States	2008-04-21	Whois
+200.219.152.6	8080	transparent	Brazil	2008-04-21	Whois
+203.188.233.70	8080	transparent	Malaysia	2008-04-21	Whois
+83.17.123.186	8080	transparent	Poland	2008-04-21	Whois
+63.149.98.54	80	high anonymity	United States	2008-04-21	Whois
+218.204.126.130	80	transparent	China	2008-04-21	Whois
+58.211.78.212	80	transparent	China	2008-04-21	Whois
+63.149.98.66	80	high anonymity	United States	2008-04-21	Whois
+63.149.98.218	80	high anonymity	United States	2008-04-21	Whois
+63.149.98.82	80	high anonymity	United States	2008-04-21	Whois
+200.62.25.70	8080	transparent	Venezuela	2008-04-21	Whois
+83.16.135.122	80	anonymous	Poland	2008-04-21	Whois
+123.232.9.185	8080	transparent		2008-04-21	Whois
+203.162.2.136	80	high anonymity	Vietnam	2008-04-21	Whois
+125.244.207.82	8080	transparent	South Korea	2008-04-21	Whois
+63.149.98.16	80	high anonymity	United States	2008-04-21	Whois
+221.202.124.74	8080	transparent	China	2008-04-21	Whois
+123.190.193.8	3128	transparent		2008-04-21	Whois
+200.174.85.193	3128	transparent	Brazil	2008-04-21	Whois
+200.163.123.152	80	transparent	Brazil	2008-04-21	Whois
+63.149.98.48	80	high anonymity	United States	2008-04-21	Whois
+202.83.125.131	3128	transparent	Malaysia	2008-04-21	Whois
+200.211.233.132	3128	transparent	Brazil	2008-04-21	Whois
+200.207.9.168	3128	transparent	Brazil	2008-04-21	Whois
+203.162.2.133	80	high anonymity	Vietnam	2008-04-21	Whois
+63.149.98.135	80	high anonymity	United States	2008-04-21	Whois
+203.162.2.143	80	high anonymity	Vietnam	2008-04-21	Whois
+201.54.148.7	3128	transparent	Brazil	2008-04-21	Whois
+58.216.235.242	3128	transparent	China	2008-04-21	Whois
+216.147.135.56	80	anonymous		2008-04-21	Whois
+3
+1 ,2 3 3 3 2
+(1 , 100101 ;2 , 100083 ;
+3
+, 100085)
+, . , ,
+21437 21742 41114 kg m - 2 ,
+11113 11323 21023 kg m - 2 , 111911 111943 121587 kg m - 2 ,
+131024 131266 141610 kg m - 2 . 3 01035 01032 01039 kg m - 2 ,
+11207 11222 01915 kg m - 2 , 11243 11254 01955 kg
+m
+- 2
+. ,
+.
+1001 - 9332 (2005) 07 - 1195 - 05 S718154 A
+Root biomass and underground C and N storage of primitive Korean pine and broad2leaved climax forest in
+Changbai Mountains at its different succession stages. YAN G Liyun1 ,2 , LUO Tianxiang3 , WU Songtao2
+(1 Institute of Geographical Sciences and N atural Resources Research , Chinese Academy of Sciences , Beijing
+100101 , China ;2 School of Metallurgical and Ecological Engineering , Beijing U niversity of Science and Tech2
+nology , Beijing 100083 , China ; 3 Institute of Qinghai2Tibet A ltiplano Research , Chinese Academy of Sciences ,
+Beijing 100085 , China) . 2Chin. J . A ppl . Ecol . ,2005 ,16 (7) :1195 1199.
+With more than 200 years old primitive Korean pine and broad2leaved climax forest and its two 20 and 80 years
+old secondary Populus davidiana and Betula platyphylla forests in Changbai Mountains as test objects ,this pa2
+per studied their root biomass and underground C and N storage. The results showed that with forest succession ,
+the root biomass of 20 years old ,80 years old ,and climax forests was 2. 437 ,2. 742 and 4. 114 kg m - 2 ,respec2
+tively. The root C storage was 1. 113 ,1. 323 and 2. 023 kg m - 2 ,soil C storage was 11. 911 ,11. 943 and 12. 587
+kg m - 2 ,and underground C storage was 13. 024 ,13. 266 and 14. 610 kg m - 2 ,respectively ,while the root N
+storage was 0. 035 ,0. 032 and 0. 038 kg m - 2 ,soil N storage was 1. 207 ,1. 222 and 0. 915 kg m - 2 ,and under2
+ground N storage was 1. 243 ,1. 254 and 0. 955 kg m - 2 ,respectively ,which indicated that along with forest suc2
+cession ,forest underground became a potential carbon sink ,whereas underground N storage did not change ob2
+viously.
+Key words Changbai Mountains , Primitive Korean pine and broad2leaved climax forest , Secondary Populus
+davidiana and Betula platyphylla forest , Root biomass , Underground C and N storage.
+3 (CX10 G2E01202203)
+(022IC2112423432029) .
+3 3 .
+2004 - 05 - 21 ,2004 - 11 - 14 .
+1
+,
+. ,
+,
+.
+,
+[12 ,13 ]
+,
+[5 ,6 ,8 ,14 ,18 ,20 22 ]
+,
+, .
+[3 ,10 ,24 ,27 ]
+,
+[2 ,7 ,11 ,25 ]
+,
+.
+,
+.
+,
+[15 ,23 ,28 ]
+,
+2005 7 16 7
+CHIN ESE JOURNAL OF APPL IED ECOLO GY ,J ul. 2005 ,16 (7) 1195 1199
+. ,
+,
+,
+, ,
+.
+2
+211
+, 700 800 m .
+[29 ]
+, , ,
+, . 019 319
+, 700 800 mm.
+[26 ]
+.
+2001 7 8 , ( )
+1 000 m ,
+, , ,
+20 (42 23 54 N ,128
+06 37 E) 80 (42 24 08 N ,128 05 56 E)
+(42 24 05 N ,128 05 43 E) 3
+. 3 40 m 40 m ,
+GPS , (DBH > 5 cm) ,
+.
+, .
+3 4 ,
+, ( Tilia amurensis) ( Fraxinus
+mandshurica) , ( Acer mono)
+( Quercus mongolica) ( Ul m us propinqua)
+( Betula platyphylla) , 560 hm- 2 ,
+018. ( Corylus m andshurica)
+( Deutz ia am urensis) ( Eleutherococcus senticosus)
+( Ribes m andshuricum) ,
+( B rachybot rys paridif ormis) ( Phrym a leptostachya)
+( U rtica angustif alia) ( Im patiens nolitangere)
+.
+( Populus davidi2
+ana) , 856 hm - 2 , 017 ;
+, 2 010 hm - 2 ;
+( Philadelphus schrenkii) ( S pi rea sericea)
+( L onicera chrysantha) ( Evonym us pauci2
+f lorus) ; ( Deyeuxia angustif olia)
+( A thyrium spinulosum) .
+, 2 640
+hm - 2 , ; , 186
+hm - 2 ; ( Rosa dahurica)
+( Corylus m andshurica) ;
+( Filipendula pal m ata) . 3
+1.
+1 3
+Table 1 Basic characters of three plots
+Plot Climax forest
+80
+80 years old
+secondary
+forest
+20
+20 years old
+secondary
+forest
+DBH(cm) 34121 2215 619
+Height (m) 15 1015 5
+Soil depth (cm) 100 80 80
+Soil C storage
+(kg m - 2) 21389 11644 11403
+Soil N storage
+(kg m - 2) 101198 101299 101508
+212
+21211 2001 7 8 ,
+3 .
+[4 ,16 ]
+. :
+,
+.
+, 50 cm 2
+, 2
+, 50 cm 50 cm.
+A B , .
+110 m ,80 20
+018 m.
+,
+, ,
+, .
+, 3 (
+) . , 80
+, , 4
+. , 2
+2 2 , .
+21212
+. ,
+, . ,
+A B . A 5 ,B
+3 . , 4
+, . 2 ,
+, 2 2 2 , .
+3
+311
+,
+, ( 1a) .
+, 21437 kg
+m
+- 2
+, 21742 kg m - 2 ,
+6911 16
+41114 kg m - 2 .
+, 11394 kg
+m
+- 2
+, 21207 kg m - 2 ,
+31628 kg m - 2 .
+.
+, 01586 01531
+kg m - 2 ; ,
+01387 01148 kg m - 2 ;
+,
+01376 01111 kg m - 2 .
+312
+,
+( 1b) . 11113 kg
+m
+- 2
+, 11323 kg m - 2 ,
+21023 kg m - 2 .
+,
+01627 11082 11807 kg m - 2 .
+,
+, 01269 01178
+01169 kg m - 2 .
+, ,
+01217 01063 01048 kg m - 2 .
+.
+3
+( 1c) .
+, 01038 kg m - 2 ;
+, 2
+01035 01032 kg m - 2 .
+,
+, 01017 01025 01029 kg m - 2 .
+,
+.
+, 01008 kg m - 2 ; ,
+01006 kg m - 2 ; , 01005 kg
+m
+- 2
+. ,
+01010 kg m - 2 ;
+, 01002 kg m - 2 .
+313
+, (
+2) . 3 ,
+121587 kg m - 2 , A 21389 kg m - 2 ,B
+101198 kg m - 2 ; ,
+111943 kg m - 2 , A 11645 kg m - 2 ,B
+kg m - 2 ; ,
+111911 kg m - 2 , A 11403 kg m - 2 ,B
+101508 kg m - 2 .
+1
+Fig. 1 Root biomass ,C and N storages of different stands.
+Of : Climax forest ;S80 :80 80 years old secondary for2
+est ;S20 :20 20 years old secondary forest . 1 Total
+biomass; 1 Tree ; 1 Shrub ; 1 Grass. The
+same below.
+2 3 A B
+Fig. 2 C and N storage in soil layer A and B of three stands.
+79117 :
+,
+. ,
+11222 kg m - 2 , A 01205 kg m - 2 ,B
+11017 kg m - 2 ; ,
+11208 kg m - 2 , A 01181 kg m - 2 ,B
+11026 kg m - 2 ;
+, 01915 kg m - 2 , A 01104 kg
+m
+- 2
+,B 01811 kg m - 2 .
+, .
+,3
+. ,
+141610 kg m - 2 , A 31978 kg m - 2 ,B
+101634 kg m - 2 ( 3) ; ,
+131266 kg m - 2 , A 21709
+kg m - 2 ,B 101558 kg m - 2 ;
+, 131024 kg m - 2 , A
+21422 kg m - 2 ,B 101602 kg m - 2 .
+3 3 A B
+Fig. 3 Total C and N storage in underground A and B layers of three
+stands.
+. ,
+11254 kg m - 2 , A 01231 kg m - 2 ,B
+11023 kg m - 2 ; ,
+11243 kg m - 2 , A 01214 kg m - 2 ,B
+11030 kg m - 2 ;
+, 01955 kg m - 2 , A 01134 kg
+m
+- 2
+,B 01818 kg m - 2 .
+4
+, ,
+.
+,
+DBH [19 ] ,
+, .
+.
+,
+[1 ,9 ,17 ]
+, ,
+,
+.
+, .
+55 % 65 % ,
+. ,
+. , A
+. 2 3 ,
+, B , A
+.
+, ,
+A , .
+,
+. Hughes [11 ] Los Tuxtlas
+, ,
+,
+.
+,
+.
+. 3
+,
+,
+,
+. .
+1 Alaback PB. 1982. Dynamics of under storey biomass in Sitka spruce2
+western hemlock forests of southeast Alaska. Ecology ,63 :1932 1948
+2 Brown S ,Lugo AE. 1990. Effects of forest clearing and succession
+on the carbon and nitrogen content of soils in Puerto Rico and US
+Virgin Islands. Plant Soil ,124 :53 64
+3 Cairns MA ,Brown S ,Helmer EH , et al . 1997. Root biomass alloca2
+tion in world s upland forest . Oecologia ,111 :1 11
+4 Deng K2M ( ) ,Luo T2X ( ) , Zhang L ( ) , et
+al . 2005. Root biomass of different stand2age Pinus yunnanensis
+and its distribution in different soil depths. Chin J A ppl Ecol (
+) ,16 (1) :21 24 (in Chinese)
+5 Dewar RC ,Ludlow AR ,Dougherty PM. 1994. Environmental influ2
+ences on carbon allocation in pines. Ecol B ull ,43 :92 101
+6 Dixon RK ,Brown S , Houghton RA , et al . 1994. Carbon pools and
+flux of global forest ecosystems. Science ,263 :185 190
+8911 16
+7 Fang J Y , Chen AP , Peng CH , et al . 2001. Changes in forest
+biomass carbon storage in China between 1949 and 1998. Science ,
+292 :2320 2322
+8 Gill RA ,Jackson RB. 2000. Global patterns of root turnover for ter2
+restrial ecosystem. New Phytol ,147 :13 31
+9 Grier CC ,Vogt KA , Keyes MR , et al . 1981. Biomass distribution
+above2 and below2ground in young and mature A bies amabilis zone
+ecosystems in the Washington Cascades. Can J For Res ,11 :155
+167
+10 Huang J2H ( ) , Han X2G( ) , Chen L2Z ( ) .
+1999. Advance in the research of fine root biomass in forest ecosys2
+tems. Acta Ecol S in ( ) ,19 (2) :270 277 (in Chinese)
+11 Hughes RF , Kauffman JB ,Jaramillo VJ . 1999. Biomass ,carbon ,and
+nutrient dynamics of secondary forests in a humid tropical region of
+Mexico. Ecology ,80 (6) :1892 1970
+12 Kauffman JB ,Cummings DL ,Babbitt R. 1995. Fire in the Brazilian
+Amazon . Biomass , nutrient pools ,and losses in slashed primary
+forest . Oecologia ,104 :397 408
+13 Kauffman JB ,Cummings DL ,Ward DE. 1998. Fire in the Brazilian
+Amazon 1. Biomass ,nutrient pools and losses in cattle pastures. Oe2
+cologia ,113 :415 427
+14 Koch GW , Mooney HA. 1996. Carbon Dioxide and Terrestrial E2
+cosystems. San Diego :Academic Press.
+15 Li W2H ( ) ,Deng K2M ( ) ,Li F ( ) . 1981.
+Study on biomass and primary production of main ecosystem in
+Changbai Mountain. Res For Ecosyst ( ) , 2 : 34
+50 (in Chinese)
+16 Luo TX. 2001. A new method for estimating root biomass density
+of temperate and boreal vegetation at large scale. In :Challenges of a
+Changing Earth , Global Change Open Science Conference. 10 13
+J uly ,Amsterdam , The Netherlands.
+17 MacLean DA ,Wein RW. 1977. Nutrient accumulation for post fire
+jack pine and hardwood succession patterns in New Brunswick. Can
+J For Res ,7 :562 578
+18 Post WM ,Peng TH , et al . 1990. The global carbon cycle. A m Sci ,
+78 :310 326
+19 Santantonio D , Hermann RK , Overton WS. 1977. Root biomass
+studies in forest ecosystems. Pedobiologia ,17 :1 31
+20 Schenk HJ ,Jackson RB. 2002. The global biogeography of roots.
+Ecol Monog ,72 :311 328
+21 Schimel DS. 1995. Terrestrial ecosystems and the carbon cycle.
+Global Change Biol ,1 :77 91
+22 Schlesinger WH. 1997. Biogeochemistry : An Analysis of Global
+Change. San Diego :Academic Press.
+23 Shan J2P( ) , Tao D2L ( ) ,Wang M ( ) , et al .
+1993. Fine root turnover in a broad2leaved Korean pine forest of
+Changbai Mountain. Chin J A ppl Ecol ( ) ,4 (3) :241
+245 (in Chinese)
+24 Vogt KA , Publicover DA ,Bloomfield J , et al . 1993. Belowground
+responses as indicators of environmental change. Envi ron Ex p Bot ,
+33 :189 205
+25 Vogt KA ,Vogt DJ ,Moore EE , et al . 1987. Conifer and angiosperm
+fine2root biomass in relation to stand age and site productivity in
+Douglas2fir forest . J Ecol ,75 :857 870
+26 Wang Z( ) ,Xu Z2B ( ) ,Li X( ) , et al . 1980.
+The main forest types and their features of community structure in
+northern slope of Changbai Mountain . Res For Ecosyst (
+) ,1 :25 42 (in Chinese)
+27 Watson RT , Noble IR , Bolin B. 2000. A Special Report of the
+IPCC :Land Use ,Land2use Change ,and Forestry. Cambridge :Cam2
+bridge University Press.
+28 Xu Z2B ( ) ,Li X( ) ,Dai H2C ( ) . 1987. Root
+distributions in temperate mixed forest of Korean pine and broad2
+leaved trees in Changbai Mountain. Chin J Ecol ( ) , 6
+(4) :19 24 (in Chinese)
+29 Zhang F2S( ) ,Chi Z2W( ) ,Li X2Y( ) . 1980.
+The analysis and primary evaluation on the climate of Changbai
+Mountain area. Res For Ecosyst ( ) ,1 :193 214
+(in Chinese)
+, ,1974 , .
+, 9 . E2mail :wendy6393 @sina. com
+99117 :
+
+Hydrol. Earth Syst. Sci., 14, 481¨C489, 2010
+www.hydrol-earth-syst-sci.net/14/481/2010/
+? Author(s) 2010. This work is distributed under
+the Creative Commons Attribution 3.0 License.
+Hydrology and
+Earth System
+Sciences
+Growth of a high-elevation large inland lake, associated with climate
+change and permafrost degradation in Tibet
+J. Liu1, S. Kang1,3, T. Gong2, and A. Lu3
+1Nam Co Monitoring and Research Station for Multisphere Interaction, Institute of Tibetan Plateau Research, Chinese
+Academy of Sciences, Beijing 100085, China
+2Hydrology and Water Resources Bureau of Tibet, Lhasa 850000, China
+3Key Laboratory of Cryosphere and Environment, Cold and Arid Regions Environmental and Engineering Institute, Chinese
+Academy of Sciences, Lanzhou 730000, China
+Received: 5 April 2009 ¨C Published in Hydrol. Earth Syst. Sci. Discuss.: 7 August 2009
+Revised: 14 December 2009 ¨C Accepted: 23 December 2009 ¨C Published: 12 March 2010
+Abstract. This study analyzed satellite images and long term
+climate variables from a high-elevation meteorological sta-
+tion (4730 m) and streamflow records to examine hydrolog-
+ical response of Nam Co Lake (4718 m), the largest lake on
+the Tibetan Plateau, over the last 50 years. The results show
+the lake area extended by 51.8 km2 (2.7% of the total area)
+when compared with the area in 1976. This change is associ-
+ated with an annual precipitation increase of 65 mm (18.6%),
+annual and winter mean temperature increases of 0.9 ?C and
+2.1 ?C respectively, an annual runoff increase of 20% and an
+annual pan evaporation decrease of about 2%, during the past
+20 years. The year of the change point in annual precipita-
+tion, air temperature, annual pan evaporation and runoff oc-
+curred in 1971, 1983, 1997 and 1997, respectively. The tim-
+ing of the lake growth corresponds with the abrupt increase
+in annual precipitation and runoff since the mid-1990s.
+1 Introduction
+Lake systems with permafrost cover are highly sensitive to
+changes in air temperature, snowmelt and soil frost (Marsh
+and Neumann, 2001; Duguay et al., 2006; Gibson et al.,
+2006; Mielko and Woo, 2006). Degradation to the per-
+mafrost can speed up water transfer, increase soil mois-
+ture, and improve agricultural productivity and the envi-
+ronment (IPCC, 2001; Qin et al., 2005). Climate change
+has significant implications for water resources and the eco-
+environment in cold and arid regions, such as northwest and
+Correspondence to: J. Liu
+(jsliu@itpcas.ac.cn)
+northeast China, and in particular, the Tibetan Plateau (Liu
+et al., 1999; Wang et al., 1996; Zhou et al., 1996). Much ev-
+idence suggests that the regional climate in northwest China
+has shifted from a warm-dry to a warm-wet regime (Shi et
+al., 2003).
+The Tibetan Plateau, with an average altitude more than
+4000 m above sea level (a.s.l.), is the highest plateau in the
+world, and permafrost covers about 67% of the plateau (Zhou
+et al., 2000). There are more than 1500 lakes in the area,
+60% of which are inland lakes ranging in size from 0.01 km2
+to 4000 km2 (Wang et al., 1998). Previous research suggests
+that warming and wetting during winter and spring has oc-
+curred in Tibet since the late 1980s (Du, 2001; Wang et al.,
+2005; Chen et al., 2006). Other studies demonstrated that
+winter warming in high latitudes and the high elevation per-
+mafrost region in northeastern China has led to higher ground
+temperature and considerable seasonal infiltration of meltwa-
+ter and surface flow (Liu et al., 2003a, b, 2007). However,
+no studies have been conducted to investigate the relation-
+ships between climatic variables, permafrost cover, and wa-
+ter balance of high- elevation inland lakes due to the lack of
+glaciological, geocryological and hydrological information.
+The high-elevation inland lakes in the Tibetan Plateau are
+representative of the climatic regime in the region, and have
+been subject to few human interventions (i.e., no irrigation or
+hydroelectric development). A monitoring and research sta-
+tion for multispheric interactions was established at Nam Co
+Lake (Nam Co) by the Institute of Tibetan Plateau Research,
+Chinese Academy of Sciences in 2005. The objective of this
+study is to quantify the response of Nam Co to climate, hy-
+drology and permafrost changes and to investigate the inter-
+actions between hydrological and climatic processes in the
+highlands of the world.
+Published by Copernicus Publications on behalf of the European Geosciences Union.
+482 J. Liu et al.: Growth of a high-elevation lake in Tibet
+1
+
+
+
+
+Figure 1 Permafrost distribution and the surrounding meteorological and gauging station location of Lake Nam Co
+on the Tibetan Plateau(meteorological station is at Bange(BG) county, and a gauge station at Pangdo
+(PD) of the upper Lhasa River on right graph).
+
+
+Fig. 1. Permafrost distribution and the surrounding meteorological and gauging station location of Lake Nam Co on the Tibetan
+Plateau(meteorological station is at Bange (BG) county, and a gauge station at Pangdo (PD) of the upper Lhasa River on right graph).
+2 Study area, data and methodology
+Figure 1 shows maps of permafrost regions in China and
+the location of the largest high-elevation inland lake, Nam
+Co (30?30prime¨C30?55prime N, 90?16prime¨C91?03prime E, 4720 m a.s.l.), near
+the Bange (denoted by BG) in the central Tibet. The lake
+has surface and drainage areas of 1940 km2 and 10 610 km2,
+respectively, and its elevation ranges from the southeastern
+headwater of Mount Nyainqentanglha at 7270 m to the lake
+surface of 4718 m, with an average elevation of 5230 m. Nam
+Co is located in the discontinuous permafrost at lower eleva-
+tions and in the continuous permafrost at higher elevations.
+The lower limit of the permafrost is 4800 m, and the mean
+thickness of the active layer is about 210 cm under a cold
+continental climate (Zhou et al., 2000). There are more than
+one hundred glaciers along the northern slope of the Nyain-
+qentanglha Mountains covering a total area of 179.74 km2
+and the glaciers contribute about 10% of inflow into the lake
+(www.lake.csdb.cn).
+The nearest meteorological station is located in BG
+(31?23prime N, 90?01prime E, 4700 m a.s.l.) and has long term records
+of air temperature, precipitation, pan evaporation and frost
+depth of soils for the last 50 years (1956¨C2005). The mean
+annual temperature at BG is ?1.1 ?C with the lowest air tem-
+perature in January at ?11.8 ?C. The mean annual precipita-
+tion is around 310 mm, of which 85¨C90% falls in summer
+during the Indian monsoon period. In the cold season from
+October to April, snowpacks exist and periodic events of soil
+freeze and thaw occur frequently at higher elevations. The
+lake is recharged by rainfall in summer, snowmelt in both
+spring and autumn, and subsurface flow in winter. Due to the
+lack of hydrological observations surrounding the lake, the
+discharge data from the neighboring Lhasa River at the up-
+stream gauging station PD (30?8prime N, 91?21prime E, 4150 m a.s.l.)
+were used in the analyses. The data covers the period of 1976
+to 2003. Because of the higher elevation of Nam Co com-
+pared with the Lhasa River, which results in lower air tem-
+perature, lower evaporation and weak infiltration over frozen
+ground, surface runoff at Nam Co should be larger, or have
+at least the same surface conditions, than that measured for
+the Lhasa River.
+Remote sensing is an effective approach for monitoring
+changes in water area and landform. The Landsat-TM im-
+ages, with a resolution of 30 m, were used to study the lake
+surface area in the 1990s. China and Brazil have jointly
+launched satellites named CBRES-1 and CBRES-2 in 1999
+and 2003, respectively. The image data for lake areas were
+obtained from the CBERS-1 and -2. The images were taken
+every October from 2001¨C2005, the spatial resolution is 20 m
+at bands 2, 3 and 4, and the lake information was determined
+at low brightness. Initially, digital images were processed
+with standard procedures including geo-referencing, radio-
+metric correction and enhancement. Each scene was then
+geo-referenced and identified using 20 ground control points
+and topographic maps at 1:50 000. The corrected image was
+used as the reference for image-to-image registration of all
+other band images. Field surveys were conducted in 2005
+and 2006, guided by a GPS to aid the computer mapping. Fi-
+nally, all data were projected into a uniform projection sys-
+tem with the WGS-84.
+The Mann-Kendall (M-K) nonparametric trend test was
+used in this study (Mann, 1945; Kendall, 1975). Detailed de-
+scriptions of the M-K test can be found in Kundzewicz and
+Robson (2004) and Burn et al. (2004). The procedure starts
+with an evaluation of trends occurring in the hydrometeoro-
+logical variables for each station. The results of the trend test
+can be used to determine whether the observed time series
+exhibits trends that are greater than those expected to occur
+by chance. All the trend results in this work were evaluated
+at significance levels of 99%, 95% and 90%.
+Hydrol. Earth Syst. Sci., 14, 481¨C489, 2010 www.hydrol-earth-syst-sci.net/14/481/2010/
+J. Liu et al.: Growth of a high-elevation lake in Tibet 483
+Table 1. Hydrological parameters and area variability of
+Nam Co Lake.
+Lake area lake area lake area lake area lake area Variation
+(km2)? (km2)? (km2)trianglesolid (km2)? (km2)? (%)
+1941.3 1933.7 1962.8 1981.0 1993.1 1.96
+1970 1976 1991 2000 2006
+? from China Lake Database, 1998
+trianglesolid from Landsat-TM images
+? imagery from CBERS-1 and CBERS-2.
+In order to search for change points in trends with time,
+sequential values for Forward u and Backward u from the
+progressive analysis created by Sneyers (1990) and Mitchell
+et al. (1996) based on the M-K test were applied. The For-
+ward u is a standardized variable that has zero mean and unit
+standard deviation. Therefore, its sequential behavior fluctu-
+ates around zero. The Forward u is the same as the z values
+that are found from the first to last data point. This test con-
+siders the relative values of all terms in the time series (x1,
+x2,. . . , xT). The following steps are applied in sequence:
+i The magnitudes of xj time series, (j=1, 2,. . . , T) are
+compared with xk (k=1, 2,. . . , T-1). In each comparison,
+the number of cases xj >xk is counted and denoted by
+nj .
+ii The test statistic t is then given by equation:
+tj =
+jsummationdisplay
+1
+ni (1)
+iii The mean and variance are:
+E(t)=
+n(n?1)
+4
+(2)
+And
+Var
+parenleftbig
+tj
+parenrightbig
+=
+j (j?1)(2j+5)
+72
+(3)
+iv The sequential values of the statistic u(t) for Forward u
+are then calculated by:
+u(t)=
+tj ?E(t)
+radicalBig
+Var
+parenleftbig
+tj
+parenrightbig (4)
+The same principle is applied to the retrograde series.
+Therefore, the u(t) values of the Backward u are computed
+backward, starting from the end of the series. The intersec-
+tion of the curves showing the Forward u and Back-ward u
+represents the time when a trend or change starts.
+2
+
+
+
+Figure 2 The lake area changes of Nam Co during 1970 to 2000
+
+
+
+
+
+
+Fig. 2. The lake area changes of Nam Co during 1970 to 2000.
+3 Lake growth and hydroclimatological regime
+3.1 Lake growth
+Table 1 and Fig. 2 show changes in the Nam Co area for the
+last three decades. Most of the images combined in Fig. 2
+were taken in October 1970, 1990, 2001¨C2005 when the lake
+water level was the highest. An important principle in choos-
+ing a satellite image is the consistency in the imaging date
+with the same weather conditions. There were no noticeable
+changes in the lake area before 1998 according to local peo-
+ple through field surveys during 2004¨C2006. Statistical anal-
+yses indicate that comparing the lake area in 1976 with the
+lake area in 2005, the area has enlarged by 38.6 km2 (1.8%).
+It is clear that the expansion of the lake area has accelerated
+in the last decade, especially in the past five years.
+3.2 Meteorological variables
+Meteorological data from BG were investigated for trends
+over the last 50 years, with results shown in Table 2 and
+Fig. 3. The monthly mean temperatures showed strong up-
+ward trends for the cold months from October to March, in-
+creasing by 0.6 ?C in October, 2.1 ?C in November, 2.0 ?C in
+December, 1.6 ?C in January, 1.3 ?C in February and 1.4 ?C
+in March, since the 1980s. This resulted in much of the
+0.9 ?C increase in the annual mean temperature in the 1990s.
+No significant trends were found for temperature during the
+months of summer and autumn. This suggests that climate
+warming is mainly associated with temperature increases in
+winter season.
+The change point tests, however, reveal that far from there
+being a steady rise in winter temperatures, the time series
+for several months and the annual average include abrupt
+changes that started in years ranging from 1966 to 1983
+as shown in Fig. 4. The effect of these changes can be
+demonstrated with anomaly curves and variation bars of the
+www.hydrol-earth-syst-sci.net/14/481/2010/ Hydrol. Earth Syst. Sci., 14, 481¨C489, 2010
+484 J. Liu et al.: Growth of a high-elevation lake in Tibet
+Table 2. Change point (Y) determined by Mann-Kendall test of abrupt change and slope (¦Â) in upward trends of temperature (T in ?),
+precipitation (P in mm), annual pan evaporation (Ea in mm) and discharge (Q in m3/s) with confidence levels (¦Á).
+¦Â/¦Á Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Year
+T 0.075* 0.075* 0.071* NT NT NT NT NT NT 0.042+ 0.075* 0.071* 0.038*
+Y 1970 1966 1972 NT NT NT NT NT NT 1982 1973 1967 1983
+P 0.031+ 0.024+ NT 0.107+ 0.654+ NT NT NT 0.500+ NT NT NT 2.40*
+Y 1997 1967 NT 1976 1981 NT NT NT 1979 NT NT NT 1969
+Ea NT NT NT NT NT ?1.27+ ?0.60+ NT ?0.78+ NT NT NT ?5.21+
+Y NT NT NT NT NT 2000 2000 NT 1995 NT NT NT 1996
+Q 0.070* 0.080* 0.078* 0.103+ NT NT NT NT 1.31* NT NT 0.072+ 0.331+
+Y 1983 1985 1985 1996 NT NT NT NT 1996 NT NT 1996 1997
+T and P are air temperatures and precipitation, respectively at BG station from 1956 to 2005; Q are monthly discharges from 1976 to 2005;
+* and + indicate the statistical significance ¦Á at 0.01 and 0.05 respectively; NT indicates no trend; Y is the detected year of the change point.
+3
+
+
+
+Figure 3 Bar graphs comparing the monthly variations of air temperature (T-) and precipitation (P-) at
+BG during the 1956-1980 and 19981-2005
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fig. 3. Bar graphs comparing the monthly variations of air tempera-
+ture (T?) and precipitation (P?) at BG during the 1956¨C1980 and
+19981¨C2005.
+annual and monthly temperature and precipitation before and
+after the 1990s (Fig. 5). The average annual temperature in
+recent decades was about 0.91 ?C higher than during 1956 to
+1980, and the highest annual temperature occurred in 1999.
+In fact, annual temperatures during 1995 to 2005 were all
+higher than the long-term annual average.
+Figure 5 and Table 2 also illustrate the annual precip-
+itation anomaly at BG. The data indicate a dramatic in-
+crease from 1956 to the mid-1980s, followed by a slow in-
+crease since 1995. The annual precipitation in recent decades
+was 55.4 mm (about 18.6%) above the annual average dur-
+ing 1956¨C1990, and the maximum annual precipitation was
+446.1 mm in 2003. The monthly precipitation increased
+mainly in May, June, and September by 9.4 mm (60%)¨C
+22.1 mm (46%), respectively, since the 1990s when com-
+pared with the period of 1956 to 1990. Snowfall in the cold
+season of October to January also increased substantially, by
+about 30%¨C100% above the mean before the 1990s. Mean-
+while, the annual pan evaporation has decreased since 1996
+caused by reductions in monthly pan evaporation for June,
+July and September, respectively since 2000 and 1995. Over-
+all, the regional climate in the inland lake has shifted into a
+warmer and wetter pattern since the mid-1990s.
+Du et al. (2001, 2004) analyzed the climatic trend of
+both air temperature and precipitation using long-term (1961
+and 1971¨C2000) data from 40 meteorological stations across
+the Tibetan Plateau, and found significant increases in both
+the mean annual and winter air temperature with a rate of
+0.026 ?C per year and 0.06 ?C per year respectively. They
+also found precipitation was increasing at a rate of 19.9 mm
+per decade in most areas of Tibet (except the western ar-
+eas), particularly since the mid-1980¡¯s. Furthermore, Chen
+et al. (2006) analyzed the potential evapotranspiration at 101
+stations over the Tibetan Plateau and found the annual evap-
+otranspiration ratio decreased by 13.1 mm per decade, with
+decreasing rates being more pronounced in winter and spring
+(80% of all stations) compared with summer and autumn
+(58% of all stations).
+Singh and Sontakke had documented the instrumental pe-
+riodic fluctuations of important climatic parameters like rain-
+fall amounts (1829¨C1999), severe rainstorms (1880¨C1996)
+and temperature (1876¨C1997) for the Indo- Gangetic Plains
+region (IGPR). The summer monsoon rainfall in the western
+IGPR shows increasing trend (170 mm per century, signif-
+icant at 1% level) from 1900, while it shows a decreasing
+trend (5 mm per century, not significant) from 1939 over the
+central IGPR. There is a decreasing trend (50 mm per cen-
+tury, not significant) during 1900¨C1984 and an insignificant
+increasing trend (480 mm per century, not significant) dur-
+ing 1984¨C1999 over the eastern IGPR (2002). Broadly it is
+inferred that there has been a westward shift in rainfall activ-
+ities over the IGPR. Analysis suggests a westward shift in the
+occurrence of severe rainstorms also. These spatial changes
+in rainfall activities are attributed to global warming and as-
+sociated changes in the Indian summer monsoon circulation
+and the general atmospheric circulation.
+Hydrol. Earth Syst. Sci., 14, 481¨C489, 2010 www.hydrol-earth-syst-sci.net/14/481/2010/
+J. Liu et al.: Growth of a high-elevation lake in Tibet 485
+4
+
+
+
+
+Figure 4 Change points established using the Man-Kendall test for selected annual air temperature and
+precipitation (top-left and right graph), annual evaporation and runoff (lower-left and right graph) at BG for
+1956-2005, and runoff data for 1976-2005 with Forward_u marked by a solid line and Backward_u by a dashed
+line, the dotted lines at 1.96 and -1.96 are the thresholds at significance level of 95%.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fig. 4. Change points established using the Man-Kendall test for selected annual air temperature and precipitation (top-left and right graph),
+annual evaporation and runoff (lower-left and right graph) at BG for 1956¨C2005, and runoff data for 1976¨C2005 with Forward u marked by
+a solid line and Backward u by a dashed line, the dotted lines at 1.96 and ?1.96 are the thresholds at significance level of 95%.
+5
+
+
+
+           Figure 5 Running mean (5 years) of monthly precipitation (top graph) and air temperature
+(bottom graph) variation at BG during 1956 to 2007
+
+
+
+
+5
+
+
+           Figure 5 Running mean (5 years) of monthly precipitation (top graph) and air temperature
+(bottom graph) variation at BG during 1956 to 2007
+
+
+
+
+Fig. 5. Running mean (5 years) of monthly precipitation (top graph)
+and air temperature (bottom graph) variation at BG during 1956 to
+2007.
+3.3 Hydrological changes
+Changes in snowfall and air temperature in the cold months
+directly affect snowmelt and accumulation, drainage, soil
+frost and subsurface flow in permafrost. Figure 6 and Ta-
+ble 2 (denoted by Q) show a few significant upward trends in
+streamflow during March and April for meltwater, Septem-
+ber for rainfall runoff, and December for groundwater. These
+trends are significance at the 95% level or higher. The dis-
+charge in September and November to April showed signif-
+icant increases of 14.2¨C48.4% with an averaged increase of
+28%, resulting in a 20.2% increase in the annual average,
+comparing discharge before and after the 1990 change point.
+However no trends were found in the summer months. It is
+clear that the anomalies of winter flow coincide with both the
+changes in temperatures, snowfall and melt duration since
+the 1990s.
+As with air temperature, the change points showed that
+months with significant trends in discharges exhibited two
+years with abrupt changes, in 1985 for January to March
+and in 1996 for April, September, November, December
+and the annual runoff shown in Fig. 7 and Table 2. How-
+ever, the change points for annual temperature, precipitation
+and evaporation occurred during 1984, 1969 and 1996, re-
+spectively, and the change points for monthly precipitation
+www.hydrol-earth-syst-sci.net/14/481/2010/ Hydrol. Earth Syst. Sci., 14, 481¨C489, 2010
+486 J. Liu et al.: Growth of a high-elevation lake in Tibet
+7
+
+
+Figure 7 Upward curves(running mean in 3 years) of monthly runoff in March,April,
+September and December at gauge station PD
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+1977 1980 1983 1986 1989 1992 1995 1998 2001 2004
+R
+un
+off
+ in
+ M
+ar.
+A
+pr
+.D
+ec
+.(m
+m
+)
+0
+20
+40
+60
+80
+100
+R
+uno
+ff
+ in
+ Se
+pt
+em
+be
+r(
+m
+m
+)
+Mar Apr Dec Sep
+
+
+
+
+
+
+
+Fig. 6. Upward curves(running mean in 3 years) of monthly runoff
+in March, April, September and December at gauge station PD.
+started in 1981 for both May and June, and in 1979 for
+September. The monthly pan evaporation changes became
+significant decreases in 2000 for both June and July and in
+1995 for September. It seems the streamflow changes fol-
+lowed the timing in changes of annual temperature and pan
+evaporation. Furthermore, all streamflows in the six cold
+months are much more sensitive to seasonal temperatures;
+the trends were found in four months with a significance level
+of 95%(**); and the most sensitive, with a maximum vari-
+ability (¦Â=1.308 mm per year), was September due to more
+precipitation.
+3.4 Permafrost degradation
+The depth of the active layer or of the seasonal frost in the
+frozen ground region is influenced by many factors such as
+air and soil temperature and moisture, snowpack and canopy
+(Nelson et al., 1997; Yamazaki et al., 1998). Generally
+speaking, the depth of the active layer is determined in the
+first instance by regional climate. Most analytical treatments
+have used air temperature measured at nearby locations as
+the primary determinant. Broad spatial patterns of tempera-
+ture are related directly to macroclimate and can indeed be
+discerned at regional and local scales. In addition, the sea-
+sonal snowpack has significant insulating effects on the ther-
+mal regime of frozen ground and the variation in the active
+layer depth (Zhang et al., 1997), and as would be expected,
+averaging data from daily to monthly scales generally im-
+proves the correlation between air and ground temperature;
+this phenomenon is also due, in part, to lag effects associated
+with the heat conduction.
+From Fig. 8, it is clear that the depth of the seasonal frost at
+BG station has been decreased by about 42 cm from 235 cm
+in the 1960s to 193 cm in year 2005, responding to the air
+temperature at the station described in Table 2, changes in
+the depth of the active layer in the studied inland lakes have
+occurred since the 1990s. The fluctuation of streamflow in
+winter, particularly in October to April, is affected by grav-
+ity drainage of the groundwater (the unfrozen water) below a
+depth of 200 cm. It is relatively common for a rapid increase
+in the unfrozen water to occur when the ground tempera-
+ture rises even to slightly below freezing temperature (e.g. 0
+from ?2 ?C) according to Liu et al. (2003a, b) and Yang et
+al. (2002), the unfrozen water in the active layer should be
+transported downward into deep unfrozen soils, then drain
+out in the form of groundwater flow in March and April. In
+other words, the drainage occurrence of frost squeezing de-
+pends on the timing and depth of the lowest temperature in
+the active layer.
+4 Comparison with the other basins
+Increases in winter flows attributed to climate change have
+been observed in a number of basins with permafrost in
+northern Canada (Omar et al., 2006). In the permafrost re-
+gion of northeast China, an abrupt warming of the regional
+climate with a 1.3 ?C rise in the annual air temperature, cou-
+pled with a 20¨C40% increase in the annual precipitation, oc-
+curred in the 1990s (Liu et al., 2003a). Significant responses
+of winter streamflow to rising of temperatures of 2.4 ?C dur-
+ing December to February were observed. This was es-
+pecially true for the greatest degree of warming (4.4 ?C in
+February) when runoff increased by 80% in February and by
+100% in March. These responses were attributed to changes
+in temperature and in the depth of the active layer permitting
+the drainage of unfrozen water when the ground tempera-
+ture is above 0 ?C. The depth of seasonal frost diminished by
+about 30 cm and the thickness of the active layer increased
+by about 40 cm in the permafrost in the 1990s because of the
+warmer climate.
+In the Lena River basin in Siberia, remarkable hydrologic
+changes were identified during the cold season (October ¨C
+April) with significant increases (25¨C90%) in streamflow and
+decreases in river ice thickness (Yang et al., 2002). Dur-
+ing the snowmelt period (May ¨C June), strong warming in
+spring led to an advance of the snowmelt season into late
+May and a lower daily maximum discharge in June. Changes
+in stream flow hydrology during the summer months (July ¨C
+September) were less significant than those in the winter and
+spring seasons. As with the results of the present study, the
+changes in the Lena River hydrologic regime were linked
+to recent climate warming and to changes in permafrost
+conditions.
+The change in the high-elevation Nam Co Lake and the
+hydroclimate in central Tibet can be compared with those
+above. These occurred in very similar conditions of win-
+ter warming, precipitation increase, permafrost degradation
+and early onset of snowmelt. However, the change point for
+the annual mean temperature was 1983 in the lake area, ear-
+lier than that in northeast-China (1986) and later than that
+in the Lena River, Siberia (since the 1970s) due to its lower
+altitude and the plateau climate. Near the lake, all the dis-
+charge change points fall between 1985 and 1996, and all
+Hydrol. Earth Syst. Sci., 14, 481¨C489, 2010 www.hydrol-earth-syst-sci.net/14/481/2010/
+J. Liu et al.: Growth of a high-elevation lake in Tibet 487
+6
+
+
+
+
+Figure 6 Change points established using the Man-Kendall test for selected January temperature (top-left graph)
+and June precipitation (top-right graph), September evaporation (lower-left graph) and February discharge (lower
+- right graph) at BG for 1956-2005, and runoff data from Lhasa River for 1976-2005, with Forward_u marked by
+a solid line and Backward_u by a dashed line, the dotted lines at 1.96 and -1.96 are the thresholds at significance
+level of 95%.
+
+Fig. 7. Change points established using the Man-Kendall test for selected January temperature (top-left graph) and June precipitation (top-
+right graph), September evaporation (lower-left graph) and February discharge (lower-right graph) at BG for 1956¨C2005, and runoff data
+from Lhasa River for 1976¨C2005, with Forward u marked by a solid line and Backward u by a dashed line, the dotted lines at 1.96 and
+?1.96 are the thresholds at significance level of 95%.
+8
+
+
+150
+170
+190
+210
+230
+250
+270
+290
+1960 1965 1970 1975 1980 1985 1990 1995 2000 2005
+Year
+Fr
+os
+t d
+ept
+h
+(c
+m
+)
+FD-a Mean-a
+
+Figure 8 Change in depth of the seasonal frost in the studied area at BG, the fine line is the annual
+average and £«  means the depth of measured seasonal frozen ground.
+
+
+Fig. 8. Change in depth of the seasonal frost in the studied area at
+BG, the fine line is the annual average and + means the depth of
+measured seasonal frozen ground.
+the meteorological change points of the annual temperature,
+precipitation and the pan evaporation were localized in an
+early period (1983¨C1996). This strongly suggests an associ-
+ation between the two but further analysis is needed to un-
+equivocally attribute the observed trends to climate change.
+For example, the relationship between the Indian monsoon
+and the various hydrological variables in the high-elevation
+lakes could be explored as this may help to provide a better
+explanation and prediction of their trends.
+The active layer over permafrost is generally saturated dur-
+ing the thaw season, and thickness of the active layer in late
+summer and the date of the active layer freeze-up in mid-
+winter significantly affects the hydrologic characteristics in
+permafrost regions. Changes in the active layer depth over
+permafrost directly affect potential groundwater storage and
+river discharge through partitioning process (Kane, 1997).
+5 Conclusions
+Climate warming indicated at the high-elevation meteorolog-
+ical station of BG since the 1990s has caused the dramatic
+expansion of the Nam Co Lake area due to both permafrost
+degradation and inflow increase under the background of
+both precipitation increase and winter warming. Dynamic
+and geometric evolution of a high elevation lake on the Ti-
+betan Plateau showed the following:
+a Lake growth over the Tibetan Plateau has intensified
+over the late 20th and early 21st centuries in response
+to the global warming and associated changes in the
+Indian summer monsoon. However, the lake change
+trends have not been well documented in China. Be-
+cause of their sizes, considerable variability may exist
+in the highland and the lowland lakes across the country.
+www.hydrol-earth-syst-sci.net/14/481/2010/ Hydrol. Earth Syst. Sci., 14, 481¨C489, 2010
+488 J. Liu et al.: Growth of a high-elevation lake in Tibet
+b Upward trends in late autumn and early winter tem-
+peratures, spring and autumn precipitation (snowfall)
+and downward trends in summer pan evaporation were
+found at a high-elevation meteorological station in cen-
+tral Tibet. However, many of these trends were not sig-
+nificant at the 10% level and their seasonal coherence
+was generally weak, but strong in an annual scale. The
+latter may be due to the retarding effect of permafrost
+(the active layer and area) and local meteorological con-
+ditions such as wind, which can play a significant role
+during the freezing-thawing processes.
+c Significant increasing trends in the autumn, winter and
+spring flow were found at the highest gauged station
+near central Tibet, though change points in earlier years
+dominated over the period of analysis. Several trends
+were significant at the 1% level and their temporal co-
+herence was strong. Tibet showed consistent trends to-
+ward earlier snowmelt dates over all 30-year periods.
+The spatial patterns were consistent with changes in
+spring snow cover duration derived from the NOAA
+dataset.
+d The trends observed in the lake growth are consistent
+with a positive water balance (e.g. permafrost degrada-
+tion and snow cover compared with evaporation) and
+provide further evidence of the enhanced winter and
+spring warming that began over the Tibetan Plateau dur-
+ing the late 20th century.
+Finally, the results of this study allow for future, region-
+ally focused investigations on the response of lake growth
+to climate change over longer time periods and in rela-
+tion to the large-scale Indian monsoon and the plateau cli-
+mate/teleconnections. The recent availability of lake growth
+on databases such as China Lake DataBase (www.lake.
+csdb.cn) and the CCDD (http://wdcdgg.westgis.ac.cn) on the
+China Cryosphere Database will facilitate these types of
+investigations.
+Acknowledgements. This study was supported by the ¡°National Ba-
+sic Research program of China¡± (No. 2005CB422003), and jointly
+by the National Natural Science Foundation of China (40571037
+& 40561002), the FP-6th project ¡°Brahmatwin¡± (036952) of the
+EU and the ¡°the Talent Project¡± of Chinese Academy of Sciences.
+The authors would like to thank Bill Isherwood, USGS, USA
+for undertaking substantial editorial revision and Daqing Yang of
+Water and Environmental Research Center, University of Alaska,
+Fairbanks Alaska, USA and Lu Zhang from Cooperative Research
+Centre for Catchment Hydrology and CSIRO Land and Water,
+Canberra, Australian for their constructive comments.
+Edited by: S. Carey
+References
+Burn, D. H. and Elnur, M. A. H.: Detection of hydrologic trends
+and variability, J. Hydrol., 255, 107¨C122, 2000.
+Chen, S., Liu, Y., and Thomas, A.: Climate change on the Ti-
+betan plateau: potential evapotranspiration trends from 1961¨C
+2000, Climatic Change, 76, 219¨C319, 2006.
+Duguay, C. R., Prowse, T. D., Bonsal, B. R., Brown, R. D., Lacroix,
+M. P., and Me?nard, P.: Recent trends in Canadian lake ice cover,
+Hydrol. Process., 20, 781¨C801, doi:10.1002/hyp.6131, 2006.
+Dorava, J. M. and Milner, A. M.: Role of lake regulation on glacier-
+fed rivers in enhancing salmon productivity: the Cook Inlet wa-
+tershed, south-central Alaska, USA, Hydrol. Process., 14, 3149¨C
+3159, 2000.
+Du, J.: Recent change of Air temperature for 40 years in Qinghai-
+Xizang Plateau. Acta Geographica Sinica, 56(6), 682¨C690, 2001
+(in Chinese).
+Du, J. and Ma, Y.: Climatic trend of precipitation over Tibetan
+Plateau From 1971 to 2000. Acta Geographica Sinica, 59(3),
+375¨C382, 2004 (in Chinese).
+Gibson, J. J., Prowse, T. D., and Peters., D. L.: Hydroclimatic con-
+trols on water balance and water level variability in Great Slave
+Lake, Hydrol, Process., 20, 4155¨C4175, doi:10.1002/hyp.6424,
+2006.
+IPCC Climate Change: The physical science basis. Contribution of
+working group I to the fourth assessment report of the Intergov-
+ernmental Panel on Climate Change, edited by: Solomon S., Qin,
+D., Manning, M., and Chen, Z., 2007.
+Kane, D. L.: The impact of Arctic hydrologic perturbations on Arc-
+tic ecosystems induced by climate change, in: Global Change
+and Arctic Terrestrial Ecosystems, edited by: Oechel, W. C.,
+Springer-Verlag, Ecological Studies, 124, 63¨C81, 1997.
+Kendall, M. G.: Rank Correlation Measures, Charles Griffin, Lon-
+don, 1975.
+Kundzewicz, Z. W. and Robson, A. J.: Change detection in hydro-
+logical records¡ªa review of the methodology, Hydrolog. Sci. J.,
+49(1), 7¨C19, 2004.
+Liu, J. S., Hayakawa, N., Lu, M. J., Dong, S. H., and Yuan, J. Y.:
+Hydrological and geocryological response of winter streamflow
+to climate warming in northeast China, Cold Reg. Sci. Technol.,
+37, 15¨C24, 2003.
+Liu, J. S., Hayakawa, N., Lu, M. J., Dong, S. H., and Yuan,
+J. Y.: Winter streamflow, ground temperature and active-layer
+thickness in northeast China, Permafrost Periglac., 14(1), 11¨C18,
+2003.
+Liu, J. S., Wang, S. Y., and Huang, Y. Y.: Effect of climate change
+on runoff in a basin with mountain permafrost, Northwest China,
+Permafrost Periglac., 18, 369¨C377, 2007.
+Mann, H. B.: Non-parametric tests against trend, Econometrica, 13,
+245¨C259, 1945.
+Marsh, P. and Neumann, N. N.: Processes controlling
+the rapid drainage of two ice-rich permafros-dammed
+lakes in NW Canada, Hydrol. Process., 15, 3433¨C3446,
+doi:10.1002/hyp.1035, 2001
+Hydrol. Earth Syst. Sci., 14, 481¨C489, 2010 www.hydrol-earth-syst-sci.net/14/481/2010/
+J. Liu et al.: Growth of a high-elevation lake in Tibet 489
+Mielko, C. and Woo, M. K.: Snowmelt runoff processes in a head-
+water lake and its catchment, subarctic Canadian Shield, Hydrol.
+Process., 20, 987¨C1000, doi:10.1002/hyp.6117, 2001.
+Mitchell, J. M., Dzezerdzeeskii, B., and Flohn, H.: Climatic change,
+WMO Tech. Note, WMO NO, 195, TP-100, Geneva, 1996.
+Nelson, F. E., Shiklomanov, N. I., and Mueller, G. R.: Estimating
+active layer thickness over a large region: Kaparuk river basin,
+Alaska, USA, Arctic Alpine Res., 29, 367¨C378, 1997.
+Omar, I. A. A. and Burn, D. H.: Trends and variability in the hy-
+drological regime of the Mackenzie River Basin, J. Hydrol., 319,
+282¨C294, 2006.
+Qin, D. H., Chen,Y. Y., and Li, X. Y.: Climate and environmental
+changes in China, Sci. Press, Beijing, 6¨C418, 2005.
+Shi, Y. F., Shen, Y. P., Ding, Y. J., and Zhang, G. W.: An Assessment
+of the Issue of Climatic shift from the warm-dry into warm-wet
+in Northwest China, Meteorology Press, Beijing, 3¨C55, 2003.
+Singh, N. and Sontakke, N. A.: On Climatic fluctuations and en-
+vironmental change of the Indo-Gangetic Plains, India, Climatic
+Change, 52(3), 287¨C313, 2002.
+Sneyers, R.: On the Statistical Analysis of Series of Observation,
+Tech. Note 143, WMO No.415, Geneva, 192 pp., 1990.
+Wang, S. L., Zhao, X. F., Guo, D. X., and Huang, Y. Z.: Response of
+frozen ground to climatic change in the Qinghai-Xizang Plateau,
+J. Glacio. & Geocryo., 18, 157¨C165, 1996, (in Chinese).
+Wang, C. H. and Dong, W. J.: Abnormal characteristics of inter-
+annual variation in seasonally frozen ground, Qinghai-Xizang
+Plateau, Acta Geographica Sinica, 56(5), 523¨C531, 2001 (in Chi-
+nese).
+Wang, S. M. and Duo, H. S.: Records of China Lake, Sci. Press,
+Beijing, 512 pp., 1998 (in Chinese).
+Yamazaki, T., Kondo, J., and Nishida, A.: Seasonal frost depth
+of grounds with the bare surface, snow cover and vegetation,
+Japanese Journal of Snow and Ice, 60, 213¨C224, 1998 (in
+Japanese).
+Yang, D. Q., Kane, D. L., Hinzman, L. D., Zhang, X.,
+Zhang, T. J., and Ye, C.: Siberian Lena River hydrologic
+regime and recent changes, J. Geophys. Res., 107(D23), 4694,
+doi:10.1029/2002JD002542, 2002.
+Zhang, T. J., Osterkamp, T. E., and Stamnes, K.: Effect of cli-
+mate on the active layer and permafrost on the Northern slope
+of Alaska, USA, Permafrost Periglac., 8, 45¨C67, 1997.
+Zhou, Y. W., Guo, D. X., Qiu, G. Q., and Cheng, G. D.: Geocryol-
+ogy in China, Sci. Press, Beijing, 218 pp., 2000.
+www.hydrol-earth-syst-sci.net/14/481/2010/ Hydrol. Earth Syst. Sci., 14, 481¨C489, 2010
+76 FR 76143, December 6, 2011
+
+DEPARTMENT OF COMMERCE
+
+International Trade Administration
+
+[A-570-601]
+
+Tapered Roller Bearings and Parts Thereof, Finished and Unfinished,
+From the People's Republic of China: Final Results of the Expedited
+Third Sunset Review of the Antidumping Duty Order
+
+AGENCY: Import Administration, International Trade Administration,
+Department of Commerce.
+
+SUMMARY: On August 1, 2011, the Department of Commerce (``Department'')
+initiated the third sunset review of the antidumping duty order on
+tapered roller bearings and parts thereof, finished and unfinished
+(``TRBs'') from the People's Republic of China (``PRC'') pursuant to
+section 751(c) of the Tariff Act of 1930, as amended (``Act''). On
+August 16, 2011, the Timken Company (``Timken''), a domestic producer
+and the petitioner in the TRBs less-than-fair-value investigation,
+notified the Department that it intended to participate in the sunset
+review. On August 16, 2011, the United Steel, Paper and Forestry,
+Rubber, Manufacturing, Energy, Allied Industrial and Service Workers
+International Union, AFL-CIO-CLC (``USW''), a union that represents
+workers engaged in the manufacturing of tapered roller bearings and
+parts thereof in the United States, also notified the Department that
+it intended to participate in the sunset review. The Department did not
+receive a notice of intent to participate from any respondent
+interested party. Based on the notices of intent to participate and
+adequate response filed by Timken and USW (together, ``the domestic
+parties''), and the lack of response from any respondent interested
+party, the Department conducted an expedited (120-day) sunset review of
+the antidumping duty order on tapered roller bearings from the PRC
+pursuant to section 751(c)(3)(B) of the Act and 19 CFR
+351.218(e)(1)(ii)(C)(2). See Antidumping Duty Order; Tapered Roller
+Bearings and Parts Thereof, Finished or Unfinished, From the People's
+Republic of China, 52 FR 22667 (June 15, 1987), as amended, Tapered
+Roller Bearings From the People's Republic of China; Amendment to Final
+Determination of Sales at Less Than Fair Value and Antidumping Duty
+Order in Accordance With Decision Upon Remand, 55 FR 6669 (Feb. 26,
+1990) (``Order''). As a result of this sunset review, the Department
+finds that revocation of the Order would likely lead to continuation or
+recurrence of dumping, at the levels indicated in the ``Final Results
+of Sunset Review'' section of this notice, infra.
+
+DATES: Effective Date: December 6, 2011.
+
+FOR FURTHER INFORMATION CONTACT: Lindsey Novom; AD/CVD Operations,
+Import Administration, International Trade Administration, U.S.
+Department of Commerce, 14th Street and Constitution Avenue NW.,
+Washington, DC 20230; telephone: (202) 482-5256.
+
+SUPPLEMENTARY INFORMATION:
+
+Background
+
+    On August 1, 2011, the Department initiated a sunset review of the
+order on TRBs pursuant to section 751(c) of the Act. See Initiation of
+Five-Year (``Sunset'') Review, 76 FR 45778, 45779 (August 1, 2011)
+(``Sunset Initiation''). On August 16, 2011, the Department received a
+timely notice of intent to participate in the sunset review from the
+domestic parties, pursuant to 19 CFR 351.218(d)(1)(i). In accordance
+with 19 CFR 351.218(d)(1)(ii)(A), Timken claimed interested party
+status under section 771(9)(C) of the Act as a domestic producer. USW
+is a certified or recognized union that represents workers engaged in
+manufacturing the domestic like product, and therefore, is an
+interested party pursuant to section 771(9)(D) of the Act.
+    On August 31, 2011, Timken and USW collectively filed an adequate
+substantive response in the sunset review within the 30-day deadline as
+specified in 19 CFR 351.218(d)(3)(i). The Department did not receive a
+substantive response from any respondent interested party in the sunset
+review. As a result, pursuant to section 751(c)(3)(B) of the Act and 19
+CFR 351.218(e)(1)(ii)(C)(2), the Department conducted an expedited
+sunset review of the Order.
+
+Scope of the Order
+
+    The products covered by the order are tapered roller bearings and
+parts thereof, finished and unfinished, from the PRC; flange, take up
+cartridge, and hanger units incorporating tapered roller bearings; and
+tapered roller housings (except pillow blocks) incorporating tapered
+rollers, with or without spindles, whether or not for automotive use.
+These products are currently classifiable under Harmonized Tariff
+Schedule of the United States (``HTSUS'') item numbers 8482.20.00,
+8482.91.00.50, 8482.99.15, 8482.99.45, 8483.20.40, 8483.20.80,
+8483.30.80, 8483.90.20, 8483.90.30, 8483.90.80, 8708.99.80.15 \1\ and
+8708.99.80.80.\2\ Although the HTSUS item numbers are provided for
+convenience and customs purposes, the written description of the scope
+of the order and this review is dispositive.
+---------------------------------------------------------------------------
+
+    \1\ Effective January 1, 2007, the HTSUS subheading 8708.99.8015
+is renumbered as 8708.99.8115. See United States International Trade
+Commission (``USITC'') publication entitled, ``Modifications to the
+Harmonized Tariff Schedule of the United States Under Section 1206
+of the Omnibus Trade and Competitiveness Act of 1988,'' USITC
+Publication 3898 (Dec. 2006) found at www.usitc.gov.
+    \2\ Effective January 1, 2007, the HTSUS subheading 8708.99.8080
+is renumbered as 8708.99.8180. Id.
+---------------------------------------------------------------------------
+
+    Subsequent to the issuance of the order, we issued the following
+scope rulings:
+    On February 7, 2011, in response to an inquiry from Blackstone OTR
+LLC and OTR Wheel Engineering, Inc. (collectively, ``Blackstone OTR''),
+the Department ruled that Blackstone OTR's wheel hub assemblies are
+included in the scope of the order.\3\
+---------------------------------------------------------------------------
+
+    \3\ See Memorandum entitled ``Tapered Roller Bearings from the
+People's Republic of China: Final Scope Ruling on Blackstone OTR LLC
+and OTR Wheel Engineering, Inc.'s Wheel Hub Assemblies and TRBs,''
+dated February 7, 2011.
+---------------------------------------------------------------------------
+
+    On April 18, 2011, in response to an inquiry from New Trend
+Engineering Limited (``New Trend''), the Department ruled that: (1) New
+Trend's splined and non-splined wheel hub assemblies without antilock
+braking system (``ABS'') elements are included in the scope of the
+order; and (2) New Trend's wheel hub assemblies with ABS elements are
+also included in the scope of the Order.\4\
+---------------------------------------------------------------------------
+
+    \4\ See Memorandum entitled, ``Tapered Roller Bearings from the
+People's Republic of China: Final Scope Ruling on New Trend
+Engineering Ltd.'s Wheel Hub Assemblies,'' dated April 18, 2011.
+---------------------------------------------------------------------------
+
+    On June 14, 2011, in response to an inquiry from Bosda
+International (USA) LLC (``Bosda''), the Department ruled that Bosda's
+wheel hub assemblies are included in the scope of the Order.\5\
+---------------------------------------------------------------------------
+
+    \5\ See Memorandum entitled ``Tapered Roller Bearings from the
+People's Republic of China Final Scope Determination on Bosda's
+Wheel Hub Assemblies,'' dated June 14, 2011.
+---------------------------------------------------------------------------
+
+    On August 2, 2011, in response to an inquiry from DF Machinery
+International, Inc. (``DF Machinery''), the Department ruled that DF
+
+[[Page 76144]]
+
+Machinery's agricultural hub units are included in the scope of the
+Order.\6\
+---------------------------------------------------------------------------
+
+    \6\ See Memorandum entitled ``Tapered Roller Bearings and Parts
+Thereof, finished and Unfinished, from the People's Republic of
+China- Final Scope Determination on DF Machinery's Agricultural Hub
+Units,'' dated August 3, 2011.
+---------------------------------------------------------------------------
+
+Analysis of Comments Received
+
+    A complete discussion of all issues raised in this sunset review is
+addressed in the accompanying Issues and Decision Memorandum from
+Christian Marsh, Deputy Assistant Secretary for Antidumping and
+Countervailing Duty Operations, to Paul Piquado, Assistant Secretary
+for Import Administration, which is hereby adopted by this notice. See
+the Department's memorandum entitled, ``Issues and Decision Memorandum
+for the Final Results of the Expedited Third Sunset Review of the
+Antidumping Duty Order on Tapered Roller Bearings and Parts Thereof,
+Finished and Unfinished, from the People's Republic of China,'' dated
+concurrently with this notice (``I&D Memo''). The issues discussed in
+the accompanying I&D Memo include the likelihood of continuation or
+recurrence of dumping and the magnitude of the dumping margin likely to
+prevail if the Order is revoked. Parties can obtain a public copy of
+the I&D Memo which is on file electronically via Import
+Administration's Antidumping and Countervailing Duty Centralized
+Electronic Services System (IA ACCESS). Access to IA ACCESS is
+available in the Central Records Unit room 7046 of the main Department
+of Commerce building. In addition, a complete version of the I&D Memo
+can be accessed directly on the Web at http://trade.gov/ia. The signed
+I&D Memo and the electronic versions of the I&D Memo are identical in
+content.
+
+Final Results of Sunset Review
+
+    Pursuant to section 751(c) of the Act, the Department determines
+that revocation of the Order on TRBs would likely lead to continuation
+or recurrence of dumping at the rates listed below:
+
+------------------------------------------------------------------------
+                                                               Weighted-
+                                                                average
+                     Exporters/producers                        margin
+                                                               (percent)
+------------------------------------------------------------------------
+China National Machinery Import & Export Corp...............        0.03
+Zheijiang Wanxiang Group....................................        0.11
+Zheijiang Machinery Import & Export Corp....................        0.11
+Luoyang Bearing Corporation.................................        3.20
+Premier Bearing & Equipment, Ltd............................        5.60
+Liaoning Mec Group, Ltd.....................................        9.72
+China National Machinery and Equipment Import & Export Corp.       31.05
+PRC-wide....................................................       31.05
+------------------------------------------------------------------------
+
+Notification Regarding Administrative Protective Order
+
+    This notice also serves as the only reminder to parties subject to
+administrative protective order (``APO'') of their responsibility
+concerning the return or destruction of proprietary information
+disclosed under APO in accordance with 19 CFR 351.305. Timely
+notification of the return or destruction of APO materials or
+conversion to judicial protective order is hereby requested. Failure to
+comply with the regulations and terms of an APO is a violation which is
+subject to sanction.
+    We are issuing and publishing these results and notice in
+accordance with sections 751(c), 752, and 777(i)(1) of the Act.
+
+     Dated: November 29, 2011.
+Paul Piquado,
+Assistant Secretary for Import Administration.
+
+[FR Doc. 2011-31297 Filed 12-5-11; 8:45 am]
+
+BILLING CODE 3510-DS-P
+
+
+
+        DX LISTENING DIGEST 2-134, August 28, 2002
+        edited by Glenn Hauser, wghauser@hotmail.com
+
+Items from DXLD may be reproduced and re-reproduced only if full
+credit be maintained at all stages and we be provided exchange copies.
+DXLD may not be reposted in its entirety without permission.
+
+Materials taken from Arctic or originating from Olle Alm and not
+having a commercial copyright are exempt from all restrictions of
+noncommercial, noncopyrighted reusage except for full credits
+
+HTML version of this issue will be posted afterwards at
+http://www.worldofradio.com/dxldtd02.html
+
+For restrixions and searchable 2002 contents archive see
+http://www.worldofradio.com/dxldmid.html
+
+NOTE: If you are a regular reader of DXLD, and a source of DX news
+but have not been sending it directly to us, please consider yourself
+obligated to do so. Thanks, Glenn
+
+WORLD OF RADIO 1145:
+BROADCASTS ON WBCQ: Wed 2200 17495, 7415; Mon 0415 7415
+BROADCASTS ON WWCR: Thu 2030 15825, Sat 0500, Sun 0230 5070, 0630 3210
+BROADCASTS ON RFPI: Sat 0130, 0730, Sun 0000, 0600 on 7445, 15038.7;
+                    webcasts also Sat 1330, 1800, Sun 1200, 1830
+(ON DEMAND) http://www.wrn.org/ondemand/worldofradio.html from Aug 30
+(DOWNLOAD)  http://www.k4cc.net/wor1145.rm [from early UT Aug 29]
+(STREAM)    http://www.k4cc.net/wor1145.ram [from early UT Aug 29]
+(SUMMARY)   http://www.worldofradio.com/wor1145.html [later Aug 29]
+
+UNSOLICITED TESTIMONIAL
+
+DXLD es la única fuente de noticias que religiosamente anota el origen
+de las noticias y las fechas de su aparición.
+
+Yo abogo por la libertad de la información, incluyendo la publicación
+de las fuentes originales e intermediarias, para mayor esclarecimiento
+de los hechos, aunque esto pueda herir o lastimar las
+susceptibilidades de alguna persona. Recuerda que "la verdad os hará
+libres". Recuerda que también en en DXLD se publican datos
+equivocados, que siempre, como todas las noticias, tiene, cada uno, su
+progenitor, pero en tanto se conozca la verdad, se corrigen los datos.
+Es éste un principio saludable y admirable, y a Glenn Hauser, dígase
+lo que se quiera decir, pienso que todos le debemos nuestra admiración
+y agradecimiento por los servicios que nos viene prestando día a día.
+Con todo respeto te saluda tu amigo sueco, (Henrik Klemetz, Conexión
+Digital via DXLD) See also LIBERIA, PARAGUAY
+
+** AFGHANISTAN. [If PsyOps is on 6100...] Who is then on 8700U kHz?
+73, (Mauno Ritola, Finland, Aug 27, DX LISTENING DIGEST)
+
+** ALASKA [and non]. HAARP: Saludos! aunque indefectiblemente la nota
+tiene una parte de carácter político no debemos negar que también
+tiene relación con las comunicaciones y nuestro hobby; disculpen si
+alguien se siente `ofendido`. Aquí un poco de luz sobre un tema real.
+(Alba)
+
+EL CATACLISMO DE HAARP, Juana Carrasco Martín (J.R.)
+
+Todo está basado en lograr la supremacía a cualquier precio, y para
+sustentarlo y mantenerlo, tener también el control militar. A eso
+aspira el actual gobierno en la Casa Blanca, donde los halcones han
+hecho nido con el clan Bush.
+
+Y lo que ahora se denuncia en Moscú, no es nada nuevo. ¿Quién no
+recuerda que junto al bombardeo incesante de los diques de Vietnam,
+Estados Unidos probó allí el provocar lluvias intensas para hacer
+también la guerra meteorológica en aquella agresión infernal, donde se
+pretendía la devastación completa de un pueblo y una nación? Y en los
+80 hubo más investigaciones en eso de poner a su disposición rayos y
+centellas.
+
+Pero en estos días del siglo XXI la mentalidad de cataclismo no merma
+y bajo un programa llamado HAARP, todo parece indicar que pueden
+existir manipulaciones de la ionosfera guiadas por las pretensiones
+militares.
+
+Cuando el mundo está a punto de reunirse en Johannesburgo para un
+nuevo encuentro cumbre que propicie la preservación del medio ambiente
+—al que por cierto el señor George W. Bush no irá—, se incrementan las
+posibilidades de daños devastadores provocados con intención perversa,
+insana, irracional e insensata.
+
+Dice el diario mexicano La Jornada que a puerta cerrada, pero con gran
+preocupación, hubo una audiencia de dos comités de la Duma rusa, el de
+Defensa y el de Asuntos Internacionales, para conocer y analizar el
+tema, pues la Fuerza Aérea y la Marina estadounidenses han puesto en
+práctica un experimento: desde 180 antenas transmisoras hiperpotentes
+se concentran sobre la atmósfera, la ionosfera y la magnetosfera de
+nuestro planeta ondas electromagnéticas de alta frecuencia que alteran
+y violentan sus condiciones naturales.
+
+Según el diario mexicano, esto puede crear un arma ``potencialmente
+equiparable a la nuclear en capacidad de aniquilación``, porque la
+energía desatada en haz calienta una zona determinada de la ionosfera
+y actúa como si fuera un ``horno de microondas global``, al decir del
+coronel Aleksandr Plaskin, ex director del centro de investigaciones
+espaciales del Ministerio de Defensa ruso. Luego rebotan como ondas
+eléctricas de frecuencia extremadamente baja (ELF), las que pueden
+penetrar hasta gran profundidad en la corteza terrestre.
+
+A ese engendro se le llama HAARP, o lo que es lo mismo High Frequency
+Active Auroral Research Program (Programa de Investigación Aurora
+Activa de Alta Frecuencia), y se lleva a cabo por el Pentágono desde
+hace 12 años, supuestamente para ``mejorar las comunicaciones y los
+sistemas de vigilancia para uso tanto civil como de defensa``, porque
+alguna explicación deben darle a planes tan aviesos.
+
+Y es precisamente en Alaska, en el polígono de Gakona, donde las ondas
+ELF se prueban para formar parte del llamado armamento geofísico
+integral. Pero este no le basta a Bush, el hijo, y ya prevén construir
+una estación ELF en Groenlandia, de mayor capacidad.
+
+El análisis que hiciera la Cámara Baja rusa de estas circunstancias le
+atribuye la posibilidad de bloquear radiocomunicaciones y sistemas de
+radares, alterar equipos electrónicos de aviones, misiles y sistemas
+de seguimiento terrestre, hacer averías a redes de electricidad,
+conductos de gas y petróleo, influir negativamente en la biosfera y
+hasta en el estado psíquico y la salud de la población en determinadas
+regiones potencialmente enemigas.
+
+¿Otras posibilidades del arma que se traducen en riesgos terribles
+para la humanidad?: destruir la agricultura y la ecología de un país
+determinado al que consideren en la lista de adversarios, y ni
+siquiera se enteran de que son objeto de una despiadada agresión
+militar, pues con las emisiones de gases consumistas sobran ataques
+a las capas más altas de nuestra Tierra para poner en juego su
+existencia, aunque en este caso perdemos todos, y también Estados
+Unidos es el principal agresor ¿inconsciente?
+
+Ahí están, dispuestos a alterar el clima, desencadenar inundaciones
+o sequías, huracanes y terremotos, u otras reacciones incontrolables
+de la naturaleza, mutaciones y cataclismos geológicos, biológicos y
+geofísicos que reediten la desaparición de la Atlántida, pero no
+quedará nadie para ni siquiera hacerse la pregunta de ¿cómo sucedió?
+(Fuente??? via José Alba Z., Aug 21, Conexión Digital via DXLD)
+
+** ANTARCTICA. INTERNET LLEGARA HASTA EL POLO SUR!
+
+Un cable de fibra optica de casi 2.000 kilometros de largo será
+tendido en la superficie polar para que la WWW pueda llegar finalmente
+al otro extremo de la Tierra.
+
+La Fundación Científica Nacional estadounidense se ha propuesto
+conseguir "el mayor desafío de la ingenieria" en la Antártida. O sea,
+revolucionar las comunicaciones con el Polo Sur. La idea es construir
+un cable de fibra trasantártico que conecte este extremo de la Tierra
+con el resto del mundo. Para ello cuentan con un admirable presupuesto
+de 250 millones de dólares. La fecha límite es principios de 2009
+aunque sus precursores admiten que pueden aparecer contratiempos que
+dificulten esta meta. Y es que el Polo Sur es el único lugar
+permanentemente habitado de la Tierra que no está incluído en 'la
+ruta' de los satélites geoestacionarios que rodean el planeta, lo
+que restringe de forma muy importante las comunicaciones.
+
+Hasta ahora, el método más utilizado para conectarse con la estación
+científica ubicada en ese rincón del mundo es la utilización de viejos
+satélites que son sacados de su órbita para que, al menos durante una
+parte del día, sean visibles desde la base polar. Sin embargo, la
+fibra óptica solucionaría todos los problemas. El cable permitiría
+alta velocidad y acceso confiable a Internet. Así, los científicos
+podrían transmitir información y los investigadores controlar
+experimentos en la Antártida desde otras regiones. En principio, el
+tendido recorrerá una distancia de 1.670 kilometros hasta la base
+francesa Concordia, ubicada en una región que se encuentra a 75 grados
+latitud sur y en línea directa con los satélites geoestacionarios.
+
+El mayor inconveniente con el que se van a encontrar es las bajas
+temperaturas que deberá soportar el cableado ya que, cubierto de
+hielo, puede alcanzar los 50 grados bajo cero. Además, también se
+tiene que contar con las rajas que se producen la superficie helada y
+la tensión del cable. Toda una proeza. (Telepolis, Internet, via
+Arnaldo Slaen, Argentina, ago 22, Conexión Digital via DXLD)
+
+** ANTIGUA. ARSON CRIPPLES RADIO, TV OUTLETS IN ANTIGUA
+
+ST. JOHN'S, Antigua -- The Management of ZDK Radio and CTV told the
+public this week that arson attacks completely destroyed ZDK`s AM
+transmitters at McKinnons on Sunday morning, and that a number of CTVs
+transmitters were set ablaze around mid-day Tuesday.
+
+They condemned the acts as an attack on press freedom and placed the
+blame "squarely on the shoulders of those who have been inciting
+anarchy by calling for the removal of the government by any means
+necessary."
+
+The statement said:
+
+"While there is no link between ZDK and CTV and the government that
+would warrant these wanton acts of arson, we call for the perpetrators
+to be brought to justice swiftly. Despite these wicked attempts to
+muzzle the legitimate voice of a radio station that has served this
+country for over 30 years and a TV station that does nothing more than
+relay channels from all over the world, including CNN and the BBC, the
+management of the two stations are determined to continue to uphold
+the rights of the people of Antigua and Barbuda, to receive
+information that is not tainted by the biased views of certain
+sections of society. The Police are investigating both arson attacks
+(Montserrat Reporter, August 9, 2002 via Mike Cooper, DXLD)
+
+** AUSTRALIA. 1116 kHz, Brisbane, 4BC, very good holding on well even
+with splatter from KPNW-1120 with talk, mention by woman of "Talk
+radio 1116" gave phone numbers, 8/23 1352. They are much stronger than
+they used to be. Back in the 80s, 4BC was not all that common. With a
+signal like this, this will probably be one of the easiest commercial
+Brisbane stations. 5 kW with a lobe this way per the pattern book. A
+possible one to make it inland (Patrick Martin, Seaside OR, Aug 27,
+IRCA via DXLD)
+
+** BENIN. RADIO BENIN, LOCAL RADIO PARAKOU SYNCHRONIZE PROGRAMS |
+Text of report by Radio Benin on 16 August
+
+The director of Radio Benin, Mr Liadi, says that there will be a
+synchronization of programmes between Radio Benin station in Cotonou
+and the local Radio Parakou between 2000 and 2100 [local time] daily.
+This is to enable people in those areas, who cannot capture Radio
+Benin on their radio sets to also listen to the news. It is in an
+effort to give a wider coverage to the station's programmes,
+especially crucial information that must be diffused throughout the
+country. It is also to ensure clear reception and participation from
+the various parts of the country. Today's news is synchronized with
+Radio Parakou, and there is clear reception from the north, as can be
+observed from the correspondent's reports. Source: Radio Benin,
+Cotonou, in French 1930 gmt 16 Aug 02 (via BBCM via DXLD)
+
+** BOLIVIA. Unusual catch yesterday: 6085.25, R. San Gabriel, La Paz,
+Bolivia, August 26th, 2315-2335, Spanish, woman talking, traces of
+advertisement, ID; heavy QRM by WYFR; reception possible in USB-mode
+only during word program of WYFR. O=1-2 No trace of BR Ismaning last
+night, which normally blocks this frequency completely. Good DX
+(Michael Schnitzer, Hassfurt, Germany, Aug 27, hard-core-dx via DXLD)
+
+** BRAZIL. R. Cultura, Manaus, 4845.24, Aug 24 0155-0342*. Variety of
+local ballads, pops, lite instrumental music. And even some music by
+the Beatles. Portuguese announcements, ID, sign-off with national
+anthem. Weak; no sign of R. K`ekchí [q.v.] (Brian Alexander, PA, DX
+LISTENING DIGEST)
+
+** CANADA. CBC TRAIN TRIP
+Story Filed: Monday, August 26, 2002 7:34 PM EST [sic, from Indiana??]
+
+VANCOUVER, Aug 26, 2002 (Canada NewsWire via COMTEX) -- On Saturday,
+September 7, CBC-TV invites you, your friends and family to board
+CBC/Radio-Canada's 50th Anniversary VIA Rail Train. Be the first to
+experience and celebrate 50 years of public broadcasting in Canada on
+this unique "travelling open house". Vancouver is the official kick-
+off city of the CBC/Radio-Canada 50th Anniversary VIA Rail Train,
+which will visit 19 communities across Canada and end its journey in
+Halifax on October 5.
+
+What:  A free-admission public celebration open to all ages featuring
+CBC/Radio-Canada's 50th Anniversary VIA Rail Train. Activities include
+a CBC children's programming and memories museum car, a read-the-news
+"Be An Anchor" activity and interactive CBC games. Take in displays,
+step onto the set of Hockey Night in Canada, meet CBC personalities
+and enjoy live entertainment including Frank Leahy and Friends who
+will perform a musical tribute to Don Messer's Jubilee. Also appearing
+on stage will be CherryBalm, Jou Tou, the China Film Philharmonic Folk
+Orchestra and children's performer Rick Scott.
+
+Why:   CBC/Radio-Canada's 50th Anniversary VIA Rail Train celebrates
+Canada's own stories, people and culture. It is an opportunity for
+Canadians to get a behind-the-scenes look at the making of television,
+and to share 50 years of broadcasting history, right in their own
+community.
+
+When: Saturday, September 7 from 11 a.m. to 5 p.m.
+
+Where: Vancouver's historic VIA train station, 1150 Station Street,
+Vancouver, B.C. (adjacent to Main St. and Terminal Ave.)
+
+                               SPECIAL GUESTS
+    Frank Leahy - CBC Recording Artist & Keeper of Don Messer's Violin
+    Don Ferguson, Roger Abbott and Luba Goy - Royal Canadian Air Farce
+    Steve Burgess - (at) the end
+    Karin Larsen - CBC Sports
+    Sharon Lewis - host of ZeD, CBC's late-night launch pad for ideas
+                   and creative expression
+    Brian Williams - CBC Sports
+    Gloria Macarenko - CBC News: Canada Now
+    Erica Johnson - Marketplace
+
+Tune in to the CBC Television 50th special The Joke's On Us: Fifty
+Years of CBC Satire on Sept 6 at 8 p.m. For more information on CBC's
+50th Anniversary celebrations, log on to http://www.cbc.ca/tv50th
+
+CONTACT:  For further information: Jill Webber Hrabinsky, Program
+Marketing Coordinator - Television, CBC Communications Vancouver,
+(604) 662-6680, jill--hrabinsky(at)cbc.ca (via Kim Elliott, DC, DXLD)
+
+** CANADA. Here's some information which was provided by Steve Lemay
+at RCI:
+
+On Sunday, September 8th, RCI will broadcast a special edition of
+Cross Country Checkup simultaneously with CBC Radio One on the
+occasion of the 1st anniversary of the terrorist attacks on America.
+The program will be transmitted on shortwave frequencies 9800 and
+15375 kilohertz to the Eastern and Central United States and to the
+Caribbean from 2000 to 2200 UT (1600-1800 EDT). 73- (Bill Westenhaver,
+RCI, DX LISTENING DIGEST)
+
+** CANADA. U.S. TV museum tunes in CBC
+
+MUSEUM OF TELEVISION & RADIO PLANS TRIBUTE TO CBC TV'S 50TH
+ANNIVERSARY  [by] Martin Knelman
+
+FOR 50 years the special treasures of CBC Television have been kept
+secret from most Americans, with the exception of those who have lived
+in border cities such as Detroit. This fall, that will start to change
+when the prestigious Museum of Television & Radio unravels a mammoth
+retrospective of notable CBC-TV shows of the past half century with
+screenings of the same programs in both New York and Los Angeles
+scheduled daily for 3 1/2 months from mid-October to early February.
+
+One detail of the massive program makes me want to give the museum and
+the CBC which jointly compiled the selections a gold star for daring.
+That's the inclusion of Rick Mercer's Talking To Americans. This
+cheeky one-hour documentary satirizing American ignorance of Canada
+was a huge hit when it was shown on the CBC in the spring of 2001. But
+on Sept.11 of the same year, it suddenly became the most politically
+incorrect show in the universe....
+
+http://www.thestar.com/NASApp/cs/ContentServer?GXHC_gx_session_id_=6eb247aa9a64b574&pagename=thestar/Layout/Article_PrintFriendly&c=Article&cid=1026144562042
+(via Mike Cooper, DXLD)
+
+** CANADA. THE WORLD ON A SHOESTRING
+   Sid Adilman, Thestar.com Aug. 24, 01:00 EDT
+
+OPERATING mainly out of two west-end Toronto homes for $1,700 a week,
+a paltry cost for a weekly cross-country radio show, Global Village
+brings the world of music to CBC Radio every week.
+
+Mostly assembled on computer, it gives a national voice to singers and
+musicians from other countries who now live in Canada and who record
+on marginal labels that private radio stations shun and even few
+college or alternative radio stations play. These talents perform at
+clubs that mainline media do not usually visit. They are from
+countries whose people we see daily on Canada's urban streets but hear
+little about....
+
+http://www.thestar.com/NASApp/cs/ContentServer?GXHC_ias_has_been_authenticated=&GXHC_GX_sst=&GXHC_gx_session_id_=34daa4c849efb029&pagename=thestar/Layout/Article_PrintFriendly&c=Article&cid=1026144486945
+(via Mike Cooper, DXLD)
+
+** COLOMBIA. La Voz de tu Conciencia 6060,1. Stationen hörs nu även i
+Sverige och jag skickade en förfrågan till Russell Stendal varför
+programmen tystnade 0525 den 18/8 fastän sändaren fortfarande var på.
+Här är hans svar:
+
+The electrical power is unreliable at our station and if one of the
+phases starts to fluctuate the transmitter shuts down. Also the signal
+propagates much further during night (grey line) than during the
+daytime and this is another reason. When everything is going well we
+are on the air 24 hours a day. In the next several weeks we are
+planning improvements to the antenna. /WIK (SW Bulletin Aug 25 via
+DXLD)
+
+** CUBA. 9820, 25.8 0652, Radio Reloj med nyheter och korrekt tid
+varje minut. De tog över frekvensen så fort Radio Habana Cuba slutade
+sitt engelska program kl. 0652. O=3 (Christer Brunström, Sweden, SW
+Bulletin via DXLD)
+
+** CUBA. Saludos colegas diexistas, reciban un fuerte abrazo. He
+recibido comunicación desde Radio Habana Cuba y me informan de este
+concurso.
+
+CONVOCATORIA
+
+La revista CUBA INTERNACIONAL y el programa de esta emisora
+"DESPERTAR CON CUBA" convocan a sus lectores y oyentes a un
+nuevo concurso. La pregunta a responder es la siguiente:
+
+¿EN SU OPINION CUAL HA SIDO EL MAYOR APORTE DE
+CUBA A LOS PAISES EN VIAS DE DESARROLLO
+
+Se otorgarán dos premios, que consistirán en suscripciones por un año
+a las Revistas "Cuba Internacional" o "Prisma". El plazo de admisión
+cierra el 31 de diciembre del 2002. Su respuesta debe dirigirla a:
+
+Programa "Despertar con Cuba", Apartado 6240, La Habana, Cuba
+
+Fax
+213.185.116.152:80
+195.7.133.186:3128
+222.124.201.71:3128
+211.95.176.6:808
+89.207.246.161:3128
+211.151.32.172:8080
+201.45.142.178:1080
+200.43.141.170:8080
+91.121.112.151:3128
+219.136.191.218:1080
+59.125.220.147:8080
+129.170.214.192:3124
+201.15.107.162:3128
+220.136.44.201:1080
+141.76.45.17:3127
+61.244.105.115:808
+200.104.250.91:80
+202.164.220.89:8080
+84.22.63.54:1080
+60.51.251.238:8080
+80.80.164.194:1080
+159.148.82.3:3128
+134.226.52.34:3124
+201.6.125.234:8080
+63.209.154.10:1080
+169.229.50.11:3128
+152.15.98.227:3128
+193.224.97.9:3128
+159.148.82.4:3128
+60.244.100.83:3128
+
+274  82.127.76.7:80
+1012  82.127.91.227:80
+34  82.129.167.187:80
+1775  82.129.167.188:80
+8631  82.13.12.66:80
+57  82.131.143.65:3128
+94  82.133.71.14:8080
+16467  82.133.71.150:8080
+7753  82.133.71.151:8080
+4415  82.133.71.152:8080
+88  82.133.71.154:8080
+419  82.133.71.155:8080
+13314133  82.133.71.156:8080
+100  82.133.71.157:8080
+4233423131  82.133.71.158:8080
+49  82.133.71.159:8080
+49  82.133.71.160:8080
+17  82.133.71.205:8080
+41  82.133.71.253:8080
+27  82.133.71.30:8080
+86  82.133.71.32:8080
+2628  82.135.201.172:80
+2370  82.135.201.79:80
+28533490  82.135.208.98:80
+33869  82.136.215.153:3128
+71  82.138.229.11:80
+19  82.138.34.98:3128
+46  82.139.12.103:80
+6819  82.139.12.154:80
+1448111461  82.139.12.156:80
+5  82.139.14.46:80
+102390  82.139.16.206:80
+100944452153827  82.139.19.13:80
+89  82.139.3.175:80
+12  82.139.31.183:80
+58  82.139.40.130:8000
+455239  82.14.71.100:80
+958  82.140.119.107:8080
+9299  82.140.84.170:80
+11  82.141.197.177:80
+3285  82.141.201.195:80
+15  82.141.204.211:80
+60  82.141.232.130:80
+1341  82.142.150.82:8080
+6947445  82.143.128.234:80
+34  82.143.132.177:80
+1851881  82.143.134.38:80
+93  82.143.145.28:80
+6  82.143.146.236:80
+54  82.143.150.188:80
+449739114  82.143.152.10:80
+49  82.143.153.174:80
+100  82.143.160.165:80
+5  82.146.42.67:80
+5166  82.147.174.96:80
+ou know other proxy sites, please share them with us at http://forum.my-proxy.com
+# About the ranks, please refer to our Leech List Statistics Report: http://fpl.my-proxy.com/liststat.php
+
+## Rank 1, Forum, Free Public Proxy Lists, need login
+http://www.proxyfire.net/forum/forumdisplay.php?f=14|showthread.php?t=|0
+
+## Rank 2, Non-forum, Fresh Proxies
+http://elite-proxies.blogspot.com/
+
+## Rank 3, Forum, Anonymous Proxy
+http://www.hayatforumda.com/anonymous-proxy/|#post|0
+
+## Rank 4, Forum, Black Hat SEO Proxies, Need Login
+http://www.blackhatteam.com/f120/|f120|0
+
+## Rank 5, Non-forum, Proxy list
+http://proxy-heaven.blogspot.com/
+
+## Rank 6, Forum, Need login
+http://www.golden-joint.com/index.php?showforum=42|showtopic=|0
+
+## Rank 7, Non-forum, Fresh Proxies
+http://www.proxies.cz.cc/
+
+## Rank 8, Non-forum, Fresh Proxies
+http://www.proxydb.ru/News.aspx|HTTP|0
+
+## Rank 9, Non-forum, Fresh Proxies
+http://anon-proxy.ru/|html|0
+
+## Rank 10, Forum, Fresh Proxy Forum
+http://www.dlnxt.com/f42-proxies/|#post|0
+
+## Rank 11, Forum, Proxies, Need scanning attachments
+http://www.lawinaboard.com/forums/index.php?showforum=8|showtopic=|1|act=Attach
+
+## Rank 12, Forum, High anonymous (Elite) HTTP proxies
+http://www.final4ever.com/forumdisplay.php?f=144|showthread.php?t=|0
+
+## Rank 13, Non-forum, Fresh Proxies Blog
+http://www.proxyvadi.net/proxy-list|-listesi-|0
+
+## Rank 14, Forum, Fresh Proxy Forum
+http://www.forum.freeproxy.ru/viewforum.php?f=5|viewtopic.php?t=|0
+
+## Rank 15, Non-forum, Fresh Proxy Blog
+http://globalproxies.blogspot.com/
+
+## Rank 16, Non-forum, Fresh Proxies
+http://en.soks.biz/?free
+
+## Rank 17, Non-forum, Fresh Proxies
+http://bulkinfo.net/Proxy|/Proxy/Article/|0
+
+## Rank 18, Non-forum, Fresh Proxies
+http://www.3ghttp.com/daili/zxhttp/|daili/zxhttp/|0
+
+4.179.170.189:9090
+66.165.197.37:9090
+66.175.164.59:9090
+66.177.219.202:9090
+66.214.17.189:9090
+66.229.205.251:9090
+66.38.121.88:9090
+66.91.101.52:9090
+67.162.165.118:9090
+67.165.189.3:9090
+67.188.156.177:9090
+67.48.22.73:9090
+67.84.148.144:9090
+67.84.35.131:9090
+67.87.24.194:9090
+68.104.55.221:9090
+68.11.237.184:9090
+68.199.153.104:9090
+68.201.24.46:9090
+68.225.96.18:9090
+68.8.224.217:9090
+68.81.191.233:9090
+68.83.91.141:9090
+69.116.42.119:9090
+69.122.222.90:9090
+69.124.132.102:9090
+69.127.175.231:9090
+69.136.70.21:9090
+69.161.78.160:9090
+69.246.61.14:9090
+69.249.151.19:9090
+69.47.165.83:9090
+69.47.174.178:9090
+70.177.47.119:9090
+70.177.53.179:9090
+70.180.206.70:9090
+70.180.62.153:9090
+70.186.174.186:9090
+70.225.83.202:9090
+70.64.225.85:9090
+71.192.234.31:9090
+71.204.73.210:9090
+71.205.238.140:9090
+71.205.238.236:9090
+71.207.56.148:9090
+71.224.107.188:9090
+71.226.155.186:9090
+71.64.8.82:9090
+72.134.20.99:9090
+
+   *********************************************************************************
+   ************************ PROXY LIST (by Dark Byakuya)****************************
+   *********************************************************************************
+
+<COPIA & INCOLLA>
+#Proxys per http & ftp:
+http://proxy.emirates.net.ae/proxy.pac:AUTOCONFIG
+nppp304.overnet.com.ar:AUTOCONFIG
+proxy.ozemail.com.au:80
+www2.transport.tas.gov.au:8080
+tbsa.com.au:80
+proxy.cybertelecom.com.br:3128
+vectra.overnet.com.br:8080
+www.csjlor.qc.ca:3128
+httpproxy.math.uwaterloo.ca:8080
+cache1.worldcom.ch:8080
+sigma.unisg.ch:8080
+california.videorom.ch:3128
+gateway.hro.com:80
+proxy.mcmail.com:8080
+cf1000.east.cacheflow.com:8080
+proxy.compunet.net.co:8080
+andele.cs.tu-berlin.de:3128
+maccaroni.unix-ag.uni-kl.de:80
+ics1f.og.srv.t-online.de:3128
+Brahma.CC.PurdueNC.Edu:80
+linux.softec.es:8080
+proxy.inet.fi:8080
+proxycf1.grolier.fr:80
+wall-14.dgs.ca.gov:80
+gita.srce.hr:80
+mail.lcnet.it:80
+openview.dnet.it:8080
+Cairo.osu.ac.jp:80
+dns1.infocom.co.jp:8080
+kusu.city.kurume.fukuoka.jp:80
+cvs2.kyunghee.ac.kr:8080
+biho.taegu.ac.kr:8080
+data450.dm.net.lb:8080
+ns1.klcc.com.my:3128
+cacheflow.bright.net:80
+cf.webzone.net:8080
+cacheflow1.deltacom.net:8080
+proxy.coqui.net:8080
+proxy.nhtv.nl:80
+webproxy.gelrevision.nl:8080
+www.londonderry.org:80
+aclin.org:8080
+mail2.info.com.ph:8080
+caclis01.teleweb.pt:3128
+leonardo.isec.pt:3128
+ns1.infonet.com.py:8080
+proxy.qatar.net.qa:8080
+ns.varnamo.se:8080
+swallow.cat.net.th:8080
+ankara3.turnet.net.tr:8080
+c760-2.seed.net.tw:8080
+c1.h202052106.is.net.tw:80
+club.golden.com.tw:80
+mailgate.ultima-bs.co.uk:8080
+cache1.ondemand.co.uk:80
+webcache22b.cache.pol.co.uk:8080
+stpauls.pvt.k12.al.us:80
+proxy.cpt.mweb.co.za:8080
+cache02.global.co.za:80
+proxy.cybergate.co.zw:3128
+proxy.africaonline.co.zw:8080
+#Proxys per Socks, Wingates e Telnet: (Aggiornati il 4/07/1999)
+#Porta 23
+193.13.151.71
+195.226.224.136
+195.226.228.53
+195.226.228.80
+#Porta 1080
+195.226.241.194
+195.246.23.33
+200.231.130.210
+202.208.218.5
+203.116.31.153
+206.58.25.46
+206.74.68.76
+207.15.167.177
+207.216.188.21
+207.44.26.82
+208.222.9.10
+209.160.126.201
+209.20.27.130
+210.161.237.19
+210.162.200.83
+210.163.83.178
+212.30.75.8
+216.77.244.92
+24.3.105.29
+24.3.11.131
+24.3.131.46
+24.3.82.41
+24.48.44.57
+24.64.132.67.on.wave.home.com
+24.93.112.238
+24.93.158.201
+24.93.158.57
+55-050.hy.cgocable.ca
+adsl-151-198-16-75.bellatlantic.net
+adsl-206-170-148-119.dsl.pacbell.net
+adsl-216-100-248-127.dsl.pacbell.net
+adsl-216-100-248-86.dsl.pacbell.net
+adsl-77-244-92.mia.bellsouth.net
+adsl1-110.mts.net
+adsl1-186.mts.net
+as1-8.qualitynet.net
+as1-8.qualitynet.net
+as3-53.qualitynet.net
+as4-78.qualitynet.net
+as5-19.qualitynet.net
+as8-157.qualitynet.net
+as8-194.qualitynet.net
+cc42238-a.avnl1.nj.home.com
+cc495632-a.srst1.fl.home.com
+cc762726-a.wlgrv1.pa.home.com
+cdr8-53.accesscable.net
+cowsys03.cowansystems.com
+cs9360-254.austin.rr.com
+cue.dk
+d185d183a.rochester.rr.com
+d185d1ef9.rochester.rr.com
+dns.fatwa.gov.kw
+dns.meridien.com.kw
+dt095n09.maine.rr.com
+dt095nc9.maine.rr.com
+dxt.ozemail.com.au
+dynamic57.pit.adelphia.net
+ewwmail.ozemail.com.au
+gdsl173.sttl.uswest.net
+gen2-114ip6.cadvision.com
+gen2-87ip27.cadvision.com
+host-209-214-34-114.mco.bellsouth.net
+hse-tor-ppp21220.sympatico.ca
+hssktn1-82.sk.sympatico.ca
+i-tec.co.jp
+interlog.interlog.fr
+ip2-196.highend.com
+ishibashi.ishibashi.tennouji.osaka.jp
+lan-duclos4-15.cancom.net
+m44155.direcpc.net
+mail.sjn.nl
+mdrass.moc.kw
+mp-217-242-207.daxnet.no
+nat198.85.mpoweredpc.net
+nbtel3-78.nbtel.net
+nbtel6-93.nbtel.net
+ppdual.augen.med.uni-giessen.de
+ppp-16-41.cyberia.net.lb
+ppp-16-80.cyberia.net.lb
+pppa4-resalegreenbay1-5r1066.saturn.bbn.com
+pppa40-resalegreenbay1-5r1066.saturn.bbn.com
+pppa5-resalelansing1-4r1106.saturn.bbn.com
+ppplink-dial55.idepot.net
+proxy-laregione.ibbs.net
+sacnl.globalpc.net
+siia.uan.mx
+sim-home-5-14.urbanet.ch
+stn194.hiq-ca.com
+studios.alger.it
+studios.alger.it
+we-24-130-42-117.we.mediaone.net
+wingate.rosdev.ca
+wlc35.cablelan.net
+
+*********************************************************************************
+
+81.140.160.26:80
+203.160.001.146:553
+61.9.62.10:8080
+69.62.141.29:3128
+220.225.209.91:3128
+69.62.141.46:3128
+125.177.43.78:8080
+209.87.243.254:8080
+200.78.117.242:3128
+218.182.134.23:8080
+200.196.108.26:3128
+125.7.44.167:3128
+193.203.240.199:3128
+61.26.157.55:8080
+218.5.18.131:3128
+195.242.193.11:8080
+203.160.001.146:554
+125.14.156.206:8080
+210.42.140.5:3128
+196.202.252.244:80
+61.166.68.74:80
+219.141.223.177:8080
+200.130.24.21:8080
+125.244.12.2:8080
+211.10.114.153:8080
+61.136.58.112:11662
+76.108.158.236:3128
+220.151.71.103:8080
+210.73.88.144:808
+202.105.182.11:80
+212.241.168.186:8080
+122.203.17.70:13456
+148.223.112.194:3128
+61.128.110.110:10881
+220.225.196.130:80
+61.139.37.12:80
+122.203.17.130:3128
+202.112.28.153:80
+218.196.195.209:8080
+201.21.196.26:80
+201.74.38.59:6588
+202.105.182.87:808
+201.45.137.130:3128
+195.248.186.84:3128
+190.41.69.235:80
+200.226.134.53:80
+200.165.140.104:6588
+222.221.6.144:808
+218.140.138.174:8080
+202.115.130.23:8080
+201.52.212.73:3128
+201.21.113.29:3128
+
+*********************************************************************************
+
+proxy IP:port  Port  Proxy Type  SSL?  Country  Organization
+124.28.25.53:8080 8080 elite proxy SSL Korea, Republic of (Inchon)  Inchon cable TV namdong broadcasting
+124.49.135.22:8080 8080 elite proxy SSL Korea, Republic of  Dacom
+124.50.245.139:8080 8080 elite proxy SSL Korea, Republic of  Dacom
+124.51.223.35:8080 8080 elite proxy  - Korea, Republic of  Dacom
+124.51.57.137:8080 8080 elite proxy SSL Korea, Republic of  Dacom
+124.59.49.203:8080 8080 elite proxy SSL Korea, Republic of  Dacom
+124.60.104.111:8080 8080 elite proxy  - Korea, Republic of  Dacom
+124.61.128.194:8080 8080 elite proxy SSL Korea, Republic of  Dacom
+125.188.51.108:8080 8080 elite proxy  - Korea, Republic of  Dacom
+125.252.0.10:8080 8080 elite proxy SSL Korea, Republic of (Songnam)  DITIZONE
+ip:8080 8080 anonymous SSL
+128.10.19.52:3127 3127 CoDeeN Network SSL United States (IN, West Lafayette)  Purdue University
+128.10.19.52:3128 3128 elite proxy  - United States (IN, West Lafayette)  Purdue University
+128.10.19.53:3124 3124 elite proxy  - United States (IN, West Lafayette)  Purdue University
+128.10.19.53:3127 3127 elite proxy  - United States (IN, West Lafayette)  Purdue University
+128.10.19.53:3128 3128 elite proxy  - United States (IN, West Lafayette)  Purdue University
+128.111.52.61:3124 3124 CoDeeN Network  - United States (CA, Santa Barbara)  University of California, Santa Barbara
+128.111.52.61:3127 3127 elite proxy  - United States (CA, Santa Barbara)  University of California, Santa Barbara
+128.111.52.61:3128 3128 elite proxy  - United States (CA, Santa Barbara)  University of California, Santa Barbara
+128.112.139.110:3127 3127 CoDeeN Network  - United States (NJ, Princeton)  Princeton University
+128.112.139.71:3127 3127 CoDeeN Network  - United States (NJ, Princeton)  Princeton University
+128.112.139.72:3127 3127 CoDeeN Network  - United States (NJ, Princeton)  Princeton University
+128.112.139.73:3128 3128 CoDeeN Network  - United States (NJ, Princeton)  Princeton University
+128.112.139.74:3124 3124 CoDeeN Network  - United States (NJ, Princeton)  Princeton University
+128.112.139.75:3124 3124 CoDeeN Network  - United States (NJ, Princeton)  Princeton University
+128.112.139.78:3124 3124 CoDeeN Network SSL United States (NJ, Princeton)  Princeton University
+128.112.139.80:3124 3124 elite proxy  - United States (NJ, Princeton)  Princeton University
+128.112.139.96:3124 3124 CoDeeN Network  - United States (NJ, Princeton)  Princeton University
+128.112.139.97:8888 8888 elite proxy  - United States (NJ, Princeton)  Princeton University
+128.114.63.14:3124 3124 CoDeeN Network  - United States (CA, Santa Cruz)  University of California, Santa Cruz
+128.114.63.14:3127 3127 elite proxy  - United States (CA, Santa Cruz)  University of California, Santa Cruz
+128.114.63.14:3128 3128 CoDeeN Network  - United States (CA, Santa Cruz)  University of California, Santa Cruz
+128.114.63.15:3124 3124 CoDeeN Network  - United States (CA, Santa Cruz)  University of California, Santa Cruz
+128.114.63.15:3127 3127 CoDeeN Network  - United States (CA, Santa Cruz)  University of California, Santa Cruz
+128.114.63.15:3128 3128 elite proxy  - United States (CA, Santa Cruz)  University of California, Santa Cruz
+128.114.63.16:3124 3124 CoDeeN Network  - United States (CA, Santa Cruz)  University of California, Santa Cruz
+128.114.63.16:3127 3127 CoDeeN Network  - United States (CA, Santa Cruz)  University of California, Santa Cruz
+128.114.63.16:3128 3128 CoDeeN Network  - United States (CA, Santa Cruz)  University of California, Santa Cruz
+128.119.247.210:3127 3127 CoDeeN Network  - United States (MA, Amherst)  umass.edu
+128.12.176.31:8080 8080 elite proxy SSL United States (CA, Stanford)  Stanford University
+128.135.11.149:3124 3124 CoDeeN Network  - United States (IL, Chicago)  University of Chicago
+128.135.11.151:3128 3128 CoDeeN Network SSL United States (IL, Chicago)  University of Chicago
+128.135.11.152:3128 3128 CoDeeN Network  - United States (IL, Chicago)  University of Chicago
+128.192.101.217:3128 3128 CoDeeN Network  - United States (GA, Athens)  University of Georgia
+128.192.101.218:3128 3128 CoDeeN Network  - United States (GA, Athens)  University of Georgia
+128.193.33.8:3128 3128 CoDeeN Network  - United States (OR, Corvallis)  Oregon State University
+128.195.25.100:3124 3124 CoDeeN Network  - United States (CA, Irvine)  University of California, Irvine
+128.195.25.100:3128 3128 elite proxy  - United States (CA, Irvine)  University of California, Irvine
+128.195.25.102:3128 3128 CoDeeN Network  - United States (CA, Irvine)  University of California, Irvine
+128.197.13.31:3128 3128 CoDeeN Network  - United States (MA, Boston)  Boston University
+
+*********************************************************************************
+
+Port :80
+
+148.228.13.3:80
+164.164.12.20:80
+192.138.40.91:80
+193.14.254.1:80
+193.205.141.54:80
+193.95.100.30:80
+194.170.163.97:80
+194.205.192.201:80
+194.68.59.5:80
+194.73.108.50:80
+194.90.144.200:80
+195.120.113.182:80
+bitserver1.bitbit.it:80
+195.127.25.233:80
+195.188.219.162:80
+195.201.254.89:80
+195.235.30.29:80
+195.35.2.98:80
+195.38.64.13:80
+195.5.96.73:80
+195.61.64.37:80
+195.67.105.142:80
+196.40.31.172:80
+198.112.1.27:80
+2.grantdream.gr.jp:80
+200.14.241.174:80
+200.193.215.2:80
+200.34.197.2:80
+200.50.3.35:80
+202.188.138.1:80
+202.64.139.1:80
+202.97.30.181:80
+203.177.1.68:80
+203.46.187.98:80
+203.77.126.62:80
+204.116.62.49:80
+204.180.119.66:80
+204.183.157.185:80
+204.196.123.2:80
+205.216.244.58:80
+206.132.131.182:80
+206.27.238.253:80
+206.47.230.2:80
+207.96.214.130:80
+208.135.98.70:80
+208.140.112.9:80
+208.189.193.85:80
+208.7.66.215:80
+209.31.91.130:80
+210.161.174.17:80
+210.164.107.210:80
+210.61.175.12:80
+210.96.52.1:80
+212.139.131.136:80
+212.248.44.2:80
+212.44.60.50:80
+212.9.224.210:80
+216.126.197.52:80
+24-216-110-15.hsacorp.net:80
+5gis162.gulftel.com:80
+62.20.125.226:80
+64.19.3.2:80
+64.49.128.246:80
+abac.ac-rada.gov.ua:80
+c18737002.telekabel.chello.nl:80
+cache-eng4.cybersurf.net:80
+cache-marseille.pacwan.net:80
+cache.a-net.net.th:80
+cache.chilesat.net:80
+cache.latino.net.co:80
+cache.sonatel.senet.net:80
+Cache.Substantion.surnet.ru:80
+cache0.cable.net.co:80
+cache1.cc.interlog.com:80
+cache1.co.la.ca.us:80
+cache1.de.state.az.us:80
+cache1.indosat.net.id:80
+cache1.toronto.interlog.com:80
+cache2.ncsbusiness.net:80
+cachef7.kolumbus.fi:80
+cacheflow.cwpanama.net:80
+cacheflow.nettally.com:80
+cacheflow.sunline.net:80
+cacheflow1.psn.net:80
+ce-web2.wesleyan.edu:80
+ce.interbook.net:80
+ce1.lnz.ntc-group.com:80
+ce1.saix.net:80
+cekif1.panafonet.gr:80
+cf1.lnoca.org:80
+chat.wavetech.co.uk:80
+ci.blue-springs.mo.us:80
+csdimail.willmottdixon.co.uk:80
+dns-sv.alpsgiken.co.jp:80
+ds9.vrcafe.de:80
+dsinet1.data-system.co.jp:80
+eaessrv3.econ.kuleuven.ac.be:80
+eccproxy.essex.cc.md.us:80
+eudata1.eudata.be:80
+fertilebeltrami.k12.mn.us:80
+foundation.sultancharity.org:80
+ftp.bufex.com:80
+gate.sunwayk.edu.my:80
+gauntlet.anadac.com:80
+gip-santiago-cache-1.gip.net:80
+home2.store.com:80
+hotcity.com:80
+hs1a09h01-e1.dplanet.ch:80
+inet.gatxterminals.com.sg:80
+internet-server.ebf.com.br:80
+ip198.c188.blk1.bel.nwlink.com:80
+jote.dpi.udec.CL:80
+kalamacache.kalama.com:80
+karhu.kouvola.ksaok.fi:80
+kidsnet.jeims.co.jp:80
+libpubweb.sjsu.edu:80
+magic.brasilnet.net:80
+mail.heelbhi.com:80
+mail.scn.ac.jp:80
+masterman.stc.ac.uk:80
+melcache01.powertel.net.au:80
+mhtc-cache.mhtc.net:80
+mont-cache1.knology.net:80
+net-98.planet.fi:80
+nhproxy-not.nhnottingham.com:80
+nicodemo.epm.br:80
+ns.laurel.co.jp:80
+ns1.integrityonline30.com:80
+nt1.rodaprint.co.uk:80
+ntserver01.kick.nl:80
+NY1.rspab.com:80
+obelisk.mpt.com.mk:80
+payment.idirect.com:80
+pc1879.co.la.ca.us:80
+pcx135.tfh-berlin.de:80
+picasso.sti.com.br:80
+proxy.bridge.com.br:80
+proxy.jwu.edu:80
+proxy.netsetter.org:80
+proxy1.bangla.net:80
+proxy2.worldcom.ch:80
+proxymel.vivanet.com.au:80
+rose.ru:80
+server1.concordia.com.ar:80
+socrates.aug.com:80
+srv11inet.tba.com.br:80
+
+*********************************************************************************
+
+Server:164.58.28.250 Porta:80
+Server:194.muja.pitt.washdctt.dsl.att.net Porta:80
+Server:web.khi.is Porta:80
+Server:customer-148-223-48-114.uninet.net.mx Porta:80
+Server:163.24.133.117 Porta:80
+Server:paubrasil.mat.unb.br Porta:8080
+Server:164.58.18.25 Porta:80
+Server:bpubl014.hgo.se Porta:3128
+Server:bpubl007.hgo.se Porta:3128
+Server:www.reprokopia.se Porta:8000
+Server:193.188.95.146 Porta:8080
+Server:193.220.32.246 Porta:80
+Server:AStrasbourg-201-2-1-26.abo.wanadoo.fr Porta:80
+Server:gennet.gennet.ee Porta:80
+Server:pandora.teimes.gr Porta:8080
+Server:mail.theweb.co.uk Porta:8000
+Server:mail.theweb.co.uk Porta:8888
+Server:194.6.1.219 Porta:80
+Server:194.79.113.83 Porta:8080
+Server:ntbkp.naltec.co.il Porta:8080
+Server:195.103.8.10 Porta:8080
+Server:pools1-31.adsl.nordnet.fr Porta:80
+Server:pools1-98.adsl.nordnet.fr Porta:80
+Server:195.167.64.193 Porta:80
+Server:server.sztmargitgimi.sulinet.hu Porta:80
+Server:los.micros.com.pl Porta:80
+Server:195.47.14.193 Porta:80
+Server:mail.voltex.co.za Porta:8080
+Server:196.23.147.34 Porta:80
+Server:196.40.43.34 Porta:80
+Server:lvsweb.lasvegasstock.com Porta:8000
+Server:musalemnt.notariamusalem.cl Porta:80
+Server:ip-36-018.guate.net.gt Porta:80
+Server:200.135.246.2 Porta:80
+Server:ntserver1.comnt.com.br Porta:80
+Server:200-204-182-137.terra.com.br Porta:80
+Server:200.21.225.82 Porta:8080
+Server:200.211.98.5 Porta:80
+Server:isdn02201.cultura.com.br Porta:80
+Server:isdn02204.cultura.com.br Porta:80
+Server:isdn03021.cultura.com.br Porta:80
+Server:adao.dei.unicap.br Porta:80
+Server:gateway.andromaco.cl Porta:80
+Server:mail.care.org.gt Porta:80
+Server:p75-90.cmet.net Porta:8080
+Server:jaamsa.com Porta:3128
+Server:host031210.ciudad.com.ar Porta:80
+Server:host071052.arnet.net.ar Porta:8000
+Server:200.46.109.82 Porta:80
+Server:200.52.4.82 Porta:80
+Server:correo.cfired.org.ar Porta:80
+Server:200.61.6.50 Porta:8080
+Server:202.103.6.178 Porta:3128
+Server:202.104.189.20 Porta:8080
+Server:202.104.20.181 Porta:80
+Server:202.105.138.19 Porta:8080
+Server:202.105.230.226 Porta:80
+Server:202.106.139.88 Porta:80
+Server:202.108.122.38 Porta:80
+Server:202.110.204.18 Porta:80
+Server:202.110.220.14 Porta:80
+Server:mail.jjs.or.id Porta:80
+Server:cair.res.in Porta:80
+Server:smtp2.info.com.ph Porta:80
+Server:202.9.136.40 Porta:8080
+Server:202.99.225.45 Porta:8080
+Server:203.113.34.239 Porta:80
+Server:203.117.67.122 Porta:8080
+Server:203.123.240.112 Porta:80
+Server:proxy.nida.ac.th Porta:8080
+Server:203.151.40.4 Porta:80
+Server:203.155.16.130 Porta:80
+Server:203.155.172.60 Porta:80
+Server:aworklan003105.netvigator.com Porta:3128
+Server:esjv.com.hk Porta:80
+Server:203.200.75.165 Porta:80
+Server:cp.chollian.net Porta:80
+Server:yuluma.wa.edu.au Porta:80
+Server:203.69.244.194 Porta:80
+Server:223-mail.internet.ve Porta:8080
+Server:mail.bravocorp.com Porta:8080
+Server:206.49.33.250 Porta:8080
+Server:207.61.38.67 Porta:8000
+Server:h209-17-147-1.gtconnect.net Porta:80
+Server:209.47.38.116 Porta:8000
+Server:cr2098859123.cable.net.co Porta:80
+Server:mail.unisol.com.ar Porta:80
+Server:210.12.86.181 Porta:80
+Server:210.204.118.194 Porta:8080
+Server:210.21.93.141 Porta:3128
+Server:210.219.227.52 Porta:8080
+Server:210.242.164.150 Porta:80
+Server:210.8.92.2 Porta:80
+Server:210.82.40.243 Porta:8080
+Server:210.92.128.194 Porta:8080
+Server:210.96.65.4 Porta:80
+Server:host211000070226.kagaku-k.co.jp Porta:80
+Server:www.kan-shoku.co.jp Porta:80
+Server:ns.toyoriko.co.jp Porta:80
+Server:211.114.116.60 Porta:80
+Server:211.165.192.8 Porta:80
+Server:211.21.111.227 Porta:8080
+Server:211.233.21.166 Porta:8080
+Server:211.45.21.165 Porta:8080
+Server:dns1.daiken-c.co.jp Porta:80
+Server:dns.lpgc.or.jp Porta:80
+Server:211.93.108.113 Porta:8080
+Server:212.12.157.130 Porta:8000
+Server:enteleca-2.dsl.easynet.co.uk Porta:80
+Server:TK212017066196.teleweb.at Porta:80
+Server:212.251.36.62 Porta:80
+Server:adslb-98-18.cytanet.com.cy Porta:80
+Server:212.38.132.122 Porta:80
+Server:212.60.65.206 Porta:8080
+Server:is2.isys.no Porta:8000
+Server:213.121.248.138 Porta:80
+Server:213.16.133.130 Porta:80
+Server:213.176.28.6 Porta:80
+Server:acode-u.org Porta:8080
+Server:213.25.170.98 Porta:8080
+Server:213.25.29.12 Porta:80
+Server:p038-30.netc.pt Porta:80
+Server:xirus.com Porta:8080
+Server:adsl-216-158-25-110.cust.oldcity.dca.net Porta:80
+Server:normandintransit.com Porta:80
+Server:216-238-112-40.dsl.ct.thebiz.net Porta:80
+Server:216.72.196.21 Porta:80
+Server:216.72.63.198 Porta:80
+Server:216.72.63.198 Porta:8080
+Server:217-127-248-37.uc.nombres.ttd.es Porta:3128
+Server:217.153.114.66 Porta:8080
+Server:host217-34-153-161.in-addr.btopenworld.com Porta:8080
+Server:host217-34-194-49.in-addr.btopenworld.com Porta:80
+Server:host217-37-205-177.in-addr.btopenworld.com Porta:8080
+Server:host182-44.pool21758.interbusiness.it Porta:8000
+Server:host162-51.pool21759.interbusiness.it Porta:80
+Server:217.66.203.82 Porta:3128
+Server:218.5.133.146 Porta:80
+Server:2.magicbird.co.jp Porta:80
+Server:h0040f6a4e019.ne.client2.attbi.com Porta:8080
+Server:4.22.156.10 Porta:80
+Server:61.11.26.150 Porta:80
+Server:61.131.48.219 Porta:80
+Server:61.133.63.129 Porta:80
+Server:61.138.130.229 Porta:8080
+Server:cm61-15-14-187.hkcable.com.hk Porta:80
+Server:61.159.224.11 Porta:80
+Server:61.159.235.36 Porta:8080
+Server:61.180.73.66 Porta:8080
+Server:61.185.255.4 Porta:3128
+Server:61.32.11.130 Porta:8080
+Server:www.flab.fr Porta:8080
+Server:adsl-63-192-134-107.dsl.snfc21.pacbell.net Porta:8080
+Server:ftp.aparizona.com Porta:80
+Server:64-132-153-94.gen.twtelecom.net Porta:8000
+Server:ensait19.ensait.fr Porta:80
+Server:ado.com.mx Porta:80
+Server:AS7000_1B.sfn.co.jp Porta:8080
+Server:ns.cyberlinks-jp.com Porta:80
+Server:211.15.62.123 Porta:8000
+Server:210.163.167.162 Porta:80
+Server:h64-5-220-82.gtcust.grouptelecom.net Porta:80
+Server:204.196.104.27 Porta:80
+Server:ftp.orange.uk.com Porta:8000
+Server:maq241i.advance.com.ar Porta:80
+Server:mertennt.merten.hu Porta:80
+Server:61.142.169.98 Porta:80
+Server:ns.proserv.co.jp Porta:80
+Server:www.nisshin-syouji.co.jp Porta:80
+Server:202.9.136.40 Porta:80
+Server:210.254.8.52 Porta:8000
+Server:www.qdh.or.jp Porta:80
+Server:207.167.236.137 Porta:80
+Server:210.74.254.35 Porta:80
+Server:219.163.108.18 Porta:8080
+Server:mail.koibuchi.ac.jp Porta:80
+Server:dns1.koibuchi.ac.jp Porta:80
+
+*********************************************************************************
+
+r207.3.119-18.adinet.com.uy:80
+164.58.28.250:80
+194.muja.pitt.washdctt.dsl.att.net:80
+865host1.starwoodbroadband.com:80
+web.khi.is:80
+customer-148-223-48-114.uninet.net.mx:80
+163.24.133.117:80
+paubrasil.mat.unb.br:8080
+164.58.18.25:80
+bpubl014.hgo.se:3128
+bpubl007.hgo.se:3128
+www.reprokopia.se:8000
+193.188.95.146:8080
+193.220.32.246:80
+AStrasbourg-201-2-1-26.abo.wanadoo.fr:80
+gennet.gennet.ee:80
+pandora.teimes.gr:8080
+mail.theweb.co.uk:8000
+mail.theweb.co.uk:8888
+194.6.1.219:80
+194.79.113.83:8080
+ntbkp.naltec.co.il:8080
+195.103.8.10:8080
+sun.k2.surfinn.com:8080
+sun.h.surfinn.com:8080
+sun.s.surfinn.com:8080
+pools1-31.adsl.nordnet.fr:80
+pools1-98.adsl.nordnet.fr:80
+195.167.64.193:80
+server.sztmargitgimi.sulinet.hu:80
+los.micros.com.pl:80
+195.47.14.193:80
+mail.voltex.co.za:8080
+196.23.147.34:80
+196.40.43.34:80
+lvsweb.lasvegasstock.com:8000
+musalemnt.notariamusalem.cl:80
+ip-36-018.guate.net.gt:80
+200.13.199.35:80
+200.135.246.2:80
+ntserver1.comnt.com.br:80
+200-204-182-137.terra.com.br:80
+200.21.225.82:8080
+200.211.98.5:80
+isdn02201.cultura.com.br:80
+isdn02204.cultura.com.br:80
+isdn03021.cultura.com.br:80
+adao.dei.unicap.br:80
+gateway.andromaco.cl:80
+mail.care.org.gt:80
+p75-90.cmet.net:8080
+jaamsa.com:3128
+host031210.ciudad.com.ar:80
+host071052.arnet.net.ar:8000
+200.46.109.82:80
+200.52.4.82:80
+correo.cfired.org.ar:80
+200.61.6.50:8080
+202.103.6.178:3128
+202.104.189.20:8080
+202.104.20.181:80
+202.105.138.19:8080
+202.105.230.226:80
+202.106.139.88:80
+202.108.122.38:80
+202.110.204.18:80
+202.110.220.14:80
+mail.jjs.or.id:80
+cair.res.in:80
+smtp2.info.com.ph:80
+202.9.136.40:8080
+202.99.225.45:8080
+203.113.34.239:80
+203.117.67.122:8080
+203.123.240.112:80
+proxy.nida.ac.th:8080
+203.151.40.4:80
+203.155.16.130:80
+203.155.172.60:80
+aworklan003105.netvigator.com:3128
+esjv.com.hk:80
+203.200.75.165:80
+cp.chollian.net:80
+yuluma.wa.edu.au:80
+203.69.244.194:80
+223-mail.internet.ve:8080
+mail.bravocorp.com:8080
+206.49.33.250:8080
+207.61.38.67:8000
+h209-17-147-1.gtconnect.net:80
+209.47.38.116:8000
+cr2098859123.cable.net.co:80
+mail.unisol.com.ar:80
+210.12.86.181:80
+210.204.118.194:8080
+210.21.93.141:3128
+210.219.227.52:8080
+210.242.164.150:80
+210.8.92.2:80
+210.82.40.243:8080
+210.92.128.194:8080
+210.96.65.4:80
+host211000070226.kagaku-k.co.jp:80
+www.kan-shoku.co.jp:80
+ns.toyoriko.co.jp:80
+211.114.116.60:80
+211.165.192.8:80
+211.21.111.227:8080
+211.233.21.166:8080
+211.45.21.165:8080
+dns1.daiken-c.co.jp:80
+dns.lpgc.or.jp:80
+211.93.108.113:8080
+212.12.157.130:8000
+enteleca-2.dsl.easynet.co.uk:80
+TK212017066196.teleweb.at:80
+212.251.36.62:80
+adslb-98-18.cytanet.com.cy:80
+212.38.132.122:80
+212.49.87.254:3128
+212.60.65.206:8080
+is2.isys.no:8000
+213.121.248.138:80
+213.16.133.130:80
+213.176.28.6:80
+acode-u.org:8080
+213.25.170.98:8080
+213.25.29.12:80
+213.25.43.242:80
+213.25.43.242:8080
+p038-30.netc.pt:80
+xirus.com:8080
+adsl-216-158-25-110.cust.oldcity.dca.net:80
+normandintransit.com:80
+216-238-112-40.dsl.ct.thebiz.net:80
+216.72.196.21:80
+216.72.63.198:80
+216.72.63.198:8080
+217-127-248-37.uc.nombres.ttd.es:3128
+217.153.114.66:8080
+host217-34-153-161.in-addr.btopenworld.com:8080
+host217-34-194-49.in-addr.btopenworld.com:80
+host217-37-205-177.in-addr.btopenworld.com:8080
+host182-44.pool21758.interbusiness.it:8000
+host162-51.pool21759.interbusiness.it:80
+217.66.203.82:3128
+218.5.133.146:80
+2.magicbird.co.jp:80
+h0040f6a4e019.ne.client2.attbi.com:8080
+4.22.156.10:80
+61.11.26.150:80
+61.131.48.219:80
+61.133.63.129:80
+61.138.130.229:8080
+cm61-15-14-187.hkcable.com.hk:80
+61.159.224.11:80
+61.159.235.36:8080
+61.180.73.66:8080
+61.185.255.4:3128
+61.32.11.130:8080
+www.flab.fr:8080
+adsl-63-192-134-107.dsl.snfc21.pacbell.net:8080
+ftp.aparizona.com:80
+64-132-153-94.gen.twtelecom.net:8000
+proxy.ia2.marketscore.com:80
+ensait19.ensait.fr:80
+ado.com.mx:80
+AS7000_1B.sfn.co.jp:8080
+ns.cyberlinks-jp.com:80
+211.15.62.123:8000
+210.163.167.162:80
+h64-5-220-82.gtcust.grouptelecom.net:80
+204.196.104.27:80
+ftp.orange.uk.com:8000
+maq241i.advance.com.ar:80
+mertennt.merten.hu:80
+61.142.169.98:80
+ns.proserv.co.jp:80
+ns.tcj-t.co.jp:80
+www.nisshin-syouji.co.jp:80
+202.9.136.40:80
+210.254.8.52:8000
+www.qdh.or.jp:80
+207.167.236.137:80
+210.74.254.35:80
+219.163.108.18:8080
+mail.koibuchi.ac.jp:80
+dns1.koibuchi.ac.jp:80
+
+*********************************************************************************
