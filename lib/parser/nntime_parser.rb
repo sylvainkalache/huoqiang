@@ -5,13 +5,12 @@ module Huoqiang
     def initialize()
       super
       @URL='http://nntime.com/'
-      @default_duration = 12
+      @default_duration = 18000
     end
 
     def crawl()
       page_number = 1 # The page number that we are parsing
-@proxy_entries = []
-@number_proxy_entries = 0
+
       begin
         body = open("#{@URL}proxy-country-01.htm").read
       rescue OpenURI::HTTPError => e
@@ -19,7 +18,7 @@ module Huoqiang
       end
       doc = Nokogiri::HTML(body)
 
-      # Let's count the number of page we have to crawl\
+      # Let's count the number of page we have to crawl
       page_number = 0
       div = doc.css('div[id="navigation"]')
       div.css('a').each do |a|

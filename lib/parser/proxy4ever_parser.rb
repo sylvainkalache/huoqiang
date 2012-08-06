@@ -13,7 +13,9 @@ module Huoqiang
         rss = SimpleRSS.parse open(@URL)
       rescue ::SocketError, ::Timeout::Error, ::Errno::ETIMEDOUT, ::Errno::ENETUNREACH, ::Errno::ECONNRESET, ::Errno::ECONNREFUSED => e
         @logger.error "Proxy4ever parser: #{e.message}"
-        exit
+      rescue Exception => e
+        retry
+        @logger.error "Proxy4ever parser: #{e.message} \n #{e.backtrace}"
       end
 
       rss.items.each do |item|

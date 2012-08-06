@@ -1,5 +1,6 @@
 require 'logger'
 require 'geocoder'
+require 'redis'
 require File.expand_path('../mongodb.rb', File.dirname(__FILE__))
 
 module Huoqiang
@@ -11,7 +12,7 @@ module Huoqiang
     # Used to delay the execution of crawler processes
     #
     # @param [Integer] duration Sleep for N second betweem each collector run or DefaultDuration if not defined
-    def nap(duration = 120)
+    def nap(duration = @default_duration)
       sleep duration
     end
 
@@ -63,6 +64,7 @@ module Huoqiang
     def get_ip_location(ip, timeout = 5)
       # To avoid API load
       sleep 1
+      Geocoder::Configuration.cache = Redis.new
       begin
         where = Geocoder.search(ip)
       rescue Exception => e
