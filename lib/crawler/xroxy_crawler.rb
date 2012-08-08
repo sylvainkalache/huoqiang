@@ -19,7 +19,7 @@ module Huoqiang
         rss = SimpleRSS.parse open(@URL)
       rescue ::SocketError, ::Timeout::Error, ::Errno::ETIMEDOUT, ::Errno::ENETUNREACH, ::Errno::ECONNRESET, ::Errno::ECONNREFUSED => e
         @logger.error "Xroxy parser: #{e.message}"
-      rescue Exception => e
+      rescue StandardError => e
         @logger.error "Xroxy parser: #{e.message}"
       end
 

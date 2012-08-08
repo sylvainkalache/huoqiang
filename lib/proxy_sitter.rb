@@ -3,9 +3,10 @@ require 'nokogiri'
 require 'simple-rss'
 require 'logger'
 require "./proxy.rb"
+require "./parser.rb"
 
 require File.expand_path('./../engine.rb', File.dirname(__FILE__))
-Dir[File.expand_path('parser/*',File.dirname(__FILE__))].each do |file|
+Dir[File.expand_path('crawler/*',File.dirname(__FILE__))].each do |file|
   require file
 end
 
@@ -20,7 +21,7 @@ module Huoqiang
     def start_crawlers
       threads = []
 
-      Dir.glob(File.join(File.dirname(__FILE__), 'parser/*_parser.rb')) do |parser_path|
+      Dir.glob(File.join(File.dirname(__FILE__), 'crawler/*_crawler.rb')) do |parser_path|
         threads << Thread.new(parser_path) do |thread|
           @number_proxy_entries = 0
           provider_name = File.basename(thread, '_parser.rb')
@@ -58,12 +59,12 @@ module Huoqiang
 
         # If the proxy does not respond or has a latency > 5 seconds, we delete it.
         if ! response or total_time > 5
-          @proxy.delete_proxy(server_ip)
+          @proxy.delete(proxy[:server_ip])
 
           # If the proxy answered and has a latency < 5 seconds, update its entry.
         elsif total_time < 5
           proxy['latency'] = total_time
-          proxy.delete('_id') # We can't update the "_id" field.
+          @proxy.delete('_id') # We can't update the "_id" field.
 
           mongo.update({"server_ip" => proxy['server_ip']}, proxy)
           @logger.info "Updated proxy #{proxy['server_ip']} with latency #{proxy['latency']} "

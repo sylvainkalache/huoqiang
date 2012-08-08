@@ -62,12 +62,10 @@ module Huoqiang
     # @param [String] IP address
     # @param [Integer] Timeout for Geocoder to drop the request
     def get_ip_location(ip, timeout = 5)
-      # To avoid API load
-      sleep 1
       Geocoder::Configuration.cache = Redis.new
       begin
         where = Geocoder.search(ip)
-      rescue Exception => e
+      rescue StandardError => e
         @logger.error "#{e.message}"
       end
 
