@@ -49,28 +49,28 @@ module Huoqiang
     def update_proxy_list
       mongo = Mongodb.new
       proxies = mongo.find()
+      proxy_tool = Proxy.new()
 
       proxies.each do |proxy|
-        @proxy ||= Proxy.new()
-
         start_time = Time.now
-        response = @proxy.is_working(proxy[:server_ip], proxy[:port])
+        response = proxy_tool.is_working(proxy[:server_ip], proxy[:port])
         total_time = Time.now - start_time
 
         # If the proxy does not respond or has a latency > 5 seconds, we delete it.
         if ! response or total_time > 5
-          @proxy.delete(proxy[:server_ip])
+          proxy_tool.delete(proxy['server_ip'])
+          @logger.info "Deleted proxy #{proxy['server_ip']} with latency #{proxy['latency']} "
 
           # If the proxy answered and has a latency < 5 seconds, update its entry.
         elsif total_time < 5
           proxy['latency'] = total_time
-          @proxy.delete('_id') # We can't update the "_id" field.
-
-          mongo.update({"server_ip" => proxy['server_ip']}, proxy)
+          proxy_tool.update(proxy['server_ip'], proxy)
           @logger.info "Updated proxy #{proxy['server_ip']} with latency #{proxy['latency']} "
+
         end
 
       end # End proxies.each
+      @logger.info "Done updating the proxies"
     end # End update_proxy_list
 
   end # End Class
