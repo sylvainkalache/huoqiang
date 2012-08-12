@@ -14,8 +14,7 @@ module Huoqiang
       rescue OpenURI::HTTPError => e
         @logger.error "Ipcn parser: #{e.message}"
       end
- @proxy_entries= []
- @number_proxy_entries = 0
+
       doc = Nokogiri::HTML(body)
 
       pre = doc.css('pre')
