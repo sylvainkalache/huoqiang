@@ -5,6 +5,7 @@ module Huoqiang
   class Mongodb
     def initialize()
       @logger = Logger.new(File.join(File.dirname(__FILE__),'../logs/mongo.log'))
+      @@collection ||= connection()
     end
 
     # Establish a connection with a MongoDB server
@@ -13,9 +14,10 @@ module Huoqiang
     # @param [String] MongoDB database name.
     # @param [String] Collection that we will query on.
     # @param [Integer] MongoDB server port that we will connect to.
-    # @return [Object] MongoDB connection to a @collection.
+    # @return [Object] MongoDB connection to a @@collection.
     def connection(hostname='127.0.0.1', database='huoqiang', collection='proxy', port=27017)
       begin
+        @logger.info "Creating new MongoDB connection"
         connection = Mongo::Connection.new(hostname, port, :slave_ok => false)
       rescue Mongo::ConnectionFailure => e
         @logger.error "#{e.message}"
@@ -29,32 +31,32 @@ module Huoqiang
     # @param [Hash] conditions of the MongoDB query
     # @return [Object] BSON hash containing result of the query
     def request(condition={})
-      @collection ||= connection()
-      @collection.find(condition)
+      @@collection ||= connection()
+      @@collection.find(condition)
     end
 
     def insert(data)
-      @collection ||= connection(data)
-      @collection.insert(data)
+      @@collection ||= connection()
+      @@collection.insert(data)
     end
 
     def find(request=nil)
-      @collection ||= connection()
-      @collection.find(request)
+      @@collection ||= connection()
+      @@collection.find(request)
     end
 
     def remove(request)
-      @collection ||= connection()
-      @collection.remove(request)
+      @@collection ||= connection()
+      @@collection.remove(request)
     end
 
     # @param [Hash] MongoDB will fetch entry with this key/value
     # @param [Hash] MongoDB will update the entries which matched @reference with @data
     def update(reference, data)
       begin
-        @collection ||= connection()
+        @@collection ||= connection()
         # Upsert: create record of update if already exists
-        @collection.update(reference, data, {:upsert => true})
+        @@collection.update(reference, data, {:upsert => true})
       rescue Mongo::OperationFailure => e
         @logger.error "#{e.message}"
       end
