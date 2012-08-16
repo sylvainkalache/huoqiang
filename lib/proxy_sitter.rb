@@ -24,7 +24,7 @@ module Huoqiang
       Dir.glob(File.join(File.dirname(__FILE__), 'crawler/*_crawler.rb')) do |parser_path|
         threads << Thread.new(parser_path) do |thread|
           @number_proxy_entries = 0
-          provider_name = File.basename(thread, '_parser.rb')
+          provider_name = File.basename(thread, '_crawler.rb')
 
           Thread.current['provider_name'] = provider_name
 
@@ -44,34 +44,6 @@ module Huoqiang
         end # End threads <<
       end # End Dir.glob
     end # End start_crawlers
-
-    # Update the proxy present in MongoDB
-    def update_proxy_list
-      mongo = Mongodb.new
-      proxies = mongo.find()
-      proxy_tool = Proxy.new()
-
-      proxies.each do |proxy|
-        start_time = Time.now
-        response = proxy_tool.is_working(proxy[:server_ip], proxy[:port])
-        total_time = Time.now - start_time
-
-        # If the proxy does not respond or has a latency > 5 seconds, we delete it.
-        if ! response or total_time > 5
-          proxy_tool.delete(proxy['server_ip'])
-          @logger.info "Deleted proxy #{proxy['server_ip']} with latency #{proxy['latency']} "
-
-          # If the proxy answered and has a latency < 5 seconds, update its entry.
-        elsif total_time < 5
-          proxy['latency'] = total_time
-          proxy_tool.update(proxy['server_ip'], proxy)
-          @logger.info "Updated proxy #{proxy['server_ip']} with latency #{proxy['latency']} "
-
-        end
-
-      end # End proxies.each
-      @logger.info "Done updating the proxies"
-    end # End update_proxy_list
 
   end # End Class
 end # End module
