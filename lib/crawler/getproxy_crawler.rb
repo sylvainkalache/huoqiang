@@ -13,7 +13,7 @@ module Huoqiang
 
       begin
         body = open("#{@URL}/1").read
-      rescue OpenURI::HTTPError => e
+      rescue OpenURI::HTTPError, EOFError => e
         @logger.error "Getproxy parser: #{e.message}"
       end
       doc = Nokogiri::HTML(body)

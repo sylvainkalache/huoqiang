@@ -12,7 +12,7 @@ module Huoqiang
       @number_proxy_entries = 0
       begin
         body = open("#{@URL}1").read
-      rescue OpenURI::HTTPError => e
+      rescue OpenURI::HTTPError, Timeout::Error, EOFError => e
         @logger.error "Nntime parser: #{e.message}"
       end
       doc = Nokogiri::HTML(body)
@@ -82,7 +82,7 @@ module Huoqiang
             proxy[:port] = 8086
           when 1664
             proxy[:port] = 8118
-          when 1675
+          when 1675, 1718
             proxy[:port] = 8123
           when 1752
             proxy[:port] = 9000

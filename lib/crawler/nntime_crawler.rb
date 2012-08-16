@@ -13,7 +13,7 @@ module Huoqiang
 
       begin
         body = open("#{@URL}proxy-country-01.htm").read
-      rescue OpenURI::HTTPError => e
+      rescue OpenURI::HTTPError, EOFError => e
         @logger.error "Nntime parser: #{e.message}"
       end
       doc = Nokogiri::HTML(body)

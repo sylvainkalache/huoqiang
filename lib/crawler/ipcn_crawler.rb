@@ -11,7 +11,7 @@ module Huoqiang
     def crawl()
       begin
         body = open(@URL).read
-      rescue OpenURI::HTTPError => e
+      rescue OpenURI::HTTPError, EOFError => e
         @logger.error "Ipcn parser: #{e.message}"
       end
 

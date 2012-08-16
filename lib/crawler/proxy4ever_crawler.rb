@@ -11,7 +11,7 @@ module Huoqiang
     def crawl()
       begin
         rss = SimpleRSS.parse open(@URL)
-      rescue ::SocketError, ::Timeout::Error, ::Errno::ETIMEDOUT, ::Errno::ENETUNREACH, ::Errno::ECONNRESET, ::Errno::ECONNREFUSED => e
+      rescue ::SocketError, ::Timeout::Error, ::Errno::ETIMEDOUT, ::Errno::ENETUNREACH, ::Errno::ECONNRESET, ::Errno::ECONNREFUSED, EOFError => e
         @logger.error "Proxy4ever parser: #{e.message}"
       rescue StandardError => e
         @logger.error "Proxy4ever parser: #{e.message}"
