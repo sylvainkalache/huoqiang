@@ -25,10 +25,13 @@ module Huoqiang
         crawler_output = crawl()
         total_time = Time.now - start_time
 
-        @logger.info "Updated #{@number_proxy_entries} entries for #{@URL} in #{total_time}"
+        # We don't apply to same process for updateProxyList as it's not a crawler
+        unless @URL == 'updateProxyList'
+          @logger.info "Updated #{@number_proxy_entries} entries for #{@URL} in #{total_time}sec"
 
-        @proxy_entries.each do |proxy_entry|
-          check_and_update(proxy_entry)
+          @proxy_entries.each do |proxy_entry|
+            check_and_update(proxy_entry)
+          end
         end
 
         nap()
@@ -84,7 +87,7 @@ module Huoqiang
     def check_data_format(ip, port)
       # \d* one or several number
       # \. dot
-      if ip =~ /^\d*\.\d*\.\d*\.\d*$/ and port.to_s =~ /^(\d+)*$/
+      if ip =~ /^\d*\.\d*\.\d*\.\d*$/ and port.to_s =~ /^(\d+)*$/ and port.to_i.between?(1, 65535)
         return true
       else
         return false
