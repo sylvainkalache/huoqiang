@@ -42,37 +42,29 @@ module Huoqiang
     # @param [Integer] Port of the proxy.
     # @param [Integer] Time after the HTTP request via curl will timeout.
     # @return [Boolean] Proxy working or not.
-    def is_working(proxy_address, proxy_port, timeout=3)
+    def is_working(proxy_address, proxy_port, timeout=5)
       # We are assuming that weibo.com is up
       url = "http://www.weibo.com/"
-      @logger.debug "Will pars #{url}"
       c = Curl::Easy.new(url)
       c.proxy_url = proxy_address
-      c.proxy_port = proxy_port
-      #      c.timeout = 2
-      @logger.debug "Curl initialisation done"
+      c.proxy_port = proxy_port.to_i
 
       begin
         Timeout::timeout(timeout) do
           c.perform
         end
-        @logger.debug "perform passed"
         #We are assuming that Weibo page should contain the keyword weibo
         if ! c.body_str.nil? and c.body_str.include? 'weibo'
           return true
         else
           return false
         end
-        @logger.debug "include passed"
 
       rescue Curl::Err::ConnectionFailedError, Curl::Err::ProxyResolutionError, Timeout::Error,
-        Curl::Err::GotNothingError, Curl::Err::HostResolutionError, Curl::Err::HostResolutionError => e
-        @logger.error "Tried to reach #{url} with #{proxy_address}: #{e.message}"
+        Curl::Err::GotNothingError, Curl::Err::HostResolutionError, Curl::Err::HostResolutionError, StandardError => e
+#        @logger.error "Tried to reach #{url} with #{proxy_address}: #{e.message}"
         return false
-      rescue StandardError => e
-        @logger.error "Tried to reach #{url} with #{proxy_address}: #{e.message}"
       ensure
-        @logger.debug "YAY"
         c.close()
       end
 
