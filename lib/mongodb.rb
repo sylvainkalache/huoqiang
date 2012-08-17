@@ -21,7 +21,6 @@ module Huoqiang
         connection = Mongo::Connection.new(hostname, port, :slave_ok => false)
       rescue Mongo::ConnectionFailure => e
         @logger.error "#{e.message}"
-        exit!
       end
       connection[database][collection]
     end

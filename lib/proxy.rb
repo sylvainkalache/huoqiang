@@ -1,3 +1,5 @@
+require 'curb'
+
 module Huoqiang
   class Proxy
     def initialize()

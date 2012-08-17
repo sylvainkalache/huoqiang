@@ -2,10 +2,10 @@ require 'open-uri'
 require 'nokogiri'
 require 'simple-rss'
 require 'logger'
-require "./proxy.rb"
-require "./parser.rb"
 
-require File.expand_path('./../engine.rb', File.dirname(__FILE__))
+require File.join(File.dirname(__FILE__), 'proxy.rb')
+
+
 Dir[File.expand_path('crawler/*',File.dirname(__FILE__))].each do |file|
   require file
 end

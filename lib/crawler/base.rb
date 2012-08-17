@@ -2,6 +2,8 @@ require 'logger'
 require 'geocoder'
 require 'redis'
 require File.expand_path('../mongodb.rb', File.dirname(__FILE__))
+require File.join(File.dirname(__FILE__), '../proxy.rb')
+require File.join(File.dirname(__FILE__), '../data_tool.rb')
 
 module Huoqiang
   class Base
@@ -11,7 +13,7 @@ module Huoqiang
 
     # Used to delay the execution of crawler processes
     #
-    # @param [Integer] duration Sleep for N second betweem each collector run or DefaultDuration if not defined
+    # @param [Integer] duration Sleep for N second between each collector run or DefaultDuration if not defined
     def nap(duration = @default_duration)
       sleep duration
     end
@@ -49,48 +51,16 @@ module Huoqiang
     #
     # @param proxy informations, must contain a 'server_ip' and 'port' keys
     def check_and_update(data)
-      if check_data_format(data[:server_ip], data[:port])
-        country_code = get_ip_location(data[:server_ip])
+      data_tool = Data_tool.new()
+
+      if data_tool.check_data_format(data[:server_ip], data[:port])
+        country_code = data_tool.get_ip_location(data[:server_ip])
 
         if country_code and country_code.include? 'CN'
           mongo = Mongodb.new
           mongo.update({:server_ip => data[:server_ip]}, data)
         end
 
-      end
-    end
-
-    # Return the country of the IP
-    #
-    # @param [String] IP address
-    # @param [Integer] Timeout for Geocoder to drop the request
-    def get_ip_location(ip, timeout = 5)
-      Geocoder::Configuration.cache = Redis.new
-      begin
-        where = Geocoder.search(ip)
-      rescue StandardError => e
-        @logger.error "#{e.message}"
-      end
-
-      unless where.empty?
-        return where.first.country_code
-      else
-        false
-      end
-    end
-
-    # Checking if the data parsed are valid
-    #
-    # @param [String] Proxy IP address
-    # @param [Integer] Proxy port
-    # @param [Boolean]
-    def check_data_format(ip, port)
-      # \d* one or several number
-      # \. dot
-      if ip =~ /^\d*\.\d*\.\d*\.\d*$/ and port.to_s =~ /^(\d+)*$/ and port.to_i.between?(1, 65535)
-        return true
-      else
-        return false
       end
     end
 

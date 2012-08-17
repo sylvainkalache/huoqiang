@@ -1,3 +1,4 @@
+require File.join(File.dirname(__FILE__), '../parser.rb')
 require File.expand_path('base.rb', File.dirname(__FILE__))
 
 module Huoqiang
