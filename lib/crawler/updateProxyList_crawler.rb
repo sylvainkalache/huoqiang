@@ -23,6 +23,7 @@ module Huoqiang
         # If the proxy does not respond or has a latency > 5 seconds, we delete it.
         if response
           proxy['latency'] = total_time
+          proxy['unavailable'] = false # Proxy is in an available state, aka not being blocked because used to query a censured page
           proxy_tool.update(proxy['server_ip'], proxy)
         else
           proxy_tool.delete(proxy['server_ip'])

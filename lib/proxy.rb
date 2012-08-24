@@ -1,4 +1,5 @@
 require 'curb'
+require File.join(File.dirname(__FILE__), 'mongodb.rb')
 
 module Huoqiang
   class Proxy
@@ -37,6 +38,17 @@ module Huoqiang
       return ip
     end
 
+    # Set the proxy to an unavailable state
+    #
+    # @param [String] Proxy ip address
+    def unavailable(ip)
+      mongo = Mongodb.new()
+      proxy_data = mongo.find_one({"server_ip" => ip})
+      proxy_data['unavailable'] = true
+
+      proxy = Proxy.new()
+      proxy.update(ip, proxy_data)
+    end
 
     # Test if the proxy is working
     #
