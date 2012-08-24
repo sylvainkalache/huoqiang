@@ -39,14 +39,23 @@ module Huoqiang
       @@collection.insert(data)
     end
 
+    # TODO
+    # Duplicate with request
     def find(request=nil)
       @@collection ||= connection()
       @@collection.find(request)
     end
 
+    # TODO
+    # @@collection ||= connection() is redondant
     def remove(request)
       @@collection ||= connection()
       @@collection.remove(request)
+    end
+
+    def find_one(request)
+      @@collection ||= connection()
+      @@collection.find_one(request)
     end
 
     # @param [Hash] MongoDB will fetch entry with this key/value
