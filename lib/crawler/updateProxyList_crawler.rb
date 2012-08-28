@@ -12,7 +12,7 @@ module Huoqiang
       mongo = Mongodb.new
       proxies = mongo.find()
       proxy_tool = Proxy.new()
-      timeout = 5
+      timeout = 6
       proxy_deleted = 0
 
       proxies.each do |proxy|

@@ -25,17 +25,18 @@ module Huoqiang
       mongo.update({"server_ip" => ip_address}, proxy_data)
     end
 
-    # Return the best proxy (based on lantency).
+    # Return the best proxies (based on lantency).
     #
     # @param [Integer] Number of proxy to return.
     # @return [Array] Array of hashes.
     def get(number = 1)
       mongo = Mongodb.new
-      result = mongo.find({ "latency" => {"$exists" => true}}).sort({"latency" => 1}).limit(number)
+      result = mongo.find({ "latency" => {"$exists" => true}, "unavailable" => { "$ne" => true }}).sort({"latency" => 1}).limit(number)
 
-      entries = []
-      result.each {|entry| ip << entry}
-      return ip
+      proxies = []
+      result.each {|entry| proxies << entry}
+
+      return proxies
     end
 
     # Set the proxy to an unavailable state
