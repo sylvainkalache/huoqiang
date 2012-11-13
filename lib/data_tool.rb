@@ -4,7 +4,7 @@ module Huoqiang
     #
     # @param [String] IP address
     # @param [Integer] Timeout for Geocoder to drop the request
-    def get_ip_location(ip, timeout = 5)
+    def get_ip_location(ip, timeout = 7)
       Geocoder::Configuration.cache = Redis.new
       begin
         where = Geocoder.search(ip)

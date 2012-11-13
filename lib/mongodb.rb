@@ -4,7 +4,7 @@ require 'logger'
 module Huoqiang
   class Mongodb
     def initialize()
-      @logger = Logger.new(File.join(File.dirname(__FILE__),'../logs/mongo.log'))
+      @logger = Logger.new(File.join(File.dirname(__FILE__),'../log/mongo.log'))
       @@collection ||= connection()
     end
 

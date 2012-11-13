@@ -4,7 +4,7 @@ require File.join(File.dirname(__FILE__), 'mongodb.rb')
 module Huoqiang
   class Proxy
     def initialize()
-      @logger = Logger.new(File.join(File.dirname(__FILE__),'../logs/collector.log'))
+      @logger = Logger.new(File.join(File.dirname(__FILE__),'../log/collector.log'))
     end
 
     # Delete a proxy from MongoDB.
@@ -27,16 +27,21 @@ module Huoqiang
 
     # Return the best proxies (based on lantency).
     #
-    # @param [Integer] Number of proxy to return.
+    # @param [Integer] limit Number of proxy to return.
+    # @param [Integer] skip Number of entries to skip
+    #
     # @return [Array] Array of hashes.
-    def get(number = 1)
+    def get(limit = 1, skip = 0)
       mongo = Mongodb.new
-      result = mongo.find({ "latency" => {"$exists" => true}, "unavailable" => { "$ne" => true }}).sort({"latency" => 1}).limit(number)
+      result = mongo.find({ "latency" => {"$exists" => true}, "unavailable" => false }).sort({"latency" => 1}).limit(limit).skip(skip)
 
-      proxies = []
-      result.each {|entry| proxies << entry}
-
-      return proxies
+      if result.count < limit
+        return false
+      else
+        proxies = []
+        result.each {|entry| proxies << entry}
+        return proxies
+      end
     end
 
     # Set the proxy to an unavailable state
