@@ -3,9 +3,6 @@ require File.join(File.dirname(__FILE__), 'mongodb.rb')
 
 module Huoqiang
   class Proxy
-    def initialize()
-      @logger = Logger.new(File.join(File.dirname(__FILE__),'../log/collector.log'))
-    end
 
     # Delete a proxy from MongoDB.
     #
@@ -82,7 +79,6 @@ module Huoqiang
 
       rescue Curl::Err::ConnectionFailedError, Curl::Err::ProxyResolutionError, Timeout::Error,
         Curl::Err::GotNothingError, Curl::Err::HostResolutionError, Curl::Err::HostResolutionError, StandardError => e
-#        @logger.error "Tried to reach #{url} with #{proxy_address}: #{e.message}"
         return false
       ensure
         c.close()

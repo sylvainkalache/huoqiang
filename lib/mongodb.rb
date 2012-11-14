@@ -1,10 +1,10 @@
 require 'mongo'
-require 'logger'
+require File.join(File.dirname(__FILE__),'logger.rb')
 
 module Huoqiang
   class Mongodb
     def initialize()
-      @logger = Logger.new(File.join(File.dirname(__FILE__),'../log/mongo.log'))
+      @logger = Huoqiang.logger('mongo')
       @@collection ||= connection()
     end
 

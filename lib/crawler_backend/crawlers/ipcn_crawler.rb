@@ -13,7 +13,7 @@ module Huoqiang
       begin
         body = open(@URL).read
       rescue OpenURI::HTTPError, EOFError => e
-        $logger.error "Ipcn parser: #{e.message}"
+        @logger.error "Ipcn parser: #{e.message}"
       end
 
       doc = Nokogiri::HTML(body)

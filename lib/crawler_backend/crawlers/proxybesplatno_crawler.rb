@@ -13,7 +13,7 @@ module Huoqiang
       begin
         body = open("#{@URL}1").read
       rescue OpenURI::HTTPError, Timeout::Error, EOFError => e
-        $logger.error "Nntime parser: #{e.message}"
+        @logger.error "Nntime parser: #{e.message}"
       end
       doc = Nokogiri::HTML(body)
 
@@ -35,7 +35,7 @@ module Huoqiang
               @file_size = response['content-length']
             end
           rescue StandardError => e
-            $logger.error "Proxybesplatno: #{e.message}"
+            @logger.error "Proxybesplatno: #{e.message}"
             retry
           end
 
@@ -105,7 +105,7 @@ module Huoqiang
           when 1783
             proxy[:port] = 9999
           else
-            $logger.error "Proxybesplatno: #{proxy[:server_ip]} has a unknown port not listed page #{page_number}"
+            @logger.error "Proxybesplatno: #{proxy[:server_ip]} has a unknown port not listed page #{page_number}"
           end
 
           # We don't want to get banned for abusive crawling :-)

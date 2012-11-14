@@ -5,9 +5,15 @@ require 'redis'
 require File.join(File.expand_path(File.dirname(__FILE__)), '../../mongodb.rb')
 require File.join(File.expand_path(File.dirname(__FILE__)), '../../proxy.rb')
 require File.join(File.expand_path(File.dirname(__FILE__)), '../../data_tool.rb')
+require File.join(File.expand_path(File.dirname(__FILE__)),'../../logger.rb')
 
 module Huoqiang
   class Base
+
+    def initialize
+      @logger = Huoqiang.logger('crawler')
+    end
+
     # Used to delay the execution of crawler processes
     #
     # @param [Integer] duration Sleep for N second between each collector run or DefaultDuration if not defined
@@ -25,7 +31,7 @@ module Huoqiang
 
         # We don't apply to same process for updateProxyList as it's not a crawler
         unless @URL == 'updateProxyList'
-          $logger.info "#{@number_proxy_entries} entries to check - Got them from #{@URL} in #{total_time}sec"
+          @logger.info "#{@number_proxy_entries} entries to check - Got them from #{@URL} in #{total_time}sec"
 
           @proxy_entries.each do |proxy_entry|
             check_and_update(proxy_entry)

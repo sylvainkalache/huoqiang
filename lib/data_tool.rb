@@ -1,5 +1,12 @@
+require File.join(File.dirname(__FILE__),'logger.rb')
+
 module Huoqiang
   class Data_tool
+
+    def initialize
+      @logger = Huoqiang.logger('crawler')
+    end
+
     # Return the country of the IP
     #
     # @param [String] IP address

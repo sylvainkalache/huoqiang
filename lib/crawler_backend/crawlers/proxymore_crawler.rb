@@ -12,7 +12,7 @@ module Huoqiang
       begin
         body = open(@URL).read
       rescue OpenURI::HTTPError, EOFError => e
-        $logger.error "Proxymore parser: #{e.message}"
+        @logger.error "Proxymore parser: #{e.message}"
       end
 
       doc = Nokogiri::HTML(body)
