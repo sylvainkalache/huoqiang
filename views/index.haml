@@ -1,7 +1,8 @@
-!!!
-%html
-	%head
-		%title= 'Huoqiang'
-	%body
-		%strong= 'Woohoo'
-		%p= @data
+%h1 Is your website blocked in China?
+%form{ :action => "/query", :method => "post"}
+	%input{:name => 'url', :selected => true, :size => 40, :value =>'http://weibo.com/'}
+	%input{:type => "submit", :value => "Send", :class => "button"}
+
+	%p There are a bunch of website to check if a website is accessible from China.
+	%p Unfortunately most of them are not accurate by basing their test on a simple DNS check.
+	%p I guarantee my result by doing an actually HTTP request from servers based in China.
