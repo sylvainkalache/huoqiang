@@ -1,3 +1,24 @@
 body {
-	backgroud:#eb2327;
+	background-color:#de2a12;
+	position : relative;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	width: 100%;
+}
+
+#content {
+	padding: 5px;
+	height: 100%;
+	margin: 0;
+	width: 100%;
+	text-align : center;
+}
+
+#return_code {
+	text-decoration: bold;
+	background-color : #F3BC15;
+	font-size:50px;
 }
