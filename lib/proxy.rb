@@ -1,5 +1,5 @@
 require 'curb'
-require File.join(File.dirname(__FILE__), 'mongodb.rb')
+require File.join(File.expand_path(File.dirname(__FILE__)),'mongodb.rb')
 
 module Huoqiang
   class Proxy
