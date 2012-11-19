@@ -6,9 +6,16 @@ configure do
   set :public_folder, File.dirname(__FILE__) + '/public'
 end
 
-get '/url' do
-  backend = Huoqiang::Http.new
-  @data = backend.check_website(params['url']).inspect
+set :haml, :format => :html5
 
+get '/' do
   haml :index
+end
+
+
+post '/query' do
+  backend = Huoqiang::Http.new()
+  @http_return_code = backend.check_website(params[:url])
+
+  haml :result
 end

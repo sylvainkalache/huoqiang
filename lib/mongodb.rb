@@ -1,5 +1,5 @@
 require 'mongo'
-require File.join(File.dirname(__FILE__),'logger.rb')
+require File.join(File.expand_path(File.dirname(__FILE__)),'logger.rb')
 
 module Huoqiang
   class Mongodb

@@ -65,7 +65,7 @@ module Huoqiang
     #
     # @return [Integer] Return the HTTP return code or an error code (if website blocked or no proxy available)
     def check_website(url)
-      number_proxy_to_use = 3 # Number of proxy that we will test the website with
+      number_proxy_to_use = 4 # Number of proxy that we will test the website with
       check_complete = false # Variable that define the status of a check
       responses = [] # Will be use to store response code for each proxy
       run_number = 0 # How many times we tried to get a return code from a proxies group
@@ -99,7 +99,7 @@ module Huoqiang
             case response_code
             when 1 then
               @proxy.delete(proxy['server_ip']) # Failure to use
-            when 400 then
+            when 400 .. 403 then
               @proxy.delete(proxy['server_ip']) # Ask for authentication
             when 444 then
               @proxy.unavailable(proxy['server_ip']) # Just blocked that proxy due to censured website

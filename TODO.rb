@@ -1,3 +1,6 @@
+#Proxylists broken ?
+
+
 # Implement own https://github.com/fiorix/freegeoip service
 #xroxy_parser.rb simply the ip paser in one method
 
