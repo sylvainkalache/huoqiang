@@ -1,3 +1,5 @@
+require File.expand_path('base.rb', File.dirname(__FILE__))
+
 module Huoqiang
   class Proxybesplatno < Base
     def initialize()
