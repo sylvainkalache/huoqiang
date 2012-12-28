@@ -39,7 +39,7 @@ module Huoqiang
         begin
           @logger.debug "Starting thread for #{thread['name']}"
           thread.join()
-        rescue StandardError => e
+        rescue Exception => e
           @logger.error "Problem with #{thread['name']} thread: #{e.message}"
           exit 1
         end
