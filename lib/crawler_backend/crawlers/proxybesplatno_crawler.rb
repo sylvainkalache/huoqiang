@@ -68,6 +68,8 @@ module Huoqiang
             proxy[:port] = 3129
           when 1729
             proxy[:port] = 6666
+          when 1760
+            proxy[:port] = 6668
           when 1715
             proxy[:port] = 6675
           when 1691
@@ -80,6 +82,8 @@ module Huoqiang
             proxy[:port] = 8081
           when 1776
             proxy[:port] = 8082
+          when 1782
+            proxy[:port] = 8084
           when 1731 .. 1737
             proxy[:port] = 8085
           when 1734
