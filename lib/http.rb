@@ -127,6 +127,7 @@ module Huoqiang
               redis.set(url, responses.uniq[0], 3600)
             end
           else
+            @logger.debug("[http]We did not get 4 identical responses code #{responses.inspect}")
             responses = []
             # We will use a different proxy group for each attempt
             # We will skeep N * number_proxy_to_use entries to have a new group every time
