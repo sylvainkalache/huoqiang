@@ -98,9 +98,14 @@ module Huoqiang
 
             case response_code
             when 1 then
+              @logger.debug("[http]Deleting #{proxy['server_ip']} because it is out of service")
               @proxy.delete(proxy['server_ip']) # Failure to use
             when 400 .. 403 then
+              @logger.debug("[http]Deleting #{proxy['server_ip']} because it returned a #{response_code}")
               @proxy.delete(proxy['server_ip']) # Ask for authentication
+            when 407 then
+              @logger.debug("[http]Deleting #{proxy['server_ip']} because it returned a #{response_code}")
+                @proxy.delete(proxy['server_ip']) # Ask for authentication
             when 444 then
               @proxy.unavailable(proxy['server_ip']) # Just blocked that proxy due to censured website
               responses << response_code
