@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'open-uri'
 require 'nokogiri'
 require 'simple-rss'
@@ -49,3 +50,6 @@ module Huoqiang
 
   end # End Class
 end # End module
+
+crawler_sitter = Huoqiang::Crawler_sitter.new()
+crawler_sitter.start_crawlers()
