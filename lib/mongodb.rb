@@ -17,10 +17,10 @@ module Huoqiang
     # @return [Object] MongoDB connection to a @@collection.
     def connection(hostname='127.0.0.1', database='huoqiang', collection='proxy', port=27017)
       begin
-        @logger.info "Creating new MongoDB connection"
+        @logger.info "[Mongodb]Creating new MongoDB connection"
         connection = Mongo::Connection.new(hostname, port, :slave_ok => false)
       rescue Mongo::ConnectionFailure => e
-        @logger.error "#{e.message}"
+        @logger.error "[Mongodb]#{e.message}"
       end
       connection[database][collection]
     end
@@ -66,7 +66,7 @@ module Huoqiang
         # Upsert: create record of update if already exists
         @@collection.update(reference, data, {:upsert => true})
       rescue Mongo::OperationFailure => e
-        @logger.error "#{e.message}"
+        @logger.error "[Mongodb]#{e.message}"
       end
     end
 
