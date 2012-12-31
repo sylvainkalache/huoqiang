@@ -23,7 +23,6 @@ module Huoqiang
       threads = []
 
       Dir[File.expand_path('crawlers/*_crawler.rb',File.dirname(__FILE__))].each do |parser_path|
-        @logger.debug parser_path
         threads << Thread.new(parser_path) do |thread|
           @number_proxy_entries = 0
           provider_name = File.basename(thread, '_crawler.rb')
@@ -38,10 +37,10 @@ module Huoqiang
       # Keeping threads up
       threads.each do |thread|
         begin
-          @logger.debug "Starting thread for #{thread['name']}"
           thread.join()
-        rescue Exception => e
-          @logger.error "Problem with #{thread['name']} thread: #{e.message}"
+        rescue StandardError => e
+          @logger.error "[Crawler_sitter]Problem with #{thread['provider_name']} thread: #{e.message}"
+          @logger.debug e.backtrace
           exit 1
         end
 
