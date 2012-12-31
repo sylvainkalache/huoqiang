@@ -20,7 +20,7 @@ module Huoqiang
     # @proxy_port [Integer] Port of the proxy.
     # @timeout [Integer] Time after the HTTP request via curl will timeout
     # @return [Integer] The HTTP return code or an error code.
-    def get_response_code(url, proxy_address, proxy_port, timeout=5)
+    def self.get_response_code(url, proxy_address, proxy_port, timeout=5)
       c = Curl::Easy.new(url)
       c.proxy_url = proxy_address
       c.proxy_port = proxy_port
@@ -31,12 +31,10 @@ module Huoqiang
         end
         return c.response_code
       rescue Curl::Err::ConnectionFailedError, Curl::Err::ProxyResolutionError, Timeout::Error => e
-        @proxy ||= Proxy.new()
-        @proxy.delete(proxy_address)
+        Proxy.delete(proxy_address)
         return 1
       rescue Curl::Err::GotNothingError, Curl::Err::RecvError => e
-        @proxy ||= Proxy.new()
-        @proxy.unavailable(proxy_address)
+        Proxy.unavailable(proxy_address)
         return 444
       rescue StandardError => e
         # TODO
@@ -84,30 +82,28 @@ module Huoqiang
         end
       end
 
-      @proxy ||= Proxy.new() unless response_code_available
-
       # As long as we don't get 4 identical return code
       while check_complete != true
-        proxies = @proxy.get(number_proxy_to_use, entries_to_skip)
+        proxies = Proxy.get(number_proxy_to_use, entries_to_skip)
 
         # Check that we have proxies available
         if proxies
           proxies.each do |proxy|
-            response_code = get_response_code(url, proxy['server_ip'], proxy['port'].to_i)
+            response_code = Http.get_response_code(url, proxy['server_ip'], proxy['port'].to_i)
             @logger.debug "Checked website #{url} got HTTP response code #{response_code} using proxy #{proxy['server_ip']}:#{proxy['port']}"
 
             case response_code
             when 1 then
               @logger.debug("[http]Deleting #{proxy['server_ip']} because it is out of service")
-              @proxy.delete(proxy['server_ip']) # Failure to use
+              Proxy.delete(proxy['server_ip']) # Failure to use
             when 400 .. 403 then
               @logger.debug("[http]Deleting #{proxy['server_ip']} because it returned a #{response_code}")
-              @proxy.delete(proxy['server_ip']) # Ask for authentication
+              Proxy.delete(proxy['server_ip']) # Ask for authentication
             when 407 then
               @logger.debug("[http]Deleting #{proxy['server_ip']} because it returned a #{response_code}")
-                @proxy.delete(proxy['server_ip']) # Ask for authentication
+                Proxy.delete(proxy['server_ip']) # Ask for authentication
             when 444 then
-              @proxy.unavailable(proxy['server_ip']) # Just blocked that proxy due to censured website
+              Proxy.unavailable(proxy['server_ip']) # Just blocked that proxy due to censured website
               responses << response_code
             else
               # If we get a valid return code, we add it to the final list
