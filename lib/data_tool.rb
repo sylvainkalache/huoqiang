@@ -16,7 +16,7 @@ module Huoqiang
       begin
         where = Geocoder.search(ip)
       rescue StandardError => e
-        @logger.error "#{e.message}"
+        @logger.error "[Geocoder]#{e.message}"
       end
 
       unless where.empty?
