@@ -6,6 +6,7 @@ module Huoqiang
       super
       @URL='http://www.getproxy.jp/en/china'
       @default_duration = 18000
+      @enable = true
     end
 
     def crawl()

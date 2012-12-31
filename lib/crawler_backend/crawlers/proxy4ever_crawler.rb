@@ -6,6 +6,7 @@ module Huoqiang
       super
       @URL = 'http://www.proxy4ever.com/search/china/feed/rss2/'
       @default_duration = 18000
+      @enable = true
     end
 
     def crawl()

@@ -6,6 +6,7 @@ module Huoqiang
       super
       @URL = 'http://www.xroxy.com/proxyrss.xml'
       @default_duration = 18000
+      @enable = true
     end
 
     def crawl()

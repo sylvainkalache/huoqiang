@@ -6,6 +6,7 @@ module Huoqiang
       super
       @URL = 'http://www.proxylists.net/proxylists.xml'
       @default_duration = 18000
+      @enable = true
     end
 
     def crawl()

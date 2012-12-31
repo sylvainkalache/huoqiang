@@ -6,6 +6,7 @@ module Huoqiang
       super
       @URL='http://proxy-besplatno.com/from/China/&page_num='
       @default_duration = 18000
+      @enable = true
     end
 
     def crawl()

@@ -6,6 +6,7 @@ module Huoqiang
       super
       @URL = 'http://www.proxymore.net/proxy_area-CN.html'
       @default_duration = 18000
+      @enable = true
     end
 
     def crawl()
