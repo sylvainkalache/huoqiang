@@ -23,21 +23,24 @@ module Huoqiang
 
     def dance()
       while true
-        @proxy_entries = [] # Will contains hashes containing proxy info
-        @number_proxy_entries = 0 # Number of entries inserted or updated per crawler
-        start_time = Time.now
-        crawler_output = crawl()
-        total_time = Time.now - start_time
+        if @enable
+          @proxy_entries = [] # Will contains hashes containing proxy info
+          @number_proxy_entries = 0 # Number of entries inserted or updated per crawler
+          start_time = Time.now
+          crawler_output = crawl()
+          total_time = Time.now - start_time
 
-        # We don't apply to same process for updateProxyList as it's not a crawler
-        unless @URL == 'updateProxyList'
-          @logger.info "#{@number_proxy_entries} entries to check - Got them from #{@URL} in #{total_time}sec"
+          # We don't apply to same process for updateProxyList as it's not a crawler
+          unless @URL == 'updateProxyList'
+            @logger.info "#{@number_proxy_entries} entries to check - Got them from #{@URL} in #{total_time}sec"
 
-          @proxy_entries.each do |proxy_entry|
-            check_and_update(proxy_entry)
+            @proxy_entries.each do |proxy_entry|
+              check_and_update(proxy_entry)
+            end
           end
         end
 
+        @logger.info("[Base]Finished to process #{@URL}, will nap for #{@default_duration}")
         nap()
       end
     end
