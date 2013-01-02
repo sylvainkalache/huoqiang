@@ -138,7 +138,11 @@ module Huoqiang
         end
       end # While check_complete
 
-      return responses.uniq[0]
+      if responses.uniq[0].to_i == 200
+        return 'No'
+      else
+        return 'Yes'
+      end
     end
   end
 end
