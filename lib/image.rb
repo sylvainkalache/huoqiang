@@ -1,4 +1,8 @@
 module Huoqiang
+
+  # Return the path to a picture picked up randomly
+  #
+  # @return [String] Path to a picture
   class Image
     def self.get
       image_dir = File.join(File.expand_path(File.dirname(__FILE__)),'../public/images/')
