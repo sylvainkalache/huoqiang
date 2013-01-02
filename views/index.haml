@@ -1,9 +1,11 @@
-%h1 Is your website blocked in China?
-%form{ :action => "/query", :method => "post"}
-	%input{:name => 'url', :selected => true, :size => '40'}
-	%input{:type => "submit", :value => "Check", :class => "button"}
+#search
+	%h1 Is your website blocked in China?
+	%form{ :action => "/query", :method => "post"}
+		%input{:class => 'address', :name => 'url', :selected => true, :type => "text"}
+		%input{:class => "button", :type => "submit", :value => "Check", :onclick => "spin_start();"}
 
-	%p There are a bunch of services to check if a website is accessible from China.
-	%p Unfortunately most of them are not accurate by doing their test on a DNS check.
-	%p I guarantee my result by doing an actually HTTP request from servers based in China.
-	%p Enjoy!
+
+%script{:type => "text/javascript", :src  => "spin.js"}
+%script{:type => "text/javascript", :src  => "spinfunction.js"}
+%script{:type => "text/javascript"}
+	spin_stop();
