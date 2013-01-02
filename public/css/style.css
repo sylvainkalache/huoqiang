@@ -1,24 +1,141 @@
 body {
-	background-color:#de2a12;
-	position : relative;
+	margin:0;
+	padding:0;
+	height: 100%;
 }
 
-html, body {
-	height: 100%;
-	margin: 0;
-	width: 100%;
-}
+* html #wrap {height:100%;}
 
 #content {
-	padding: 5px;
-	height: 100%;
-	margin: 0;
-	width: 100%;
+	color: white;
+	text-shadow: 1px 0 #333333, 1px 0 #333333, 1px 0 #333333, 1px 0 #333333;
+	font-family: "agb","helvetica neue",helvetica,arial,sans-serif;
+	width: 1000px;
+	margin: 0 auto 0 auto;
 	text-align : center;
+	position: relative;
+	top: 100px;
 }
 
-#return_code {
-	text-decoration: bold;
-	background-color : #F3BC15;
-	font-size:50px;
+a:link {
+	color: white;
+	text-decoration: none;
 }
+
+a:visited {
+	color: white;
+}
+
+img.bg {
+	/* Set rules to fill background */
+	min-height: 100%;
+	min-width: 1024px;
+
+	/* Set up proportionate scaling */
+	width: 100%;
+	height: auto;
+
+	/* Set up positioning */
+	position: fixed;
+	top: 0;
+	left: 0;
+/*	opacity:0.6; */
+}
+
+	input {
+		width: 300px;
+		border-radius: 5px 5px 5px 5px;
+		padding: 3px 0px 3px 3px;
+		font-size: 17px;
+	}
+
+	.address{
+		border-color:#000;
+		box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.2) inset, 0 1px rgba(255, 255, 255, 0.3);
+	}
+
+	input[type=text], textarea, .address{
+		-webkit-transition: all 0.30s ease-in-out;
+		-moz-transition: all 0.30s ease-in-out;
+		-ms-transition: all 0.30s ease-in-out;
+		-o-transition: all 0.30s ease-in-out;
+		outline: none;
+		margin: 5px 1px 3px 0px;
+		border: 1px solid #DDDDDD;
+	}
+
+	input[type=text]:focus, textarea:focus {
+		box-shadow: 0 0 5px rgba(237, 40, 0, 1);
+		margin: 5px 1px 3px 0px;
+		border: 1px solid rgba(255, 83, 48, 1);
+	}
+
+	.button {
+		border-color: #ed2800 rgba(0, 0, 0, 0.05) #610000;
+		box-shadow: 0 1px #ff5d3d inset;
+		color: #FFFFFF;
+		text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+		margin: 10px;
+		border-style: solid;
+		border-width: 1px;
+		border-radius: 5px 5px 5px 5px;
+	}
+
+	input[type=reset], /* CSS3 attribute-equals selector */
+	.button {
+		background: linear-gradient(#ed2800, #910000) repeat scroll 0 0 transparent;
+
+	}
+
+	input[type=reset]:hover,
+	.button:hover {
+		background: linear-gradient(#ed2800, #ed2800) repeat scroll 0 0 transparent;
+	}
+
+	input[type=reset]:focus,
+	.button:focus {
+		background: linear-gradient(#ed2800, #ed2800) repeat scroll 0 0 transparent;
+	}
+
+	#content #search, #result{
+		margin: 0 auto 0 auto;
+		height: 125px;
+		width: 475px;
+	}
+
+	#return_code {
+		text-decoration: bold;
+		font-size:50px;
+	}
+
+	#footer {
+		text-align: center;
+		font-size: 12px;
+		height: 50px;
+		position:absolute;
+		bottom: 0;
+		width: 100%;
+	}
+
+	#footer a:link {
+		opacity: 0.6;
+		color: white;
+	}
+
+	#footer a:hover {
+		opacity:1;
+	}
+
+	#footer a:visited {
+		color: white;
+	}
+
+	#footer ul {
+		display: inline-block;
+		list-style: none outside none;
+	}
+
+	#footer li{
+		display:inline;
+		margin:0 6px 0 0;
+	}
