@@ -6,6 +6,7 @@ module Huoqiang
       images.delete('..')
       images.delete('.')
       images.delete('.DS_Store')
+      images.delete('.svn')
       random_nbr = rand(images.count)
       return "images/#{images[random_nbr]}"
     end
