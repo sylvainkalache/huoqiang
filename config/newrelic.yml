@@ -1,0 +1,23 @@
+common: &default_settings
+  license_key: bb97eb1a87e31fd206fca390c2100173ba19ac6e
+  app_name: Huoqiang
+  monitor_mode: true
+  developer_mode: false
+  log_level: info
+  ssl: false
+  apdex_t: 0.5
+  capture_params: false
+  transaction_tracer:
+    enabled: true
+    transaction_threshold: apdex_f
+    record_sql: obfuscated
+    stack_trace_threshold: 0.500
+  error_collector:
+    enabled: true
+    capture_source: true    
+    ignore_errors: "NoMethodError"
+
+production:
+  <<: *default_settings
+  monitor_mode: true
+
