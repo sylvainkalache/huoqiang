@@ -48,9 +48,12 @@ module Huoqiang
     def self.unavailable(ip)
       mongo = Mongodb.new()
       proxy_data = mongo.find_one({"server_ip" => ip})
-      proxy_data['unavailable'] = true
-
-      Proxy.update(ip, proxy_data)
+      if proxy_data
+        proxy_data['unavailable'] = true
+        Proxy.update(ip, proxy_data)
+      else
+        return false
+      end
     end
 
     # Test if the proxy is working
@@ -118,9 +121,9 @@ module Huoqiang
       # If not, this proxy is probable not trustable
       if c.response_code != proxy_response_code
         return false
+      else
+        return true
       end
-
-      return true
     end # End is_trustable
 
   end
