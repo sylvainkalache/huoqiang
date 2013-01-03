@@ -43,7 +43,9 @@ module Huoqiang
     # Duplicate with request
     def find(request=nil)
       @@collection ||= connection()
-      @@collection.find(request)
+      @@collection.find(request, :timeout => false) do |cursor|
+        return cursor
+      end
     end
 
     # TODO
