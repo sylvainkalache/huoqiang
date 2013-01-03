@@ -16,6 +16,8 @@ module Huoqiang
       timeout = 5
       proxy_deleted = 0
 
+      @logger.info "[Updateproxylist]Will analyse #{proxies.count}"
+
       proxies.each do |proxy|
         start_time = Time.now()
         response = Proxy.is_working(proxy['server_ip'], proxy['port'], timeout)
@@ -34,7 +36,7 @@ module Huoqiang
         end
 
       end # End proxies.each
-      @logger.info "Done updating the proxies, #{proxy_deleted} has been deleted"
+      @logger.info "[Updateproxylist]Done updating the proxies, #{proxy_deleted} has been deleted"
     end
   end
 end
