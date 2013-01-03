@@ -19,6 +19,7 @@ module Huoqiang
     # @proxy_address [String] IP address of the proxy.
     # @proxy_port [Integer] Port of the proxy.
     # @timeout [Integer] Time after the HTTP request via curl will timeout
+    #
     # @return [Integer] The HTTP return code or an error code.
     def self.get_response_code(url, proxy_address, proxy_port, timeout=5)
       c = Curl::Easy.new(url)
@@ -85,9 +86,8 @@ module Huoqiang
       # As long as we don't get 4 identical return code
       while check_complete != true
         proxies = Proxy.get(number_proxy_to_use, entries_to_skip)
-
         # Check that we have proxies available
-        if proxies.count == number_proxy_to_use
+        if proxies && proxies.count == number_proxy_to_use
           proxies.each do |proxy|
             response_code = Http.get_response_code(url, proxy['server_ip'], proxy['port'].to_i)
             @logger.debug "Checked website #{url} got HTTP response code #{response_code} using proxy #{proxy['server_ip']}:#{proxy['port']}"
@@ -138,12 +138,12 @@ module Huoqiang
         end
       end # While check_complete
 
-      if responses.uniq[0].to_i == 200
+      if responses.uniq[0].to_i == 200 or responses.uniq[0].to_i == 302 or responses.uniq[0].to_i == 301
         return 'No'
       elsif responses.uniq[0].to_i == 4444
         return 'No servers available, please try your test later'
       else
-        return 'Yes'        
+        return 'Yes'
       end
     end
   end
