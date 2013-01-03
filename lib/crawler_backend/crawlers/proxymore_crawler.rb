@@ -12,8 +12,9 @@ module Huoqiang
     def crawl()
       begin
         body = open(@URL).read
-      rescue OpenURI::HTTPError, EOFError => e
+      rescue OpenURI::HTTPError, EOFError, SocketError => e
         @logger.error "Proxymore parser: #{e.message}"
+        raise CannotAccessWebsite, "[Proxymore]Can't access #{@URL}: #{e.message}"
       end
 
       doc = Nokogiri::HTML(body)

@@ -7,14 +7,14 @@ module Huoqiang
       super
       @URL = 'http://proxy.ipcn.org/proxylist.html'
       @default_duration = 18000
-      @enable = true
+      @enable = false
     end
 
     def crawl()
       begin
         body = open(@URL).read
-      rescue OpenURI::HTTPError, EOFError => e
-        @logger.error "Ipcn parser: #{e.message}"
+      rescue OpenURI::HTTPError, EOFError, SocketError => e
+        raise CannotAccessWebsite, "[Ipcn]Can't access #{@URL}: #{e.message}"
       end
 
       doc = Nokogiri::HTML(body)

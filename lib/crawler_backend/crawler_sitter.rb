@@ -40,7 +40,7 @@ module Huoqiang
         begin
           thread.join()
         rescue StandardError => e
-          @logger.error "[Crawler_sitter]Problem with #{thread['provider_name']} thread: #{e.message}"
+          @logger.debug "[Crawler_sitter]Problem with #{thread['provider_name']} thread: #{e.message}"
           @logger.debug e.backtrace
           exit 1
         end

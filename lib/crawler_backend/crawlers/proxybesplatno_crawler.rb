@@ -15,8 +15,8 @@ module Huoqiang
       @number_proxy_entries = 0
       begin
         body = open("#{@URL}1").read
-      rescue OpenURI::HTTPError, Timeout::Error, EOFError => e
-        @logger.error "Nntime parser: #{e.message}"
+      rescue OpenURI::HTTPError, Timeout::Error, EOFError, SocketError => e
+        raise CannotAccessWebsite, "[Proxybesplatno]Can't access #{@URL}: #{e.message}"
       end
       doc = Nokogiri::HTML(body)
 

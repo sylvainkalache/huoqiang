@@ -13,8 +13,8 @@ module Huoqiang
       page_number = 1 # The page number that we are parsing
       begin
         body = open("#{@URL}/1").read
-      rescue OpenURI::HTTPError, EOFError => e
-        @logger.error "Getproxy parser: #{e.message}"
+      rescue OpenURI::HTTPError, EOFError, SocketError => e
+        raise CannotAccessWebsite, "[Getproxy]Can't access #{@URL}: #{e.message}"
       end
       doc = Nokogiri::HTML(body)
 

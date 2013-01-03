@@ -27,19 +27,23 @@ module Huoqiang
           @proxy_entries = [] # Will contains hashes containing proxy info
           @number_proxy_entries = 0 # Number of entries inserted or updated per crawler
           start_time = Time.now
-          crawler_output = crawl()
-          total_time = Time.now - start_time
+          begin
+            crawler_output = crawl()
 
-          # We don't apply to same process for updateProxyList as it's not a crawler
-          unless @URL == 'updateProxyList'
-            @logger.info "#{@number_proxy_entries} entries to check - Got them from #{@URL} in #{total_time}sec"
+            total_time = Time.now - start_time
 
-            @proxy_entries.each do |proxy_entry|
-              check_and_update(proxy_entry)
+            # We don't apply to same process for updateProxyList as it's not a crawler
+            unless @URL == 'updateProxyList'
+              @logger.info "#{@number_proxy_entries} entries to check - Got them from #{@URL} in #{total_time}sec"
+
+              @proxy_entries.each do |proxy_entry|
+                check_and_update(proxy_entry)
+              end
             end
+          rescue CannotAccessWebsite => e
+            @logger.error e.message
           end
         end
-
         @logger.info("[Base]Finished to process #{@URL}, will nap for #{@default_duration}")
         nap()
       end
@@ -59,14 +63,21 @@ module Huoqiang
       data_tool = Data_tool.new()
 
       if data_tool.check_data_format(data[:server_ip], data[:port])
-        country_code = data_tool.get_ip_location(data[:server_ip])
+        # Unless proxy is not trustable
+        unless Proxy.is_trustable(data[:server_ip], data[:port].to_i)
+          Proxy.delete(data[:server_ip])
+        else
+          country_code = data_tool.get_ip_location(data[:server_ip])
 
-        if country_code and country_code.include? 'CN'
-          mongo = Mongodb.new
-          mongo.update({:server_ip => data[:server_ip]}, data)
+          if country_code and country_code.include? 'CN'
+            mongo = Mongodb.new
+            mongo.update({:server_ip => data[:server_ip]}, data)
+          end
         end
-
       end
+    end
+
+    class CannotAccessWebsite < Exception
     end
 
   end # End class

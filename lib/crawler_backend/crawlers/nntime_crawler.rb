@@ -17,8 +17,8 @@ module Huoqiang
       # cf http://nokogiri.org/tutorials/parsing_an_html_xml_document.html
       begin
         body = open("#{@URL}proxy-country-01.htm").read
-      rescue OpenURI::HTTPError, EOFError => e
-        @logger.error "Nntime parser: #{e.message}"
+      rescue OpenURI::HTTPError, EOFError, SocketError => e
+        raise CannotAccessWebsite, "[Nntime]Can't access #{@URL}: #{e.message}"
       end
       doc = Nokogiri::HTML(body)
 
