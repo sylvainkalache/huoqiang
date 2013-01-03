@@ -87,7 +87,7 @@ module Huoqiang
         proxies = Proxy.get(number_proxy_to_use, entries_to_skip)
 
         # Check that we have proxies available
-        if proxies
+        if proxies.count == number_proxy_to_use
           proxies.each do |proxy|
             response_code = Http.get_response_code(url, proxy['server_ip'], proxy['port'].to_i)
             @logger.debug "Checked website #{url} got HTTP response code #{response_code} using proxy #{proxy['server_ip']}:#{proxy['port']}"
@@ -140,8 +140,10 @@ module Huoqiang
 
       if responses.uniq[0].to_i == 200
         return 'No'
+      elsif responses.uniq[0].to_i == 4444
+        return 'No servers available, please try your test later'
       else
-        return 'Yes'
+        return 'Yes'        
       end
     end
   end
