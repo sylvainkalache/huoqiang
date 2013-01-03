@@ -99,7 +99,7 @@ module Huoqiang
       @logger = Huoqiang.logger('crawler')
       # Fair example of a website that should not be censured
       # and should have a pretty good uptime
-      url = "http://www.nasa.com/"
+      url = "http://www.amazon.com/"
 
       proxy_response_code = Http.get_response_code(url, proxy_address, proxy_port)
 
