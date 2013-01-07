@@ -8,9 +8,14 @@ module Huoqiang
     # Delete a proxy from MongoDB.
     #
     # @param [String] Proxy ip address.
-    def self.delete(ip_address)
+    # @param [String] Reason of deletion
+    def self.delete(ip_address, deletion_reason = nil)
+      @logger = Huoqiang.logger('access')
       mongo = Mongodb.new
       mongo.remove({"server_ip" => ip_address})
+      unless deletion_reason.nil?
+        @logger.info(deletion_reason)
+      end
     end
 
     # Update a proxy entry
@@ -25,16 +30,15 @@ module Huoqiang
 
     # Return the best proxies (based on lantency).
     #
-    # @param [Integer] limit Number of proxy to return.
+    # @param [Integer] number Number of proxy to return.
     # @param [Integer] skip Number of entries to skip
     #
     # @return [Array] Array of hashes.
-    def self.get(limit = 1, skip = 0)
+    def self.get(number = 1, skip = 0)
       mongo = Mongodb.new
-      result = mongo.find({ "latency" => {"$exists" => true}, "unavailable" => false }).sort({"latency" => 1}).limit(limit).skip(skip)
-
-      if result.count < limit
-        return false
+      result = mongo.find({ "latency" => {"$exists" => true}, "unavailable" => false }).sort({"latency" => 1}).limit(number).skip(skip)
+      if result.count < number
+        raise NotEnoughProxyAvailable, "Not enough proxy available"
       else
         proxies = []
         result.each {|entry| proxies << entry}
@@ -102,7 +106,7 @@ module Huoqiang
       @logger = Huoqiang.logger('crawler')
       # Fair example of a website that should not be censured
       # and should have a pretty good uptime
-      url = "http://www.amazon.com/"
+      url = "http://www.deezer.com"
 
       proxy_response_code = Http.get_response_code(url, proxy_address, proxy_port)
 
@@ -127,4 +131,7 @@ module Huoqiang
     end # End is_trustable
 
   end
+end
+
+class NotEnoughProxyAvailable < Exception
 end

@@ -7,10 +7,12 @@ module Huoqiang
       @logger = Huoqiang.logger('crawler')
     end
 
-    # Return the country of the IP
+    # Return geolocalisation information of the IP
     #
-    # @param [String] IP address
-    # @param [Integer] Timeout for Geocoder to drop the request
+    # @param [String] ip IP address
+    # @param [Integer] timeout Timeout for Geocoder to drop the request
+    #
+    # @return [Hash]
     def get_ip_location(ip, timeout = 7)
       Geocoder::Configuration.cache = Redis.new
       begin
@@ -20,7 +22,7 @@ module Huoqiang
       end
 
       unless where.empty?
-        return where.first.country_code
+        return where.first
       else
         false
       end

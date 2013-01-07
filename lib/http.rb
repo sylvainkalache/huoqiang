@@ -48,11 +48,12 @@ module Huoqiang
     #
     # @param [String] url
     #
-    # @return [String]
-    def is_response_code_cached(url)
+    # @return [Hash]
+    def is_response_cached(url)
       redis = Redisdb.new
-      if redis.get(url)
-        return redis.get(url)
+      data = redis.hgetall(url)
+      if ! data['response'].nil?
+        return data
       else
         return false
       end
@@ -64,63 +65,62 @@ module Huoqiang
     #
     # @return [Integer] Return the HTTP return code or an error code (if website blocked or no proxy available)
     def check_website(url)
-      number_proxy_to_use = 4 # Number of proxy that we will test the website with
+      check_number = 4 # Number of proxy that we will test the website with
       check_complete = false # Variable that define the status of a check
       responses = [] # Will be use to store response code for each proxy
       run_number = 0 # How many times we tried to get a return code from a proxies group
       entries_to_skip = 0 # Will be use to have uniq group of proxy
+      proxies_location = [] # Location of proxies we used
 
       # Let's check if we are using cache for response code
       feature_flag = YAML.load_file(File.join(File.dirname(__FILE__), '../config/feature_flag.yml'))
 
       if feature_flag['cache_response_code']
-        response_code_available = is_response_code_cached(url)
+        response_available = is_response_cached(url)
 
-        if response_code_available
+        if response_available
           check_complete = true
-          responses << response_code_available
-          @logger.debug "Getting response code #{response_code_available} from the cache for #{url}"
+          responses << response_available['response']
+          @logger.debug "Getting response code #{response_available} from the cache for #{url}"
         end
       end
 
-      # As long as we don't get 4 identical return code
       while check_complete != true
-        proxies = Proxy.get(number_proxy_to_use, entries_to_skip)
-        # Check that we have proxies available
-        if proxies && proxies.count == number_proxy_to_use
-          proxies.each do |proxy|
+        begin
+
+          entries_to_skip = 0
+          while responses.count != check_number
+            proxy = Proxy.get(1, entries_to_skip)[0]
+
             response_code = Http.get_response_code(url, proxy['server_ip'], proxy['port'].to_i)
             @logger.debug "Checked website #{url} got HTTP response code #{response_code} using proxy #{proxy['server_ip']}:#{proxy['port']}"
+            analyse_result = analyse_http_code(response_code)
 
-            case response_code
-            when 1 then
-              @logger.debug("[http]Deleting #{proxy['server_ip']} because it is out of service")
-              Proxy.delete(proxy['server_ip']) # Failure to use
-            when 400 .. 403 then
-              @logger.debug("[http]Deleting #{proxy['server_ip']} because it returned a #{response_code}")
-              Proxy.delete(proxy['server_ip']) # Ask for authentication
-            when 407 then
-              @logger.debug("[http]Deleting #{proxy['server_ip']} because it returned a #{response_code}")
-                Proxy.delete(proxy['server_ip']) # Ask for authentication
-            when 444 then
-              Proxy.unavailable(proxy['server_ip']) # Just blocked that proxy due to censured website
-              responses << response_code
+            if analyse_result
+              responses << analyse_result
+              proxies_location << proxy['city']
             else
-              # If we get a valid return code, we add it to the final list
-              responses << response_code
+              Proxy.delete(proxy['server_ip'])
             end
-            #TODO if run_number > 10 something went wrong...
+            entries_to_skip += 1
+
           end
 
           # If after 4 valid return code, all are identical the process is complete
           # If not identical, we empty the array and start over
-          if responses.length == number_proxy_to_use && responses.uniq.length == 1
+          if responses.uniq.length == 1
             check_complete = true
 
             if feature_flag['cache_response_code']
               # Caching the response code for 1 hour
+              proxy_data = {}
+              proxy_data['response'] = responses.uniq[0]
+              proxy_data['cities'] = proxies_location.join(',')
+              proxy_data['time'] = Time.now().utc.to_i
+              @logger.debug proxy_data
+
               redis = Redisdb.new()
-              redis.set(url, responses.uniq[0], 3600)
+              redis.hmset(url, proxy_data, 3600)
             end
           else
             @logger.debug("[http]We did not get 4 identical responses code #{responses.inspect}")
@@ -131,10 +131,10 @@ module Huoqiang
             entries_to_skip = run_number * number_proxy_to_use
           end
           # If no proxy available
-        else
+        rescue NotEnoughProxyAvailable => e
+          @logger.info "[Http]#{e.message}"
           check_complete = true
           responses << 4444
-          @logger.info "No proxy currently available"
         end
       end # While check_complete
 
@@ -146,5 +146,30 @@ module Huoqiang
         return 'Yes'
       end
     end
+
+    # Perform the right action depending of a given HTTP code
+    #
+    # @param [Integer] http_code HTTP code returned by a proxy
+    def analyse_http_code(response_code)
+      case response_code
+      when 1 then
+        # Failure to use the proxy
+        return false
+      when 400 .. 403 then
+        # Proxy asks for authentication
+        return false
+      when 407 then
+        # Proxy asks for authentication
+        return false
+      when 444 then
+        return response_code
+      else
+        # If we get a valid return code, we add it to the final list
+        return response_code
+      end
+    end
+
   end
 end
+
+
