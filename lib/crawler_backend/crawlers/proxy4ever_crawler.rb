@@ -12,7 +12,7 @@ module Huoqiang
     def crawl()
       begin
         rss = SimpleRSS.parse open(@URL)
-      rescue ::SocketError, ::Timeout::Error, ::Errno::ETIMEDOUT, ::Errno::ENETUNREACH, ::Errno::ECONNRESET, ::Errno::ECONNREFUSED, EOFError, SocketError => e
+      rescue ::SocketError, ::Timeout::Error, ::Errno::ETIMEDOUT, ::Errno::ENETUNREACH, ::Errno::ECONNRESET, ::Errno::ECONNREFUSED, EOFError, SocketError, OpenURI::HTTPError => e
         raise CannotAccessWebsite, "[Proxy4ever]Can't access #{@URL}: #{e.message}"
       end
 

@@ -7,7 +7,7 @@ module Huoqiang
       super
       @URL = 'http://proxy.ipcn.org/proxylist.html'
       @default_duration = 18000
-      @enable = false
+      @enable = true
     end
 
     def crawl()

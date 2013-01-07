@@ -56,9 +56,9 @@ module Huoqiang
       raise NotImplementedError, 'You must override this method'
     end
 
-    # Check the proxy data and update to mongoDB if valid
+    # Check the proxy data and update the MongoDB entry if valid
     #
-    # @param proxy informations, must contain a 'server_ip' and 'port' keys
+    # @param [Hash] data Proxy informations, must contain a :server_ip and :port keys
     def check_and_update(data)
       data_tool = Data_tool.new()
 
@@ -67,9 +67,16 @@ module Huoqiang
         unless Proxy.is_trustable(data[:server_ip], data[:port].to_i)
           Proxy.delete(data[:server_ip])
         else
-          country_code = data_tool.get_ip_location(data[:server_ip])
+          geo_ip = data_tool.get_ip_location(data[:server_ip])
 
-          if country_code and country_code.include? 'CN'
+          if geo_ip and geo_ip.data['country_code'] == 'CN'
+            unless geo_ip.data['city'].nil?
+              if geo_ip.data['city'].empty?
+                data.update({:city => 'Unknown'})
+              else
+                data.update({:city => geo_ip.data['city']})
+              end
+            end
             mongo = Mongodb.new
             mongo.update({:server_ip => data[:server_ip]}, data)
           end
