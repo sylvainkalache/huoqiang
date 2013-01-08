@@ -1,9 +1,9 @@
 #search
-	%h1 Is your website blocked in China?
-	%form{ :action => "/query", :method => "post"}
-		%input{:class => 'address', :name => 'url', :selected => true, :type => "text"}
-		%input{:class => "button", :type => "submit", :value => "Check", :onclick => "spin_start();"}
-
+	%h1 Is your website blocked in China? <div class='tiny'>Beta</div>
+	%form{ :name => "mainForm", :action => "/query", :method => "post"}
+		%input{:class => 'address', :name => 'url', :selected => true, :type => "text", :id => "address-field"}
+		%input{:class => "button", :type => "submit", :value => "Check", :onclick => "return spin_start();"}
+#spin
 
 %script{:type => "text/javascript", :src  => "spin.js"}
 %script{:type => "text/javascript", :src  => "spinfunction.js"}
