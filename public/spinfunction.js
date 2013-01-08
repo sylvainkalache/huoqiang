@@ -21,11 +21,6 @@ function spin_stop()
 	spinner.stop();
 }
 
-function sleep(milliSeconds){
-	var startTime = new Date().getTime(); // get the current time
-	while (new Date().getTime() < startTime + milliSeconds); // hog cpu
-}
-
 function spin_start()
 {
 	var x=document.forms["mainForm"]["url"].value;
