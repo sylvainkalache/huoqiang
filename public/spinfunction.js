@@ -27,6 +27,7 @@ function spin_start()
 	if (x==null || x=="")
 	{
  		document.getElementById("address-field").className = "address-wrong";
+		setTimeout(function () {document.getElementById("address-field").className = "address"}, 1200)
 		return false;
 	}
 	else

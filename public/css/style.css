@@ -140,6 +140,9 @@ input[type=reset]:focus,
 	display:inline-block
 }
 
+#thanks {
+	padding: 50px;
+}
 
 #return_code {
 	text-decoration: bold;
