@@ -123,17 +123,55 @@ input[type=reset]:focus,
 }
 
 @-webkit-keyframes thumb {
-	0% { -webkit-transform: scale(1); }
-	50% { -webkit-transform: scale(0.9); }
-	100% { -webkit-transform: scale(1); }
+	0% { -webkit-transform: translate(10px); }
+	25% { -webkit-transform: translate(-10px); }
+	50% { -webkit-transform: translate(10px); }
+	75% { -webkit-transform: translate(-10px); }
+	100% { -webkit-transform: translate(0px);; }
+}
+
+@-moz-keyframes thumb {
+	0% { -moz-transform: translate(10px); }
+	25% { -moz-transform: translate(-10px); }
+	50% { -moz-transform: translate(10px); }
+	75% { -moz-transform: translate(-10px); }
+	100% { -moz-transform: translate(0px);; }
+}
+
+@-ms-keyframes thumb {
+	0% { -ms-transform: translate(10px); }
+	25% { -ms-transform: translate(-10px); }
+	50% { -ms-transform: translate(10px); }
+	75% { -ms-transform: translate(-10px); }
+	100% { -ms-transform: translate(0px);; }
 }
 
 .address-wrong {
 	-webkit-animation-name: thumb;
-	-webkit-animation-duration: 0.6s;
+	-webkit-animation-duration: 0.5s;
 	-webkit-transform-origin:50% 50%;
-	-webkit-animation-iteration-count: 2;
+	-webkit-animation-iteration-count: 1;
 	-webkit-animation-timing-function: linear;
+
+	-moz-animation-name: thumb;
+	-moz-animation-duration: 0.5s;
+	-moz-transform-origin:50% 50%;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-timing-function: linear;
+
+	-ms-animation-name: thumb;
+	-ms-animation-duration: 0.5s;
+	-ms-transform-origin:50% 50%;
+	-ms-animation-iteration-count: 1;
+	-ms-animation-timing-function: linear;
+
+	box-shadow: 0 0 5px rgba(237, 40, 0, 1);
+	margin: 5px 1px 3px 0px;
+	border: 1px solid rgba(255, 83, 48, 1);
+	margin: 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px 5px 5px 5px;
 }
 
 .address-wrong {
