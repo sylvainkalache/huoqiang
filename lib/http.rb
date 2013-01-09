@@ -76,12 +76,12 @@ module Huoqiang
       feature_flag = YAML.load_file(File.join(File.dirname(__FILE__), '../config/feature_flag.yml'))
 
       if feature_flag['cache_response_code']
-        response_available = is_response_cached(url)
+        proxy_data = is_response_cached(url)
 
-        if response_available
+        if proxy_data
           check_complete = true
-          responses << response_available['response']
-          @logger.debug "Getting response code #{response_available} from the cache for #{url}"
+          responses << proxy_data['response']
+          @logger.debug "Getting response code #{proxy_data} from the cache for #{url}"
         end
       end
 
@@ -128,7 +128,7 @@ module Huoqiang
             # We will use a different proxy group for each attempt
             # We will skeep N * number_proxy_to_use entries to have a new group every time
             run_number += 1
-            entries_to_skip = run_number * number_proxy_to_use
+            entries_to_skip = run_number * check_number
           end
           # If no proxy available
         rescue NotEnoughProxyAvailable => e
@@ -137,14 +137,8 @@ module Huoqiang
           responses << 4444
         end
       end # While check_complete
-
-      if responses.uniq[0].to_i == 200 or responses.uniq[0].to_i == 302 or responses.uniq[0].to_i == 301
-        return 'No'
-      elsif responses.uniq[0].to_i == 4444
-        return 'No servers available, please try your test later'
-      else
-        return 'Yes'
-      end
+@logger.debug proxy_data
+      return proxy_data
     end
 
     # Perform the right action depending of a given HTTP code

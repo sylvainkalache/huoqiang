@@ -103,28 +103,37 @@ module Huoqiang
     #
     # @return [Boolean] Proxy working or not.
     def self.is_trustable(proxy_address, proxy_port, timeout = 5)
-      @logger = Huoqiang.logger('crawler')
+      #@logger = Huoqiang.logger('crawler')
       # Fair example of a website that should not be censured
       # and should have a pretty good uptime
-      url = "http://www.amazon.com/"
+      url = ["http://www.amazon.com/", "http://www.intrinsec.com/"]
       # TODO test multiple website
 
-      proxy_response_code = Http.get_response_code(url, proxy_address, proxy_port)
+      proxy_response_code = {}
+      real_response_code = {}
 
-      c = Curl::Easy.new(url)
-      begin
-        Timeout::timeout(timeout) do
-          c.perform
+      # Get responses code going through the proxy
+      url.each do |url|
+        proxy_response_code[url] = Http.get_response_code(url, proxy_address, proxy_port)
+
+
+        # Now through the normal connection
+        c = Curl::Easy.new(url)
+        begin
+          Timeout::timeout(timeout) do
+            c.perform
+          end
+        rescue Curl::Err::ConnectionFailedError, Curl::Err::ProxyResolutionError, Timeout::Error => e
+          # TODO handle this
+          @logger.error "[Proxy]Could not query #{url} #{e.message}"
         end
-      rescue StandardError => e
-        # TODO
-        # Something went wrong ....
-        @logger.error "[Proxy]Could not query #{url} #{e.message}"
+
+        real_response_code[url] = c.response_code
       end
 
       # We are supposed to get the same response code
       # If not, this proxy is probable not trustable
-      if c.response_code != proxy_response_code
+      if  real_response_code != proxy_response_code
         return false
       else
         return true
