@@ -26,7 +26,7 @@ module Huoqiang
         proxy = {}
         if item.prx_country = 'China' and ! item.prx_type.include?('Socks')
           proxy[:port] = item.prx_port
-          proxy[:server_id] = item.prx_ip
+          proxy[:server_ip] = item.prx_ip
           @proxy_entries << proxy
           @number_proxy_entries += 1
         end
