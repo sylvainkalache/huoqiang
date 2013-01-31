@@ -36,8 +36,13 @@ module Huoqiang
     def check_data_format(ip, port)
       # \d* one or several number
       # \. dot
-      if ip =~ /^\d*\.\d*\.\d*\.\d*$/ and port.to_s =~ /^(\d+)*$/ and port.to_i.between?(1, 65535)
-        return true
+      if ip =~ /^\d*\.\d*\.\d*\.\d*$/
+        
+        if port.to_s =~ /^(\d+)*$/ and port.to_i.between?(1, 65535)
+          return true
+        else
+          return false
+        end
       else
         return false
       end
