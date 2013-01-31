@@ -37,7 +37,7 @@ module Huoqiang
               @logger.info "#{@number_proxy_entries} entries to check - Got them from #{@URL} in #{total_time}sec"
 
               @proxy_entries.each do |proxy_entry|
-                check_and_update(proxy_entry)
+                check_and_update(proxy_entry, @URL)
               end
             end
           rescue CannotAccessWebsite => e
@@ -59,12 +59,15 @@ module Huoqiang
     # Check the proxy data and update the MongoDB entry if valid
     #
     # @param [Hash] data Proxy informations, must contain a :server_ip and :port keys
-    def check_and_update(data)
+    def check_and_update(data, source = nil)
       data_tool = Data_tool.new()
+      @logger = Huoqiang.logger('crawler')
 
+      @mongo = Mongodb.new
       if data_tool.check_data_format(data[:server_ip], data[:port])
         # Unless proxy is not trustable
         unless Proxy.is_trustable(data[:server_ip], data[:port].to_i)
+          @logger.debug("[Base]Deleting #{data} from #{source} b/s not Proxy.is_trustable")
           Proxy.delete(data[:server_ip])
         else
           geo_ip = data_tool.get_ip_location(data[:server_ip])
@@ -77,10 +80,12 @@ module Huoqiang
                 data.update({:city => geo_ip.data['city']})
               end
             end
-            mongo = Mongodb.new
-            mongo.update({:server_ip => data[:server_ip]}, data)
+            @logger.debug("[Base]Adding #{data} from #{source}")
+            @mongo.update({:server_ip => data[:server_ip]}, data)
           end
         end
+      else
+        @logger.debug("[Base]Deleting #{data} from #{source} b/s not correct data")
       end
     end
 
