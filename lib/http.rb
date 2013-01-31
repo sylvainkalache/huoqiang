@@ -22,6 +22,7 @@ module Huoqiang
     #
     # @return [Integer] The HTTP return code or an error code.
     def self.get_response_code(url, proxy_address, proxy_port, timeout=5)
+      @logger = Huoqiang.logger('crawler')
       c = Curl::Easy.new(url)
       c.proxy_url = proxy_address
       c.proxy_port = proxy_port

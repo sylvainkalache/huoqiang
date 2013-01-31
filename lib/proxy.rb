@@ -103,7 +103,7 @@ module Huoqiang
     #
     # @return [Boolean] Proxy working or not.
     def self.is_trustable(proxy_address, proxy_port, timeout = 5)
-      #@logger = Huoqiang.logger('crawler')
+      @logger = Huoqiang.logger('crawler')
       # Fair example of a website that should not be censured
       # and should have a pretty good uptime
       url = ["http://www.amazon.com/", "http://www.intrinsec.com/"]
@@ -130,7 +130,6 @@ module Huoqiang
 
         real_response_code[url] = c.response_code
       end
-
       # We are supposed to get the same response code
       # If not, this proxy is probable not trustable
       if  real_response_code != proxy_response_code
