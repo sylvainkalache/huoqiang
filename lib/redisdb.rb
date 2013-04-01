@@ -71,5 +71,33 @@ module Huoqiang
       end
     end
 
+    # Check if we have the website's response code in the cache
+    #
+    # @param [String] url
+    #
+    # @return [Hash]
+    def self.is_hash_cached(url)
+      redis = Redisdb.new
+      data = redis.hgetall(url)
+      if ! data['response'].nil?
+        return data
+      else
+        return false
+      end
+    end
+
+    # Check if we have the key cached
+    #
+    # @param [String] key Any value
+    def self.is_entry_cached(key)
+      redis = Redisdb.new
+      data = redis.get(key)
+      if ! data.nil?
+        return data
+      else
+        return false
+      end
+    end
+
   end
 end

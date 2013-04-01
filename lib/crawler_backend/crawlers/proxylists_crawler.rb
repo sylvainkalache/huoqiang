@@ -5,7 +5,7 @@ module Huoqiang
     def initialize()
       super
       @URL = 'http://www.proxylists.net/proxylists.xml'
-      @default_duration = 18000
+      @default_duration = 7200
       @enable = true
     end
 

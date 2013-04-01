@@ -12,24 +12,38 @@ module Huoqiang
     set :haml, :format => :html5
 
     get '/' do
-      @image = Huoqiang::Image.get()
+      image = Huoqiang::Image.get()
+      @image_path = image[0]
+      @image_copyright = image[1]
       haml :index
     end
 
     get '/home' do
-      @image = Huoqiang::Image.get()
+      image = Huoqiang::Image.get()
+      @image_path = image[0]
+      @image_copyright = image[1]
       haml :index
     end
 
     post '/query' do
+      # TODO should be self
       backend = Huoqiang::Http.new()
-      @http_return_code = backend.check_website(params[:url])
-      @image = Huoqiang::Image.get()
+      result = backend.check_website(params[:url])
+      image = Huoqiang::Image.get()
+
+      @url = params[:url]
+      @http_return_code = result['response']
+      @cities = result['cities'].split(',')
+      @image_path = image[0]
+      @image_copyright = image[1]
+
       haml :result
     end
 
     get '/about' do
-       @image = Huoqiang::Image.get()
+      image = Huoqiang::Image.get()
+      @image_path = image[0]
+      @image_copyright = image[1]
       haml :about
     end
 

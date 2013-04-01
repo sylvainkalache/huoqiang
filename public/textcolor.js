@@ -1,23 +1,34 @@
 window.onload=body_load;
 function body_load()
 {
-	var return_code = document.getElementById("return_code");
+	var return_code = document.getElementById("http_return_code");
 
 	//get the text from the first child node - which should be a text node
-	var currentText = return_code.innerHTML;
+	var httpCode = return_code.innerHTML;
 
-	//check for 'one' and assign this table cell's background color accordingly
-	if (currentText === "No")
+	// GOOD
+	if (httpCode === "No")
 	{
-		return_code.style.color = "green";
+		http_return_code.style.color = "green";
 	}
-	else if (currentText === "No servers available, please try your test later")
+	// No proxy available
+	else if (httpCode === "No proxies available, please try your test later")
 	{
-		return_code.style.color = "orange";
+		http_return_code.style.color = "orange";
 	}
-	else if (currentText === "Yes")
+	// Website blocked
+	else if (httpCode === "Yes")
 	{
-		return_code.style.color = "red";
+		http_return_code.style.color = "red";
 	}
 
 }
+
+/*if responses.uniq[0].to_i == 200 or responses.uniq[0].to_i == 302 or responses.uniq[0].to_i == 301
+  return 'No'
+elsif responses.uniq[0].to_i == 4444
+  return 'No servers available, please try your test later'
+else
+  return 'Yes'
+end
+*/

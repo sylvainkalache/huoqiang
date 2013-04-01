@@ -1,4 +1,12 @@
 #result
-	%h1
-		%a{:href => '/', :description => 'home'}Is your website blocked in China?
-	%p{:id => 'return_code'}= @http_return_code
+  %h1
+    %a{:href => '/', :description => 'home'}Is #{@url} blocked in China?
+  %p{:id => 'http_return_code'}= @http_return_code
+  %ul{:class => 'navigation'}
+    %li{:class => 'toggleSubMenu'}
+      %span= 'Test performed from'
+      %ul{:class => 'subMenu'}
+        -	@cities.each do |city|
+          %li
+            %a{:href => "https://maps.google.com/maps?q=#{city}"}
+              %img#thumb{:src => '/gmaps-icon.png', :alt => "Google maps"}= city

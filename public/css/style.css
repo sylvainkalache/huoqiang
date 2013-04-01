@@ -182,7 +182,7 @@ input[type=reset]:focus,
 	padding: 50px;
 }
 
-#return_code {
+#http_return_code {
 	text-decoration: bold;
 	font-size:50px;
 }
@@ -190,6 +190,7 @@ input[type=reset]:focus,
 #spin {
 	padding-top: 100px;
 }
+
 #footer {
 	text-align: center;
 	font-size: 12px;

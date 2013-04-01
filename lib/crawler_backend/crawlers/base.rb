@@ -26,6 +26,8 @@ module Huoqiang
         if @enable
           @proxy_entries = [] # Will contains hashes containing proxy info
           @number_proxy_entries = 0 # Number of entries inserted or updated per crawler
+          source = self.class.name.split('::').last
+
           start_time = Time.now
           begin
             crawler_output = crawl()
@@ -34,17 +36,17 @@ module Huoqiang
 
             # We don't apply to same process for updateProxyList as it's not a crawler
             unless @URL == 'updateProxyList'
-              @logger.info "#{@number_proxy_entries} entries to check - Got them from #{@URL} in #{total_time}sec"
+              @logger.info "#{@number_proxy_entries} entries to check from #{@URL} in #{total_time}sec"
 
               @proxy_entries.each do |proxy_entry|
-                check_and_update(proxy_entry, @URL)
+                check_and_update(proxy_entry, source)
               end
             end
           rescue CannotAccessWebsite => e
             @logger.error e.message
           end
         end
-        @logger.info("[Base]Finished to process #{@URL}, will nap for #{@default_duration}")
+        @logger.info("Finished to process #{@URL}, will nap for #{@default_duration}")
         nap()
       end
     end
@@ -59,33 +61,21 @@ module Huoqiang
     # Check the proxy data and update the MongoDB entry if valid
     #
     # @param [Hash] data Proxy informations, must contain a :server_ip and :port keys
-    def check_and_update(data, source = nil)
-      data_tool = Data_tool.new()
-      @logger = Huoqiang.logger('crawler')
+    # @param [String] source Where did we get this proxy from
+    def check_and_update(data, source = {})
+      mongo = Mongodb.new()
 
-      @mongo = Mongodb.new
-      if data_tool.check_data_format(data[:server_ip], data[:port])
-        # Unless proxy is not trustable
-        unless Proxy.is_trustable(data[:server_ip], data[:port].to_i)
-          @logger.debug("[Base]Deleting #{data} from #{source} b/s not Proxy.is_trustable")
-          Proxy.delete(data[:server_ip])
-        else
-          geo_ip = data_tool.get_ip_location(data[:server_ip])
+      working, reason = Proxy.is_working(data[:server_ip], data[:port].to_i)
+      if working
+        data.update({:city => Data_tool.get_ip_city(data[:server_ip])})
+        data[:source] = source if source
+        data[:unavailable] = false
+        data[:latency] = Proxy.latency(data[:server_ip], data[:port].to_i)
 
-          if geo_ip and geo_ip.data['country_code'] == 'CN'
-            unless geo_ip.data['city'].nil?
-              if geo_ip.data['city'].empty?
-                data.update({:city => 'Unknown'})
-              else
-                data.update({:city => geo_ip.data['city']})
-              end
-            end
-            @logger.debug("[Base]Adding #{data} from #{source}")
-            @mongo.update({:server_ip => data[:server_ip]}, data)
-          end
-        end
+        mongo.update({:server_ip => data[:server_ip]}, data)
       else
-        @logger.debug("[Base]Deleting #{data} from #{source} b/s not correct data")
+        @logger.debug("#{data} deleted because not working - #{source} - #{reason} failed")
+        Proxy.delete(data[:server_ip])
       end
     end
 

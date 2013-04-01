@@ -1,2 +1,4 @@
 *.log
 config/unicorn.rb
+dump.rdb
+testing_notes.txt

@@ -6,7 +6,7 @@ module Huoqiang
     def initialize()
       super
       @URL = 'http://proxy.ipcn.org/proxylist.html'
-      @default_duration = 18000
+      @default_duration = 7200
       @enable = true
     end
 

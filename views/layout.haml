@@ -1,12 +1,16 @@
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
 	%head
+		%script{:type => "text/javascript", :src  => "jquery.min.js"}
 		%script{:type => "text/javascript", :src  => "textcolor.js"}
 		%script{:type => "text/javascript", :src  => "ga.js"}
+		%script{:type => "text/javascript", :src  => "menu.js"}
+
 
 		%link{:rel => "stylesheet", :type => "text/css", :href => "css/style.css"}
+		%link{:rel => "stylesheet", :type => "text/css", :href => "css/menu.css"}
 		%title WebsiteBlockedInChina.com
 	%body
-	%img{:src => @image, :class =>"bg"}
+	%img{:src => @image_path, :class =>"bg"}
 	#wrap
 		#content
 			=yield
@@ -18,4 +22,6 @@
 					%a{:href => '/home', :description => 'Home'}Home
 				%li
 					%a{:href => 'https://twitter.com/sylvainkalache'}By @SylvainKalache
+				%li
+					%a{:href => @image_copyright, :description => 'image source'}Picture credits
 	#background

@@ -6,32 +6,25 @@ module Huoqiang
     def initialize()
       super
       @URL = 'updateProxyList'
-      @default_duration = 3600
+      @default_duration = 2700
       @enable = true
     end
 
     def crawl()
       mongo = Mongodb.new
       proxies = mongo.find()
-      timeout = 5
       proxy_deleted = 0
 
       @logger.info "[Updateproxylist]Will analyse #{proxies.count}"
 
       proxies.each do |proxy|
-        start_time = Time.now()
-        response = Proxy.is_working(proxy['server_ip'], proxy['port'], timeout)
-        total_time = Time.now - start_time
-
-        trustable_proxy = Proxy.is_trustable(proxy['server_ip'], proxy['port'].to_i)
-
-        # If the proxy does not respond or has a latency > 5 seconds, we delete it.
-        if response && trustable_proxy
-          proxy['latency'] = total_time
+        if Proxy.is_working(proxy[:server_ip], proxy[:port])
+          proxy['latency'] = Proxy.latency(proxy[:server_ip], proxy[:port])
           proxy['unavailable'] = false # Proxy is in an available state, aka not being blocked because used to query a censured page
-          Proxy.update(proxy['server_ip'], proxy)
+
+          Proxy.update(proxy[:server_ip], proxy)
         else
-          Proxy.delete(proxy['server_ip'])
+          Proxy.delete(proxy[:server_ip])
           proxy_deleted += 1
         end
 

@@ -5,7 +5,7 @@ module Huoqiang
     def initialize()
       super
       @URL = 'http://www.proxy4ever.com/search/china/feed/rss2/'
-      @default_duration = 18000
+      @default_duration = 7200
       @enable = true
     end
 
