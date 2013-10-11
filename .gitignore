@@ -16,3 +16,8 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+config/newrelic.yml
+config/unicorn.rb
+config/credentials.yml
+public/ga.js

@@ -1,10 +1,10 @@
 require File.expand_path('base.rb', File.dirname(__FILE__))
 
 module Huoqiang
-  class Getproxy < Base
+  class Yxorpteg < Base
     def initialize()
       super
-      @URL='http://www.getproxy.jp/en/china'
+      @URL = Base64.decode64('aHR0cDovL3d3dy5nZXRwcm94eS5qcC9lbi9jaGluYQ==')
       @default_duration = 7200
       @enable = true
     end
@@ -14,7 +14,7 @@ module Huoqiang
       begin
         body = open("#{@URL}/1").read
       rescue OpenURI::HTTPError, EOFError, SocketError => e
-        raise CannotAccessWebsite, "[Getproxy]Can't access #{@URL}: #{e.message}"
+        raise CannotAccessWebsite, "[Yxorpteg]Can't access #{@URL}: #{e.message}"
       end
       doc = Nokogiri::HTML(body)
 
@@ -54,5 +54,5 @@ module Huoqiang
       end # End while
       return @proxy_entries
     end # End crawl
-  end # End Getproxy
+  end # End Yxorpteg
 end # End Module

@@ -1,10 +1,10 @@
 require File.expand_path('base.rb', File.dirname(__FILE__))
 
 module Huoqiang
-  class Proxylists < Base
+  class Stsilyxorp < Base
     def initialize()
       super
-      @URL = 'http://www.proxylists.net/proxylists.xml'
+      @URL = Base64.decode64('aHR0cDovL3d3dy5wcm94eWxpc3RzLm5ldC9wcm94eWxpc3RzLnhtbA==')
       @default_duration = 7200
       @enable = true
     end
@@ -19,7 +19,7 @@ module Huoqiang
       begin
         rss = SimpleRSS.parse open(@URL)
       rescue ::SocketError, ::Timeout::Error, ::Errno::ETIMEDOUT, ::Errno::ENETUNREACH, ::Errno::ECONNRESET, ::Errno::ECONNREFUSED, EOFError, SocketError => e
-        raise CannotAccessWebsite, "[Proxylists]Can't access #{@URL}: #{e.message}"
+        raise CannotAccessWebsite, "[Stsilyxorp]Can't access #{@URL}: #{e.message}"
       end
 
       rss.items.each do |item|

@@ -2,10 +2,10 @@ require File.join(File.dirname(__FILE__), '../parser.rb')
 require File.expand_path('base.rb', File.dirname(__FILE__))
 
 module Huoqiang
-  class Ipcn < Base
+  class Ncpi < Base
     def initialize()
       super
-      @URL = 'http://proxy.ipcn.org/proxylist.html'
+      @URL = Base64.decode64('aHR0cDovL3Byb3h5LmlwY24ub3JnL3Byb3h5bGlzdC5odG1s')
       @default_duration = 7200
       @enable = true
     end
@@ -14,7 +14,7 @@ module Huoqiang
       begin
         body = open(@URL).read
       rescue OpenURI::HTTPError, EOFError, SocketError => e
-        raise CannotAccessWebsite, "[Ipcn]Can't access #{@URL}: #{e.message}"
+        raise CannotAccessWebsite, "[Ncpi]Can't access #{@URL}: #{e.message}"
       end
 
       doc = Nokogiri::HTML(body)

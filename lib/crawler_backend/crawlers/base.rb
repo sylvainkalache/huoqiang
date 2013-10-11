@@ -79,7 +79,7 @@ module Huoqiang
       end
     end
 
-    class CannotAccessWebsite < Exception
+    class CannotAccessWebsite < StandardError
     end
 
   end # End class

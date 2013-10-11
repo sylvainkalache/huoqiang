@@ -1,10 +1,10 @@
 require File.expand_path('base.rb', File.dirname(__FILE__))
 
 module Huoqiang
-  class Coolproxy < Base
+  class Yxorplooc < Base
     def initialize()
       super
-      @URL = 'http://www.cool-proxy.net/proxies/http_proxy_list/country_code:CN/port:/anonymous:'
+      @URL = "aHR0cDovL3d3dy5jb29sLXByb3h5Lm5ldC9wcm94aWVzL2h0dHBfcHJveHlf\nbGlzdC9jb3VudHJ5X2NvZGU6Q04vcG9ydDovYW5vbnltb3VzOg==\n"
       @default_duration = 3600
       @enable = false
     end

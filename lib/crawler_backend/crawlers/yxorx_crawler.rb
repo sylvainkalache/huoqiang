@@ -1,10 +1,10 @@
 require File.expand_path('base.rb', File.dirname(__FILE__))
 
 module Huoqiang
-  class Xroxy < Base
+  class Yxorx < Base
     def initialize()
       super
-      @URL = 'http://www.xroxy.com/proxyrss.xml'
+      @URL = Base64.decode64('aHR0cDovL3d3dy54cm94eS5jb20vcHJveHlyc3MueG1s')
       @default_duration = 7200
       @enable = true
     end
@@ -19,7 +19,7 @@ module Huoqiang
       begin
         rss = SimpleRSS.parse open(@URL)
       rescue ::SocketError, ::Timeout::Error, ::Errno::ETIMEDOUT, ::Errno::ENETUNREACH, ::Errno::ECONNRESET, ::Errno::ECONNREFUSED, EOFError, SocketError, StandardError => e
-        raise CannotAccessWebsite, "[Xroxy]Can't access #{@URL}: #{e.message} #{e.class}"
+        raise CannotAccessWebsite, "[Yxorx]Can't access #{@URL}: #{e.message} #{e.class}"
       end
 
       rss.items.each do |item|

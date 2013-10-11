@@ -6,6 +6,7 @@ module Huoqiang
 
     def initialize
       @logger = Huoqiang.logger('crawler')
+      @geoip_key = YAML.load_file(File.join(File.dirname(__FILE__), '../config/credentials.yml'))['geoip_key']
     end
 
     # Return geolocalisation information of the IP
@@ -19,7 +20,7 @@ module Huoqiang
       if Redisdb.is_entry_cached(ip)
         return eval(Redisdb.is_entry_cached(ip))
       else
-        GeoIp.api_key = '9b913fdfdc39d20095af789b587f6156068987096033b59a758adb2f8a5663dd'
+        GeoIp.api_key = @geoip_key
         begin
           where = GeoIp.geolocation(ip)
 

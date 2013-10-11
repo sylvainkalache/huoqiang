@@ -1,10 +1,10 @@
 require File.expand_path('base.rb', File.dirname(__FILE__))
 
 module Huoqiang
-  class Nntime < Base
+  class Emitnn < Base
     def initialize()
       super
-      @URL='http://nntime.com/'
+      @URL = Base64.decode64('aHR0cDovL25udGltZS5jb20v')
       @default_duration = 7200
       @enable = true
     end
@@ -18,7 +18,7 @@ module Huoqiang
       begin
         body = open("#{@URL}proxy-country-01.htm").read
       rescue OpenURI::HTTPError, EOFError, SocketError => e
-        raise CannotAccessWebsite, "[Nntime]Can't access #{@URL}: #{e.message}"
+        raise CannotAccessWebsite, "[Emitnn]Can't access #{@URL}: #{e.message}"
       end
       doc = Nokogiri::HTML(body)
 

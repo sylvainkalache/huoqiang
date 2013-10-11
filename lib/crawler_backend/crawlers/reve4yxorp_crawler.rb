@@ -1,10 +1,11 @@
 require File.expand_path('base.rb', File.dirname(__FILE__))
 
 module Huoqiang
-  class Proxy4ever < Base
+  class Reve4yxorp < Base
     def initialize()
       super
-      @URL = 'http://www.proxy4ever.com/search/china/feed/rss2/'
+      @URL = Base64.decode64('aHR0cDovL3d3dy5wcm94eTRldmVyLmNvbS9zZWFyY2gvY2hpbmEvZmVlZC9y
+c3MyLw==')
       @default_duration = 7200
       @enable = true
     end
@@ -13,7 +14,7 @@ module Huoqiang
       begin
         rss = SimpleRSS.parse open(@URL)
       rescue ::SocketError, ::Timeout::Error, ::Errno::ETIMEDOUT, ::Errno::ENETUNREACH, ::Errno::ECONNRESET, ::Errno::ECONNREFUSED, EOFError, SocketError, OpenURI::HTTPError => e
-        raise CannotAccessWebsite, "[Proxy4ever]Can't access #{@URL}: #{e.message}"
+        raise CannotAccessWebsite, "[Reve4yxorp]Can't access #{@URL}: #{e.message}"
       end
 
       unless rss.nil?

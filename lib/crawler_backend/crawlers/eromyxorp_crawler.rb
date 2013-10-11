@@ -1,10 +1,10 @@
 require File.expand_path('base.rb', File.dirname(__FILE__))
 
 module Huoqiang
-  class Proxymore < Base
+  class Eromyxorp < Base
     def initialize()
       super
-      @URL = 'http://www.proxymore.net/proxy_area-CN.html'
+      @URL = Base64.decode64('aHR0cDovL3d3dy5wcm94eW1vcmUubmV0L3Byb3h5X2FyZWEtQ04uaHRtbA==')
       @default_duration = 7200
       @enable = true
     end
@@ -13,8 +13,8 @@ module Huoqiang
       begin
         body = open(@URL).read
       rescue OpenURI::HTTPError, EOFError, SocketError => e
-        @logger.error "Proxymore parser: #{e.message}"
-        raise CannotAccessWebsite, "[Proxymore]Can't access #{@URL}: #{e.message}"
+        @logger.error "Eromyxorp parser: #{e.message}"
+        raise CannotAccessWebsite, "[Eromyxorp]Can't access #{@URL}: #{e.message}"
       end
 
       doc = Nokogiri::HTML(body)

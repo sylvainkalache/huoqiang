@@ -1,10 +1,11 @@
 require File.expand_path('base.rb', File.dirname(__FILE__))
 
 module Huoqiang
-  class Proxybesplatno < Base
+  class Ontalpsebyxorp < Base
     def initialize()
       super
-      @URL='http://proxy-besplatno.com/from/China/&page_num='
+      @URL = Base64.decode64('aHR0cDovL3Byb3h5LWJlc3BsYXRuby5jb20vZnJvbS9DaGluYS8mcGFnZV9u
+dW09')
       @default_duration = 7200
       @enable = true
     end
@@ -16,7 +17,7 @@ module Huoqiang
       begin
         body = open("#{@URL}1").read
       rescue OpenURI::HTTPError, Timeout::Error, EOFError, SocketError => e
-        raise CannotAccessWebsite, "[Proxybesplatno]Can't access #{@URL}: #{e.message}"
+        raise CannotAccessWebsite, "[Ontalpsebyxorp]Can't access #{@URL}: #{e.message}"
       end
       doc = Nokogiri::HTML(body)
 
@@ -38,7 +39,7 @@ module Huoqiang
               @file_size = response['content-length']
             end
           rescue StandardError => e
-            @logger.error "Proxybesplatno: #{e.message}"
+            @logger.error "Ontalpsebyxorp: #{e.message}"
             retry
           end
 
@@ -112,7 +113,7 @@ module Huoqiang
           when 1783
             proxy[:port] = 9999
           else
-            @logger.error "Proxybesplatno: #{proxy[:server_ip]} has a unknown port not listed page #{page_number}"
+            @logger.error "Ontalpsebyxorp: #{proxy[:server_ip]} has a unknown port not listed page #{page_number}"
           end
 
           # We don't want to get banned for abusive crawling :-)
